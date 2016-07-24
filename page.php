@@ -1,6 +1,6 @@
 <?php
     define("ROOT", __DIR__);
-    define("APP_ROOT", getenv('APP_ROOT_PATH'));
+    define("APP_ROOT", __DIR__);
     require_once (ROOT . "/models/messages.php");
     require_once (ROOT . "/controllers/messages_controller.php");
     
