@@ -1,8 +1,8 @@
 <?php
     // Login data for the database. Use this file in all models
-    $host = "localhost";
-    $user = "e2e4-test-assignment";
-    $password = "0mfB4Vxs9jiOaYCf";
-    $database = "e2e4-test-assignment";
+    $host = "us-cdbr-iron-east-04.cleardb.net";
+    $user = "bb789c86ba85ec";
+    $password = "bdc7b778";
+    $database = "heroku_ffebb8177a0e328";
 ?>
 
