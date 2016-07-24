@@ -12,7 +12,19 @@
     }
     else
     {
-        $mainContent = "Connection established";
+        $mainContent = "<p>Connection established</p>";
+    }
+    $sql = "SELECT * FROM users;";
+    $result = $sqli->query($sql);
+    $id = 0;
+    $nickname = "nick";
+    $avatar_path = "af";
+    while($row = $result->fetch_array())
+    {
+        $id = $row['id'];
+        $nickname = $row['nickname'];
+        $avatar_path = $row['avatar_path'];
+        $mainContent .= "<p>id: " . $id . "; nickname: " . $nickname . "; avatar_path: " . $avatar_path . " </p>";
     }
     
     require_once ($app_root_path . "templates/template.php");

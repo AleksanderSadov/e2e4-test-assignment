@@ -1,10 +1,10 @@
-[Sun Jul 24 11:02:43.443337 2016] [:error] [pid 18810] [client 127.0.0.1:45746] PHP Notice:  Undefined variable: password in /var/www/html/e2e4-test-assignment/index.php on line 8
-[Sun Jul 24 11:02:43.443358 2016] [:error] [pid 18810] [client 127.0.0.1:45746] PHP Notice:  Undefined variable: database in /var/www/html/e2e4-test-assignment/index.php on line 8
-[Sun Jul 24 11:02:43.443761 2016] [:error] [pid 18810] [client 127.0.0.1:45746] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user ''@'localhost' (using password: NO) in /var/www/html/e2e4-test-assignment/index.php on line 8
-[Sun Jul 24 11:02:55.527150 2016] [:error] [pid 25795] [client 127.0.0.1:45770] PHP Warning:  include(model/credentials.php): failed to open stream: No such file or directory in /var/www/html/e2e4-test-assignment/index.php on line 7
-[Sun Jul 24 11:02:55.527210 2016] [:error] [pid 25795] [client 127.0.0.1:45770] PHP Warning:  include(): Failed opening 'model/credentials.php' for inclusion (include_path='.:/usr/share/php') in /var/www/html/e2e4-test-assignment/index.php on line 7
-[Sun Jul 24 11:02:55.527227 2016] [:error] [pid 25795] [client 127.0.0.1:45770] PHP Notice:  Undefined variable: host in /var/www/html/e2e4-test-assignment/index.php on line 8
-[Sun Jul 24 11:02:55.527234 2016] [:error] [pid 25795] [client 127.0.0.1:45770] PHP Notice:  Undefined variable: user in /var/www/html/e2e4-test-assignment/index.php on line 8
-[Sun Jul 24 11:02:55.527239 2016] [:error] [pid 25795] [client 127.0.0.1:45770] PHP Notice:  Undefined variable: password in /var/www/html/e2e4-test-assignment/index.php on line 8
-[Sun Jul 24 11:02:55.527244 2016] [:error] [pid 25795] [client 127.0.0.1:45770] PHP Notice:  Undefined variable: database in /var/www/html/e2e4-test-assignment/index.php on line 8
-[Sun Jul 24 11:02:55.527585 2016] [:error] [pid 25795] [client 127.0.0.1:45770] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user ''@'localhost' (using password: NO) in /var/www/html/e2e4-test-assignment/index.php on line 8
+[Sun Jul 24 11:44:26.701548 2016] [:error] [pid 18810] [client 127.0.0.1:47432] PHP Notice:  Use of undefined constant row - assumed 'row' in /var/www/html/e2e4-test-assignment/index.php on line 24
+[Sun Jul 24 11:44:26.701605 2016] [:error] [pid 18810] [client 127.0.0.1:47432] PHP Notice:  Use of undefined constant row - assumed 'row' in /var/www/html/e2e4-test-assignment/index.php on line 25
+[Sun Jul 24 11:44:26.701613 2016] [:error] [pid 18810] [client 127.0.0.1:47432] PHP Warning:  Illegal string offset 'nickname' in /var/www/html/e2e4-test-assignment/index.php on line 25
+[Sun Jul 24 11:44:26.701621 2016] [:error] [pid 18810] [client 127.0.0.1:47432] PHP Notice:  Use of undefined constant row - assumed 'row' in /var/www/html/e2e4-test-assignment/index.php on line 26
+[Sun Jul 24 11:44:26.701626 2016] [:error] [pid 18810] [client 127.0.0.1:47432] PHP Warning:  Illegal string offset 'avatar_path' in /var/www/html/e2e4-test-assignment/index.php on line 26
+[Sun Jul 24 11:44:26.701638 2016] [:error] [pid 18810] [client 127.0.0.1:47432] PHP Notice:  Use of undefined constant row - assumed 'row' in /var/www/html/e2e4-test-assignment/index.php on line 24
+[Sun Jul 24 11:44:26.701644 2016] [:error] [pid 18810] [client 127.0.0.1:47432] PHP Notice:  Use of undefined constant row - assumed 'row' in /var/www/html/e2e4-test-assignment/index.php on line 25
+[Sun Jul 24 11:44:26.701650 2016] [:error] [pid 18810] [client 127.0.0.1:47432] PHP Warning:  Illegal string offset 'nickname' in /var/www/html/e2e4-test-assignment/index.php on line 25
+[Sun Jul 24 11:44:26.701667 2016] [:error] [pid 18810] [client 127.0.0.1:47432] PHP Notice:  Use of undefined constant row - assumed 'row' in /var/www/html/e2e4-test-assignment/index.php on line 26
+[Sun Jul 24 11:44:26.701673 2016] [:error] [pid 18810] [client 127.0.0.1:47432] PHP Warning:  Illegal string offset 'avatar_path' in /var/www/html/e2e4-test-assignment/index.php on line 26
