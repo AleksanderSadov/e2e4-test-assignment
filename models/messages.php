@@ -1,4 +1,5 @@
 <?php
+    // All database manipulation described here
 
     require_once($app_root_path . "entities/message.php");
     require($app_root_path . "models/credentials.php");
@@ -29,18 +30,5 @@
             array_push($messages, $message);
         }
         return $messages;
-    }
-    
-    function SelectFromSql($sql, $sqli)
-    {   
-        CheckConnection($sqli);
-        
-        $result_output = array();
-        $result = $sqli->query($sql);
-        while ($row = $result->fetch_array())
-        {
-            array_push($result_output, $row);
-        }
-        return $result_output;
     }
 ?>

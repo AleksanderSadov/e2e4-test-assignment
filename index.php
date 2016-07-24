@@ -1,6 +1,7 @@
 <?php
     $app_root_path = getenv('APP_ROOT_PATH');
     require_once ($app_root_path . "models/messages.php");
+    require_once ($app_root_path . "controllers/messages_controller.php");
     
     // display title and header
     $title = "Messages";
@@ -8,13 +9,7 @@
     
     // display messages
     $messages = GetAllMessages();
-    foreach ($messages as $message)
-    {
-        $header = "<h2 class='message_header'>" . $message->header . "</h2>";
-        $brief = "<div class='message_brief'>" . $message->brief . "</div>";
-        //$content = "<div class='message_content'>" . $message->content . "</div>";
-        $mainContent .= "<div class='message'>" . $header . $brief . "</div>";
-    }
+    $mainContent = "<div>" . DisplayMessages($messages) . "</div>";
     
     require_once ($app_root_path . "templates/template.php");
 ?>
