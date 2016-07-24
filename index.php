@@ -1,7 +1,8 @@
 <?php
-    $app_root_path = getenv('APP_ROOT_PATH');
-    require_once ($app_root_path . "models/messages.php");
-    require_once ($app_root_path . "controllers/messages_controller.php");
+    define("ROOT", __DIR__);
+    define("APP_ROOT", getenv('APP_ROOT_PATH'));
+    require_once (ROOT . "/models/messages.php");
+    require_once (ROOT . "/controllers/messages_controller.php");
     
     // display title and header
     $title = "Messages";
@@ -11,5 +12,5 @@
     $messages = GetAllMessages();
     $mainContent = "<div>" . DisplayMessages($messages) . "</div>";
     
-    require_once ($app_root_path . "templates/main_page.php");
+    require_once (ROOT . "/templates/main_page.php");
 ?>
