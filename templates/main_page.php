@@ -12,7 +12,7 @@
     <body>
         <!--Hidden form for posting id of selected message to a new page-->
         <form style="display: hidden" 
-              action="../page.php';?>"
+              action="../page.php"
               method="POST" id="hidden_form">
             <input type="hidden" 
                    id="hidden_input_id_message" 
