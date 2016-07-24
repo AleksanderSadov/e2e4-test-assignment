@@ -5,6 +5,8 @@
         <title><?php echo $title; ?></title>
         <link type="text/css" rel="stylesheet"
               href="<?php echo getenv('APP_ROOT_PATH') . 'styles/stylesheet.css';?>"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="<?php echo getenv('APP_ROOT_PATH') . 'scripts/script.js';?>"></script>
     </head>
     
     <body>

@@ -3,13 +3,20 @@
     require_once ($app_root_path . "models/messages.php");
     require_once ($app_root_path . "controllers/messages_controller.php");
     
+    if (!empty($_POST["hidden_input_id_message"]))
+    {
+        echo "id got here";
+    }
+    else
+    {
+        echo "id was lost"; 
+    }
     // display title and header
     $title = "Messages";
     $headerContent = "<p>Всего сообщений: " . CountMessages() . "</p>";
     
-    // display messages
-    $messages = GetAllMessages();
-    $mainContent = "<div>" . DisplayMessages($messages) . "</div>";
+    $mainContent = "Hello";
     
     require_once ($app_root_path . "templates/main_page.php");
 ?>
+

@@ -22,11 +22,11 @@
     function GetAllMessages()
     {
         $messages = array();
-        $sql = "SELECT header, content, brief FROM messages";
+        $sql = "SELECT * FROM messages";
         $result = $GLOBALS['sqli']->query($sql);
         while($row = $result->fetch_array())
         {
-            $message = new Message($row['header'], $row['content'], $row['brief']);
+            $message = new Message($row['id'], $row['header'], $row['content'], $row['brief']);
             array_push($messages, $message);
         }
         return $messages;
