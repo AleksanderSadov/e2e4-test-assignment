@@ -1,6 +1,17 @@
-#content 
+#headerSection
 {
-    font-size: 50px;
-    color: red;
+    margin: 2em 2em 1em 2em;
+    background-color: #F0F0F0;
 }
 
+#headerSection *
+{
+    margin: 0.5em;
+    font-size: 1.5em;
+}
+
+#mainSection
+{
+    margin: 1em 2em 1em 2em;
+    border: 1px solid black;
+}

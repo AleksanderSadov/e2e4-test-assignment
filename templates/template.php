@@ -8,8 +8,16 @@
     </head>
     
     <body>
-        <div id="content">
-            <?php echo $content; ?>
+        <div id="whole_page">
+            
+            <div id="headerSection">
+                <?php echo $headerContent; ?>
+            </div>
+            
+            <div id="mainSection">
+                <?php echo $mainContent; ?>
+            </div>         
+            
         </div>
     </body>
 </html>
