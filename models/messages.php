@@ -26,9 +26,20 @@
         $result = $GLOBALS['sqli']->query($sql);
         while($row = $result->fetch_array())
         {
-            $message = new Message($row['id'], $row['header'], $row['content'], $row['brief']);
+            $message = new Message($row['id'], $row['header'],
+                    $row['content'], $row['brief']);
             array_push($messages, $message);
         }
         return $messages;
+    }
+    
+    function GetWholeMessage($message_id)
+    {
+        $sql = "SELECT * FROM messages WHERE id=" . $message_id . ";";
+        $result = $GLOBALS['sqli']->query($sql);
+        $row = $result->fetch_array();
+        $message = new Message($row['id'], $row['header'],
+                $row['content'], $row['brief']);
+        return $message;
     }
 ?>

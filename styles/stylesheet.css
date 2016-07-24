@@ -13,31 +13,33 @@
 #mainSection
 {
     margin: 1em 2em 1em 2em;
-    border: 1px solid black;
 }
 
 .message
 {
-    border: 1px solid blue;
+    
 }
 
-.message_header *
+.message_header
 {
     margin: 1em;
 }
 
-.message_content
+.message_header h2
 {
-    margin: 1em;
+    color: #06458D;
 }
 
-.message_brief
+.message_header h2:hover
 {
-    margin: 1em;
+    cursor: pointer;
 }
 
-a:hover, a:visited, a:link, a:active
+.message_brief, .message_content
 {
-    text-decoration: none;
-    color: black;
+    margin: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    background-color: #FBFBFB;
+    border: 0.1em solid #D0D0D0;
 }

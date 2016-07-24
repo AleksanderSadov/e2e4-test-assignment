@@ -3,20 +3,18 @@
     require_once ($app_root_path . "models/messages.php");
     require_once ($app_root_path . "controllers/messages_controller.php");
     
-    if (!empty($_POST["hidden_input_id_message"]))
-    {
-        echo "id got here";
-    }
-    else
-    {
-        echo "id was lost"; 
-    }
+    // get id of selected message
+    $message_id = filter_input(INPUT_POST, "hidden_input_id_message", 
+            FILTER_SANITIZE_NUMBER_INT);
+    $message = GetWholeMessage($message_id);
+    
     // display title and header
-    $title = "Messages";
-    $headerContent = "<p>Всего сообщений: " . CountMessages() . "</p>";
+    $title = $message->header;
+    $headerContent = "<p>" . $message->header . "</p>";
     
-    $mainContent = "Hello";
+    // display message content
+    $mainContent = DisplayWholeMessage($message);
     
-    require_once ($app_root_path . "templates/main_page.php");
+    require_once ($app_root_path . "templates/whole_message.php");
 ?>
 

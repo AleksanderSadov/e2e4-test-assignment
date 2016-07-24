@@ -17,7 +17,7 @@
             <input type="hidden" 
                    id="hidden_input_id_message" 
                    name="hidden_input_id_message" 
-                   value=""/>
+                   value="0"/>
         </form>
         <div id="whole_page">
             
