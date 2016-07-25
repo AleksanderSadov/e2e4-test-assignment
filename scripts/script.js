@@ -6,4 +6,5 @@ $(document).ready(function()
         $("#hidden_input_id_message").val(this.id);
         $("#hidden_form").submit();
     });
+    
 });

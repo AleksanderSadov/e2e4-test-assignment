@@ -16,11 +16,6 @@
     float: left;
 }
 
-.message
-{
-    
-}
-
 .message_header
 {
     margin: 1em;
@@ -36,7 +31,7 @@
     cursor: pointer;
 }
 
-.message_brief, .message_content, .user_window
+.message_brief, .message_content, #user_window, #create_message
 {
     margin: 1em;
     padding-left: 1em;
@@ -50,12 +45,36 @@
     width: 80%;
 }
 
-.user_window 
+#user_window, #create_message
 {
     width: 10%;
-    height: auto;
     float: right;
+}
+
+#user_window
+{
     height: 40%;
+}
+
+#create_message
+{
+    clear: both;
+    background-color: #4CAF50;
+}
+
+#create_message a
+{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    width: 100%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    margin: 0;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    cursor: pointer; 
 }
 
 #nickname

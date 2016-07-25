@@ -17,7 +17,7 @@
             </div>
             
             <div class="main_section">
-                <div class="user_window">
+                <div id="user_window">
                     <?php include (ROOT_DIR . "templates/user_window.php")?>
                 </div>
                 <div class="main_content">

@@ -1,0 +1,17 @@
+.editor
+{
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.editor h3
+{
+    text-align: center;
+}
+
+.editor form input
+{
+    width: 100%;
+}
+
