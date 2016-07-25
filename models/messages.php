@@ -2,7 +2,14 @@
     // All database manipulation described here
 
     require_once(ROOT_DIR . "entities/message.php");
-     
+    require(ROOT_DIR . "models/credentials.php");
+    
+    $sqli = new mysqli($host, $user, $password, $database);
+    if ($sqli->connect_error)
+    {
+        die("Connection to database is not established!");
+    }
+    $sqli->set_charset('utf8');
     
     function CountMessages()
     {
