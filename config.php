@@ -1,4 +1,4 @@
-<   ?php
+<?php
     $root_dir = __DIR__ . "/";
     $root_url = "https://";
     $root_url .= $_SERVER['HTTP_HOST'] . "/";
