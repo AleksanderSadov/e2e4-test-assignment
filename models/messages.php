@@ -1,8 +1,8 @@
 <?php
     // All database manipulation described here
 
-    require_once(ROOT . "/entities/message.php");
-    require(ROOT . "/models/credentials.php");
+    require_once(ROOT_DIR . "/entities/message.php");
+    require(ROOT_DIR . "/models/credentials.php");
 
     $sqli = new mysqli($host, $user, $password, $database);
     if ($sqli->connect_error)

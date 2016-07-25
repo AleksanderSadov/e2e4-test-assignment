@@ -1,8 +1,7 @@
 <?php
-    define("ROOT", __DIR__);
-    define("APP_ROOT", __DIR__);
-    require_once (ROOT . "/models/messages.php");
-    require_once (ROOT . "/controllers/messages_controller.php");
+    require_once ("config.php");
+    require_once(ROOT_DIR . "models/messages.php");
+    require_once(ROOT_DIR. "controllers/messages_controller.php");
     
     // display title and header
     $title = "Messages";
@@ -12,5 +11,5 @@
     $messages = GetAllMessages();
     $mainContent = "<div>" . DisplayMessages($messages) . "</div>";
     
-    require_once (ROOT . "/templates/main_page.php");
+    require_once (ROOT_DIR . "templates/main_page.php");
 ?>
