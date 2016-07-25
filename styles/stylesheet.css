@@ -1,18 +1,19 @@
-#headerSection
+.header_section
 {
     margin: 2em 2em 1em 2em;
     background-color: #F0F0F0;
 }
 
-#headerSection *
+.header_section *
 {
     margin: 0.5em;
     font-size: 1.5em;
 }
 
-#mainSection
+.main_section
 {
     margin: 1em 2em 1em 2em;
+    float: left;
 }
 
 .message
@@ -35,11 +36,35 @@
     cursor: pointer;
 }
 
-.message_brief, .message_content
+.message_brief, .message_content, .user_window
 {
     margin: 1em;
     padding-left: 1em;
     padding-right: 1em;
     background-color: #FBFBFB;
     border: 0.1em solid #D0D0D0;
+}
+
+.main_content
+{
+    width: 80%;
+}
+
+.user_window 
+{
+    width: 10%;
+    height: auto;
+    float: right;
+    height: 40%;
+}
+
+#nickname
+{
+    text-align: center;
+}
+
+#avatar
+{
+    display: block;
+    margin: auto;
 }

@@ -10,24 +10,21 @@
     </head>
     
     <body>
-        <!--Hidden form for posting id of selected message to a new page-->
-        <form style="display: hidden" 
-              action="<?php echo ROOT_URL . 'page.php';?>"
-              method="POST" id="hidden_form">
-            <input type="hidden" 
-                   id="hidden_input_id_message" 
-                   name="hidden_input_id_message" 
-                   value="0"/>
-        </form>
-        <div id="whole_page">
-            
-            <div id="headerSection">
-                <?php echo $headerContent; ?>
+
+        <div class="whole_page">
+            <div class="header_section">
+                <?php include (ROOT_DIR . "templates/hidden_form.php");?>
+                <?php echo $header_content; ?>
             </div>
             
-            <div id="mainSection">
-                <?php echo $mainContent; ?>
-            </div>         
+            <div class="main_section">
+                <div class="user_window">
+                    <?php include (ROOT_DIR . "templates/user_window.php")?>
+                </div>
+                <div class="main_content">
+                    <?php echo $main_content; ?>
+                </div>
+            </div>
             
         </div>
     </body>

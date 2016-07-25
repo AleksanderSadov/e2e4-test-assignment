@@ -5,11 +5,11 @@
     
     // display title and header
     $title = "Messages";
-    $headerContent = "<p>Всего сообщений: " . CountMessages() . "</p>";
+    $header_content = "<p>Всего сообщений: " . CountMessages() . "</p>";
     
     // display messages
     $messages = GetAllMessages();
-    $mainContent = "<div>" . DisplayMessages($messages) . "</div>";
+    $main_content = "<div>" . DisplayMessages($messages) . "</div>";
     
     require_once (ROOT_DIR . "templates/main_page.php");
 ?>

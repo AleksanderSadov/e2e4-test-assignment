@@ -9,10 +9,10 @@
     $message = GetWholeMessage($message_id);
     // display title and header
     $title = $message->header;
-    $headerContent = "<p>" . $message->header . "</p>";
+    $header_content = "<p>" . $message->header . "</p>";
     
     // display message content
-    $mainContent = DisplayWholeMessage($message);
+    $main_content = DisplayWholeMessage($message);
     
     require_once (ROOT_DIR . "/templates/whole_message.php");
 ?>

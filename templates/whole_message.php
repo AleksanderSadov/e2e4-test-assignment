@@ -10,15 +10,20 @@
     </head>
     
     <body>
-        <div id="whole_page">
-            
-            <div id="headerSection">
-                <?php echo $headerContent; ?>
+
+        <div class="whole_page">
+            <div class="header_section">
+                <?php echo $header_content; ?>
             </div>
             
-            <div id="mainSection">
-                <?php echo $mainContent; ?>
-            </div>         
+            <div class="main_section">
+                <div class="user_window">
+                    <?php include (ROOT_DIR . "templates/user_window.php")?>
+                </div>
+                <div class="main_content">
+                    <?php echo $main_content; ?>
+                </div>
+            </div>
             
         </div>
     </body>
