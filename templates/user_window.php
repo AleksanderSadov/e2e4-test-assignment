@@ -1,4 +1,4 @@
-<?php $user_name = "Aleksander";
+<?php $user_name = Aleksander;
       $avatar_path = ROOT_URL . "images/man-avatar.png";?>
 
 <img id="avatar" src="<?php echo $avatar_path;?>"/> 
