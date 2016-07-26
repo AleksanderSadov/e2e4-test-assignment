@@ -1,0 +1,17 @@
+#message_header
+{
+    background-color: #F0F0F0;
+    font-size: 1.5em;
+}
+
+#main_section
+{
+    margin-left: 2em;
+    margin-right: 2em;
+    float: left;
+}
+
+.message_content
+{
+    width: 80%;
+}

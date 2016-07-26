@@ -4,12 +4,12 @@
     require_once(ROOT_DIR. "controllers/messages_controller.php");
     
     // display title and header
-    $title = "Messages";
+    $title = "E2E4 TEST";
     $header_content = "<p>Всего сообщений: " . CountMessages() . "</p>";
     
     // display messages
-    $messages = GetAllMessages();
-    $main_content = "<div>" . DisplayMessages($messages) . "</div>";
+    $messages = GetMessages(0, true, true, false);
+    $main_content = "<div>" . DisplayMessages($messages, true, true, false) . "</div>";
     
     require_once (ROOT_DIR . "templates/pages/main_page.php");
 ?>

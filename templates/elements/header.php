@@ -1,8 +1,10 @@
-<div>
-    <div id="header">
-        <a href=<?php echo ROOT_URL . "index.php";?> >
-           <img src=<?php echo ROOT_URL . "images/header.png";?> />
-        </a>
+<div  class="boxed_content" id="header">
+    <a href=<?php echo ROOT_URL . "index.php";?> >
+       <img src=<?php echo ROOT_URL . "images/header.png";?> />
+    </a>
+    <div>
+        <h1>E2E4 TEST</h1>
     </div>
+    <hr />
 </div>
 

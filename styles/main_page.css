@@ -1,79 +1,19 @@
-.message_brief, .message_content, .header,  #user_window, #create_message
+#count_messages
 {
-    margin: 1em;
-    padding-left: 1em;
-    padding-right: 1em;
-    background-color: #FBFBFB;
-    border: 0.1em solid #D0D0D0;
-}
-
-.header
-{
-    border-width: 0px;
-}
-
-.header_section
-{
-    margin: 2em 2em 1em 2em;
     background-color: #F0F0F0;
+    font-size: 1.5em;
 }
 
-.footer
+#main_section
 {
-    clear: both;
-}
-
-.main_content
-{
-    width: 80%;
-}
-
-.main_section
-{
-    margin: 1em 2em 1em 2em;
+    margin-left: 2em;
+    margin-right: 2em;
     float: left;
 }
 
-.message_header
+.message_content
 {
-    margin: 1em;
-    padding-left: 1em;
-}
-
-
-#user_window, #create_message
-{
-    width: 10%;
-    float: right;
-}
-
-#user_window
-{
-    height: 40%;
-}
-
-#create_message
-{
-    clear: both;
-    background-color: #4CAF50;
-}
-
-
-#nickname
-{
-    text-align: center;
-}
-
-#avatar
-{
-    display: block;
-    margin: auto;
-}
-
-.header_section *
-{
-    margin: 0.5em;
-    font-size: 1.5em;
+    width: 80%;
 }
 
 .message_header h2
@@ -84,27 +24,27 @@
 .message_header h2:hover
 {
     cursor: pointer;
+    color: #0645FF;
 }
 
-
-#create_message a
+#add_message
 {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
+    width: 15%;
+    float: right;
+    padding: 0;
+    clear: both;
+}
+
+#add_message button
+{
     width: 100%;
-    padding-top: 10%;
-    padding-bottom: 10%;
-    margin: 0;
-    text-align: center;
-    text-decoration: none;
-    display: block;
-    cursor: pointer; 
+    color: white;
+    border: 0;
+    background-color: #4CAF50;
 }
 
-.header #header img
+#add_message button:hover
 {
-    width: 7%;
-    height: auto; 
+    background-color: #4CE050;
 }
 
