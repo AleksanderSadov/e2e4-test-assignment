@@ -11,5 +11,5 @@
     $messages = GetAllMessages();
     $main_content = "<div>" . DisplayMessages($messages) . "</div>";
     
-    require_once (ROOT_DIR . "templates/main_page.php");
+    require_once (ROOT_DIR . "templates/pages/main_page.php");
 ?>

@@ -1,0 +1,110 @@
+.message_brief, .message_content, .header,  #user_window, #create_message
+{
+    margin: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    background-color: #FBFBFB;
+    border: 0.1em solid #D0D0D0;
+}
+
+.header
+{
+    border-width: 0px;
+}
+
+.header_section
+{
+    margin: 2em 2em 1em 2em;
+    background-color: #F0F0F0;
+}
+
+.footer
+{
+    clear: both;
+}
+
+.main_content
+{
+    width: 80%;
+}
+
+.main_section
+{
+    margin: 1em 2em 1em 2em;
+    float: left;
+}
+
+.message_header
+{
+    margin: 1em;
+    padding-left: 1em;
+}
+
+
+#user_window, #create_message
+{
+    width: 10%;
+    float: right;
+}
+
+#user_window
+{
+    height: 40%;
+}
+
+#create_message
+{
+    clear: both;
+    background-color: #4CAF50;
+}
+
+
+#nickname
+{
+    text-align: center;
+}
+
+#avatar
+{
+    display: block;
+    margin: auto;
+}
+
+.header_section *
+{
+    margin: 0.5em;
+    font-size: 1.5em;
+}
+
+.message_header h2
+{
+    color: #06458D;
+}
+
+.message_header h2:hover
+{
+    cursor: pointer;
+}
+
+
+#create_message a
+{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    width: 100%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    margin: 0;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    cursor: pointer; 
+}
+
+.header #header img
+{
+    width: 7%;
+    height: auto; 
+}
+

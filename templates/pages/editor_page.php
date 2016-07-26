@@ -12,7 +12,7 @@
     <body>
         <div class="whole_page">
             <div class="editor">
-                <?php require(ROOT_DIR . "templates/editor.php");?>
+                <?php require(ROOT_DIR . "templates/elements/editor.php");?>
             </div>        
         </div>
     </body>

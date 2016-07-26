@@ -14,6 +14,6 @@
     // display message content
     $main_content = DisplayWholeMessage($message);
     
-    require_once (ROOT_DIR . "/templates/message_page.php");
+    require_once (ROOT_DIR . "/templates/pages/message_page.php");
 ?>
 

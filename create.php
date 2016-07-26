@@ -6,5 +6,5 @@
     // display title
     $title = "Create Message";
     
-    require_once (ROOT_DIR . "templates/editor_page.php");
+    require_once (ROOT_DIR . "templates/pages/editor_page.php");
 ?>
