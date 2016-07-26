@@ -21,8 +21,11 @@
 
             
             <div id="main_section">
-                    <?php include (ROOT_DIR . "templates/elements/user_window.php")?>
                     <?php echo $main_content; ?>
+            </div>
+            
+            <div id="sidebar">
+                <?php include (ROOT_DIR . "templates/elements/user_window.php")?>
             </div>
             
         </div>

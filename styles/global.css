@@ -16,6 +16,25 @@
     overflow: auto;
 }
 
+#main_section, #sidebar
+{
+    overflow: auto;
+}
+
+#main_section
+{
+    margin-left: 2%;
+    float: left;
+    width: 80%;
+}
+
+#sidebar
+{
+    margin-right: 2%;
+    float: right;
+    width: 15%;
+}
+
 #header img
 {
     width: 7%;
@@ -43,8 +62,6 @@
 
 #user_window
 {
-    width: 15%;
-    float: right;
     height: 40%;
     padding: 0;
 }
