@@ -9,7 +9,7 @@
     
     // display message
     $messages = GetMessages($message_id, true, false, true);
-    $title = $messages->header;
+    $title = $messages[0]->header;
     $main_content = "<div>" . DisplayMessages($messages, true, false, true) . "</div>";
     
     require_once (ROOT_DIR . "/templates/pages/whole_page.php");

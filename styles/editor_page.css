@@ -5,8 +5,14 @@
     margin-right: 10%;
 }
 
-.editor form input
+.editor form
 {
     width: 100%;
+}
+
+.input_message
+{
+    font-size: 1em;
+    font-family: "Times New Roman";
 }
 

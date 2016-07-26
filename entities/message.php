@@ -7,7 +7,8 @@ class Message
     public $content;
     public $brief;
     
-    function __construct($id, $header, $content, $brief) 
+    function __construct($id = "-1", $header = "Default",
+            $content = "Default", $brief = "Default") 
     {
         $this->id = $id;
         $this->header = $header;

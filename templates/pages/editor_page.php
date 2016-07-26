@@ -6,7 +6,7 @@
         <link type="text/css" rel="stylesheet"
               href="<?php echo ROOT_URL . 'styles/global.css';?>"/>
         <link type="text/css" rel="stylesheet"
-              href="<?php echo ROOT_URL . 'styles/editr_page.css';?>"/>
+              href="<?php echo ROOT_URL . 'styles/editor_page.css';?>"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="<?php echo ROOT_URL . 'scripts/script.js';?>"></script>				
     </head>
