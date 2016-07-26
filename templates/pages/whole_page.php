@@ -1,14 +1,13 @@
-<!DOCTYE html>
-<html>
+<!DOCTYPE html>
+<html lang="ru">
     <head>
-        <meta charset="utf-8"/>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <title><?php echo $title; ?></title>
         <link type="text/css" rel="stylesheet"
               href="<?php echo ROOT_URL . 'styles/global.css';?>"/>
         <link type="text/css" rel="stylesheet"
               href="<?php echo ROOT_URL . 'styles/message_page.css';?>"/>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="<?php echo ROOT_URL . 'scripts/script.js';?>"></script>
+        <script src="<?php echo ROOT_URL . 'scripts/whole_page.js';?>"></script>
     </head>
     
     <body>
@@ -26,6 +25,7 @@
             
             <div id="sidebar">
                 <?php include (ROOT_DIR . "templates/elements/user_window.php")?>
+                <?php include (ROOT_DIR . "templates/elements/delete_message.php")?>
             </div>
             
         </div>

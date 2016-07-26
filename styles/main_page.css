@@ -15,16 +15,9 @@
     color: #0645FF;
 }
 
-#add_message
-{
-    padding: 0;
-}
-
 #add_message button
 {
-    width: 100%;
     color: white;
-    border: 0;
     background-color: #4CAF50;
 }
 

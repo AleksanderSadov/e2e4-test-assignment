@@ -1,4 +1,5 @@
 <?php
+    ob_start();
     require_once ("config.php");
     require_once (ROOT_DIR . "/models/messages.php");
     require_once (ROOT_DIR . "/controllers/messages_controller.php");
@@ -10,9 +11,10 @@
             FILTER_SANITIZE_STRING);
     $message->text = filter_input(INPUT_GET, "input_text", 
             FILTER_SANITIZE_STRING);
+    InsertMessage($message);
     
-    echo "Заголовок: " . $message->header . "<br />";
-    echo "Краткое содержание: " . $message->brief . "<br />";
-    echo "Текст: " . $message->text . "<br />";
+    while(@ob_end_clean());
+    
+    header("Location: index.php");  
 ?>
 

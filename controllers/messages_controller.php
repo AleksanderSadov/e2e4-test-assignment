@@ -24,9 +24,9 @@
         $buffer = "";
         if ($header)
         {
-            $buffer .= "<div class='message_header boxed_content'><h2 id='"
-                . $message->id . "'>"
-                . $message->header . "</h2></div>";
+            $buffer .= "<div class='message_header boxed_content'"
+                    . "id=" . $message->id . ">"
+                    . "<h2>" . $message->header . "</h2></div>";
         }
         if ($brief)
         {

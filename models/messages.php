@@ -52,4 +52,26 @@
             }
         return $messages;
     }
+    
+    function InsertMessage($message)
+    {
+        $sql = "INSERT INTO messages (header, brief, text) " .
+                "VALUES ('" . $message->header . "', " . 
+                "'" . $message->brief . "', " . 
+                "'" . $message->text . "');";
+        if (!$GLOBALS['sqli']->query($sql))
+        {
+            die("Error: " . $GLOBALS['sqli']->error);
+        }
+    }
+    
+    function DeleteMessage($message_id)
+    {
+        $sql = "DELETE FROM messages WHERE id='" . message_id . "';";
+        if (!$GLOBALS['sqli']->query($sql))
+        {
+            die("Error: " . $GLOBALS['sqli']->error);
+        }
+        alert("Сообщение было успешно удалено");
+    }
 ?>

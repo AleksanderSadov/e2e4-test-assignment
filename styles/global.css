@@ -35,6 +35,17 @@
     width: 15%;
 }
 
+.action_button
+{
+    padding: 0;
+}
+
+.action_button button
+{
+    width: 100%;
+    border: 0;
+}
+
 #header img
 {
     width: 7%;
