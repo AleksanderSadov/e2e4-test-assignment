@@ -13,31 +13,14 @@
         protected function ProcessResult($result) 
         {
             $messages = array ();
-            while($row = $result->fetch_array())
+            foreach($result as $row)
             {
                 $message = new Message(
-                array_key_exists('id', $row) ? $row['id'] : "-1",
-                array_key_exists('header', $row) ? $row['header'] : "Not selected",
-                array_key_exists('text', $row) ? $row['text'] : "Not selected",
-                array_key_exists('brief', $row) ? $row['brief'] : "Not selected");
-                array_push($this->messages, $message);
-            }
-            return $messages;
-        }
-        
-        public function GetMessages(array $selection, array $where_clause = NULL)
-        {
-            $messages = array();
-            $result = $this->SelectRows($this->table_name,
-                    $selection, $where_clause);
-            while($row = $result->fetch_array())
-            {
-                $message = new Message(
-                array_key_exists('id', $row) ? $row['id'] : "-1",
-                array_key_exists('header', $row) ? $row['header'] : "Not selected",
-                array_key_exists('text', $row) ? $row['text'] : "Not selected",
-                array_key_exists('brief', $row) ? $row['brief'] : "Not selected");
-                array_push($this->messages, $message);
+                array_key_exists('id', $row) ? $row['id'] : null,
+                array_key_exists('header', $row) ? $row['header'] : null,
+                array_key_exists('text', $row) ? $row['text'] : null,
+                array_key_exists('brief', $row) ? $row['brief'] : null);
+                array_push($messages, $message);
             }
             return $messages;
         }
@@ -46,11 +29,14 @@
         {
             $result = $this->CountRows($this->table_name);
             var_dump($result);
+            return $result[0][0];
         }
         
         public function SelectMessages(array $selection, array $where_clause = NULL)
         {
-            return $this->SelectRows($this->table_name, $selection, $where_clause);
+            $result =  $this->SelectRows($this->table_name,
+                    $selection, $where_clause);
+            return $this->ProcessResult($result);
         }
         
         public function InsertMessages(array $columns, array $values)

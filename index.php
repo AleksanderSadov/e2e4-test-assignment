@@ -10,7 +10,7 @@
     spl_autoload_register("my_autoloader");
     
     $message_data = new MessageData();
-    echo $message_data->CountMessages();
+    var_dump($message_data->SelectMessages(array ("*")));
     /*$header_content = "<p>Всего сообщений: " . $message_data->CountMessages() . "</p>";
     
     $messages = GetMessages(0, true, true, false);
