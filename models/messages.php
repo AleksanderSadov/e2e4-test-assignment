@@ -1,56 +1,42 @@
 <?php
-    // All database manipulation described here
-
     require_once(ROOT_DIR . "entities/message.php");
-    require(ROOT_DIR . "models/credentials.php");
+    require(ROOT_DIR . "models/credentials.php");    
+    $credentials = array(
+        "host" => "localhost",
+        "user" => "e2e4-test-assignment",
+        "password" => "0mfB4Vxs9jiOaYCf",
+        "database" => "e2e4-test-assignment"
+    );
     
-    $sqli = new mysqli($host, $user, $password, $database);
-    if ($sqli->connect_error)
+    class MessageData
     {
-        die("Connection to database is not established!");
-    }
-    $sqli->set_charset('utf8');
-    
-    function CountMessages()
-    {
-        $sql = "SELECT COUNT(*) FROM messages";
-        $result = $GLOBALS['sqli']->query($sql);
-        $row = $result->fetch_row();
-        return $row[0];
-    }
-    
-    function GetMessages($id, $need_header, $need_brief, $need_text)
-    {
-        $selection = array();
-        array_push($selection, "id");
-        if ($need_header)
+        public $database;
+        public $table_name;
+        public $messages;
+        
+        public function __construct()
         {
-            array_push($selection, "header");
+            $this->database = new Database("localhost", "e2e4-test-assignment",
+                "0mfB4Vxs9jiOaYCf", "e2e4-test-assignment");
+            $this->table_name = "messages";
+            $this->messages = array();
         }
-        if ($need_brief)
+        
+        public function GetMessages(array $selection, array $where_clause = NULL)
         {
-            array_push($selection, "brief");
-        }
-        if ($need_text)
-        {
-            array_push($selection, "text"); 
-        }
-        $sql = "SELECT " . join(", ", $selection) . ""
-                . " FROM messages";
-        $sql .= $id !== 0 ? " WHERE id='" .$id . "';" : ";";
-
-        $result = $GLOBALS['sqli']->query($sql);
-        $messages = array();
-        while($row = $result->fetch_array())
+            $result = $this->database->GetColumns($this->table_name,
+                    $selection, $where_clause);
+            while($row = $result->fetch_array())
             {
                 $message = new Message(
-                    array_key_exists('id', $row) ? $row['id'] : "-1",
-                    array_key_exists('header', $row) ? $row['header'] : "Not selected",
-                    array_key_exists('text', $row) ? $row['text'] : "Not selected",
-                    array_key_exists('brief', $row) ? $row['brief'] : "Not selected");
-                array_push($messages, $message);
+                array_key_exists('id', $row) ? $row['id'] : "-1",
+                array_key_exists('header', $row) ? $row['header'] : "Not selected",
+                array_key_exists('text', $row) ? $row['text'] : "Not selected",
+                array_key_exists('brief', $row) ? $row['brief'] : "Not selected");
+                array_push($this->messages, $message);
             }
-        return $messages;
+            return $this->messages;
+        }
     }
     
     function InsertMessage($message)

@@ -1,6 +1,6 @@
 <?php
 
-class Message 
+class Message
 {
     public $id;
     public $header;
