@@ -73,4 +73,16 @@
             die("Error: " . $GLOBALS['sqli']->error);
         }
     }
+    
+    function EditMessage($message)
+    {
+        $sql = "UPDATE messages SET header='" . $message->header . "', "
+                . "brief='" . $message->brief . "', "
+                . "text='" . $message->text . "' "
+                . "WHERE id='" . $message->id . "';";
+        if (!$GLOBALS['sqli']->query($sql))
+        {
+            die("Error: " . $GLOBALS['sqli']->error);
+        }
+    }
 ?>

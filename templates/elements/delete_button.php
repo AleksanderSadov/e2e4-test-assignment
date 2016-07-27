@@ -6,6 +6,6 @@
 </div>
 
 <form style="display: hidden"
-      action="<?php echo ROOT_URL . 'delete_message_formhandler.php';?>"
+      action="<?php echo ROOT_URL . 'formhandler_delete.php';?>"
       method="GET" id="delete_message_form" >
 </form>

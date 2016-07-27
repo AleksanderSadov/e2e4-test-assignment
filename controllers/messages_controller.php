@@ -36,7 +36,7 @@
         if ($text)
         {
             $buffer .= "<div class='message_brief boxed_content"
-                . " boxed_border'>" . $message->content . "</div>";
+                . " boxed_border'>" . $message->text . "</div>";
         }
         
         $html = "<div class='message_content'>"

@@ -5,11 +5,11 @@
     require_once (ROOT_DIR . "/controllers/messages_controller.php");
     
     $message = new Message();
-    $message->header = filter_input(INPUT_GET, "input_header", 
+    $message->header = filter_input(INPUT_POST, "input_header", 
             FILTER_SANITIZE_STRING);
-    $message->brief = filter_input(INPUT_GET, "input_brief", 
+    $message->brief = filter_input(INPUT_POST, "input_brief", 
             FILTER_SANITIZE_STRING);
-    $message->text = filter_input(INPUT_GET, "input_text", 
+    $message->text = filter_input(INPUT_POST, "input_text", 
             FILTER_SANITIZE_STRING);
     InsertMessage($message);
     

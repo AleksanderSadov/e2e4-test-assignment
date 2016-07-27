@@ -7,10 +7,8 @@
     $title = "Создание сообщения";
     
     // variables for template
+    $formhandler = ROOT_URL . "formhandler_add.php";
     $input_fieldset_legend = "Добавление сообщения";
-    $input_header_legend = "Введите заголовок";
-    $input_brief_legend = "Введите краткое содеражние";
-    $input_text_legend = "Введите основной текст";
     $submit_legend = "Добавить сообщение";
     require_once (ROOT_DIR . "templates/pages/editor_page.php");
 ?>

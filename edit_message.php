@@ -6,11 +6,13 @@
     // display title
     $title = "Создание сообщения";
     
+    $message_id = filter_input(INPUT_GET, "edited_message", 
+            FILTER_SANITIZE_NUMBER_INT);
+    $messages = GetMessages($message_id, true, true, true);
+    
     // variables for template
+    $formhandler = ROOT_URL . "formhandler_edit.php";
     $input_fieldset_legend = "Редактирование сообщения";
-    $input_header_legend = "Введите заголовок";
-    $input_brief_legend = "Введите краткое содеражние";
-    $input_text_legend = "Введите основной текст";
     $submit_legend = "Редактировать сообщение";
     require_once (ROOT_DIR . "templates/pages/editor_page.php");
 ?>

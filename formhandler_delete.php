@@ -7,7 +7,6 @@
     // get id of selected message
     $message_id = filter_input(INPUT_GET, "deleted_message", 
             FILTER_SANITIZE_NUMBER_INT);
-    echo "Message id: " . $message_id;
     DeleteMessage($message_id);
     while(@ob_end_clean());
     
