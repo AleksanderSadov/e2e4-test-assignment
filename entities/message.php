@@ -4,14 +4,15 @@ class Message
 {
     public $id;
     public $header;
-    public $content;
+    public $text;
     public $brief;
     
-    function __construct($id, $header, $content, $brief) 
+    function __construct($id = "-1", $header = "Default",
+            $text = "Default", $brief = "Default") 
     {
         $this->id = $id;
         $this->header = $header;
-        $this->content = $content;
+        $this->text = $text;
         $this->brief = $brief;
     }
 }

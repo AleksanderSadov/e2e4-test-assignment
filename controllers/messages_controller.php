@@ -1,23 +1,47 @@
 <?php
     
-    function DisplayMessages($messages)
+    function DisplayMessages($messages, $need_header, $need_brief, $need_text)
     {
         $content="";
-        foreach ($messages as $message)
+        if (is_array($messages))
         {
-            $header = "<div class='message_header'><h2 id='" . $message->id . "'>"
-                    . $message->header . "</h2></div>";
-            $brief = "<div class='message_brief'>" . $message->brief . "</div>";
-            $content .= "<div class='message'>" . $header . $brief . "</div>";
+        foreach ($messages as $message)
+            {
+                $content .= ConstructMessageContent($message,
+                        $need_header, $need_brief, $need_text);
+            }
+        }
+        else
+        {
+            $content .= ConstructMessageContent($messages,
+                    $need_header, $need_brief, $need_text);
         }
         return $content;
-    }
-    
-    function DisplayWholeMessage($message)
+    } 
+   
+    function ConstructMessageContent($message, $header, $brief, $text)
     {
-        $content="";
-        $content .= "<div class='message_content'>" . $message->content . "</div>";
-        return $content;
+        $buffer = "";
+        if ($header)
+        {
+            $buffer .= "<div class='message_header boxed_content'"
+                    . "id=" . $message->id . ">"
+                    . "<h2>" . $message->header . "</h2></div>";
+        }
+        if ($brief)
+        {
+            $buffer .= "<div class='message_brief boxed_content"
+                . " boxed_border'>" . $message->brief . "</div>";
+        }
+        if ($text)
+        {
+            $buffer .= "<div class='message_brief boxed_content"
+                . " boxed_border'>" . $message->text . "</div>";
+        }
+        
+        $html = "<div class='message_content'>"
+                . $buffer . "</div>";
+        return $html;
     }
     
 ?>
