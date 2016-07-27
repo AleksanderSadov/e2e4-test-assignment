@@ -21,12 +21,15 @@
             
             <div id="main_section">
                     <?php echo $main_content; ?>
+                    <?php include (ROOT_DIR . 
+                            "templates/elements/add_comment_field.php");?>
             </div>
             
             <div id="sidebar">
-                <?php include (ROOT_DIR . "templates/elements/user_window.php")?>
-                <?php include (ROOT_DIR . "templates/elements/edit_button.php")?>
-                <?php include (ROOT_DIR . "templates/elements/delete_button.php")?>
+                <?php include (ROOT_DIR . "templates/elements/user_window.php");?>
+                <?php include (ROOT_DIR . "templates/elements/add_button.php");?>
+                <?php include (ROOT_DIR . "templates/elements/edit_button.php");?>
+                <?php include (ROOT_DIR . "templates/elements/delete_button.php");?>
             </div>
             
         </div>

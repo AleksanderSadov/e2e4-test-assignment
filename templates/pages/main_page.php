@@ -27,8 +27,8 @@
             </div>
             
             <div id="sidebar">
-                <?php include (ROOT_DIR . "templates/elements/user_window.php")?>
-                <?php include (ROOT_DIR . "templates/elements/add_button.php")?>
+                <?php include (ROOT_DIR . "templates/elements/user_window.php");?>
+                <?php include (ROOT_DIR . "templates/elements/add_button.php");?>
             </div>
             
         </div>

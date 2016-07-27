@@ -3,7 +3,6 @@
     require_once(ROOT_DIR . "models/messages.php");
     require_once(ROOT_DIR. "controllers/messages_controller.php");
     
-    // display title
     $title = "Создание сообщения";
     
     // variables for template

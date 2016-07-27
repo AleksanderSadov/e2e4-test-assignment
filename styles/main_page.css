@@ -15,14 +15,3 @@
     color: #0645FF;
 }
 
-#add_message button
-{
-    color: white;
-    background-color: #4CAF50;
-}
-
-#add_message button:hover
-{
-    background-color: #4CE050;
-}
-

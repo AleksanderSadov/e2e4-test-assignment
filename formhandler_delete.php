@@ -4,7 +4,6 @@
     require_once (ROOT_DIR . "/models/messages.php");
     require_once (ROOT_DIR . "/controllers/messages_controller.php");
     
-    // get id of selected message
     $message_id = filter_input(INPUT_GET, "deleted_message", 
             FILTER_SANITIZE_NUMBER_INT);
     DeleteMessage($message_id);

@@ -3,25 +3,3 @@
     background-color: #F0F0F0;
     font-size: 1.5em;
 }
-
-#delete_message button
-{
-    background-color: crimson;
-    color: white;
-}
-
-#delete_message button:hover
-{
-    background-color: red;
-}
-
-#edit_message button
-{
-    background-color: #06458D;
-    color: white;
-}
-
-#edit_message button:hover
-{
-    background-color: #0645FF;
-}
