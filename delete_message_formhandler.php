@@ -7,8 +7,8 @@
     // get id of selected message
     $message_id = filter_input(INPUT_GET, "deleted_message", 
             FILTER_SANITIZE_NUMBER_INT);
+    echo "Message id: " . $message_id;
     DeleteMessage($message_id);
-    echo "<script type='text/javascript'>alert('hello')</script>";
     while(@ob_end_clean());
     
     header("Location: " . ROOT_URL . "index.php"); 
