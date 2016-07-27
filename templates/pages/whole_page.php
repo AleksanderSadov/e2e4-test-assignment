@@ -25,6 +25,7 @@
             
             <div id="sidebar">
                 <?php include (ROOT_DIR . "templates/elements/user_window.php")?>
+                <?php include (ROOT_DIR . "templates/elements/edit_message.php")?>
                 <?php include (ROOT_DIR . "templates/elements/delete_message.php")?>
             </div>
             

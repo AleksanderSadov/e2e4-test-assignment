@@ -15,6 +15,6 @@
     
     while(@ob_end_clean());
     
-    header("Location: index.php");  
+    header("Location: " . ROOT_URL . "index.php");
 ?>
 
