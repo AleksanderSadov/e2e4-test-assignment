@@ -14,15 +14,16 @@
         <div id="whole_page">
             
             <div id="header_section">
-                <?php echo $this->AddElement("templates/elements/header.php"); ?>
+                <?php echo $this->AddElement("header"); ?>
             </div>
             
             <div id="main_section">
-                <?php echo $this->main_content; ?>
+                <?php echo $this->AddElement("main_section_header", "Hello"); ?>
             </div>
             
             <div id="sidebar_right">
-                <?php echo $this->sidebar_right; ?>
+                <?php echo $this->AddElement("user_window"); ?>
+                <?php echo $this->AddElement("add_button"); ?>
             </div>
             
             <div id="footer_section">

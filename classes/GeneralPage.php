@@ -9,6 +9,7 @@
         public $content_section;
         public $sidebar_right;
         public $footer;
+        public $vars;
         
         public function __construct(
                 $config             = "config.php",
@@ -22,15 +23,18 @@
             $this->config           = $config;
             $this->template         = $template;
             $this->title            = $title;
-             $this->header_content   = $header_content;
+            $this->header_content   = $header_content;
             $this->main_content     = $main_content;
             $this->sidebar_content  = $sidebar_content;
             $this->footer_content   = $footer_content;
+            $this->vars             = array();
         }
         
-        public function AddElement($template_path)
+        public function AddElement($template, $content = "Default Content")
         {
-            $this->LoadFile($template_path);
+            $content = "Hello";
+            $path = "templates/elements/" . $template . ".php";
+            $this->LoadFile($path);
         }
         
         public function Render()

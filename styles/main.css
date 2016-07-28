@@ -16,6 +16,12 @@
     overflow: auto;
 }
 
+#main_section_header
+{
+    background-color: #F0F0F0;
+    font-size: 1.5em;
+}
+
 #main_section, #sidebar_right
 {
     overflow: auto;
