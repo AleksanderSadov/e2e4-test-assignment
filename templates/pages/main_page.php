@@ -26,7 +26,7 @@
                     <?php echo $main_content; ?>
             </div>
             
-            <div id="sidebar">
+            <div id="sidebar_right">
                 <?php include (ROOT_DIR . "templates/elements/user_window.php");?>
                 <?php include (ROOT_DIR . "templates/elements/add_button.php");?>
             </div>

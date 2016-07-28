@@ -16,7 +16,7 @@
     overflow: auto;
 }
 
-#main_section, #sidebar
+#main_section, #sidebar_right
 {
     overflow: auto;
 }
@@ -28,7 +28,7 @@
     width: 80%;
 }
 
-#sidebar
+#sidebar_right
 {
     margin-right: 2%;
     float: right;

@@ -5,7 +5,8 @@
         private $credentials;
         private $sqli;
         
-        function __construct($host = "host",
+        function __construct(
+                $host = "host",
                 $user = "user",
                 $password = "password",
                 $database = "database")
@@ -17,7 +18,8 @@
             "database" => $database
             );
             
-            $this->sqli = new mysqli($this->credentials["host"],
+            $this->sqli = new mysqli(
+                    $this->credentials["host"],
                     $this->credentials["user"],
                     $this->credentials["password"],
                     $this->credentials["database"]);
@@ -71,17 +73,21 @@
             return $this->SqlQuery($sql);
         }
         
-        protected function SelectRows($table_name, array $selection,
+        protected function SelectRows(
+                $table_name,
+                array $selection,
                 array $where_clause = NULL)
         {
-            $sql = "SELECT " . join(", ", $selection) . ""
-                . " FROM " . $table_name;
-            $sql .= isset($where_clause) ? " WHERE " . join(", ", $where_clause) . 
-                    ";" : ";";
+            $sql =  "SELECT " . join(", ", $selection) .
+                    " FROM " . $table_name;
+            $sql .= isset($where_clause) ?
+                    " WHERE " . join(", ", $where_clause) . ";" : ";";
             return $this->SqlQuery($sql);
         }
         
-        protected function InsertRows($table_name, array $columns,
+        protected function InsertRows(
+                $table_name,
+                array $columns,
                 array $values)
         {
             $sql = "INSERT INTO " . $table_name . 
@@ -90,15 +96,20 @@
             return $this->SqlQuery($sql);
         }
         
-        protected function DeleteRows($table_name, $column, $value)
+        protected function DeleteRows(
+                $table_name,
+                $column,
+                $value)
         {
             $sql = "DELETE FROM " . $table_name .
                     " WHERE " . $column . "='" . $value . "';";
             return $this->SqlQuery($sql);
         }
         
-        protected function UpdateRows($table_name,
-                array $set_assoc, array $where_assoc)
+        protected function UpdateRows(
+                $table_name,
+                array $set_assoc,
+                array $where_assoc)
         {
             $sql = "UPDATE " . $table_name . " SET ";
             $buffer = array();

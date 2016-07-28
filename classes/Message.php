@@ -7,8 +7,11 @@ class Message
     public $text;
     public $brief;
     
-    function __construct($id = null, $header = null,
-            $text = null, $brief = null) 
+    function __construct(
+            $id = null,
+            $header = null,
+            $text = null,
+            $brief = null) 
     {
         $this->id = $id;
         $this->header = $header;

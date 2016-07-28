@@ -25,7 +25,7 @@
                             "templates/elements/add_comment_field.php");?>
             </div>
             
-            <div id="sidebar">
+            <div id="sidebar_right">
                 <?php include (ROOT_DIR . "templates/elements/user_window.php");?>
                 <?php include (ROOT_DIR . "templates/elements/add_button.php");?>
                 <?php include (ROOT_DIR . "templates/elements/edit_button.php");?>
