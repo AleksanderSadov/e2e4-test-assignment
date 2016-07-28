@@ -4,21 +4,20 @@
         public $config;
         public $template;
         public $title;
-        public $header_section;
+        public $header_content;
         public $main_content;
-        public $content_section;
-        public $sidebar_right;
-        public $footer;
+        public $sidebar_content;
+        public $footer_content;
         public $vars;
         
         public function __construct(
                 $config             = "config.php",
                 $template           = "templates/pages/general_page.php",
                 $title              = "E2E4 TEST ASSIGNMENT",
-                $header_content     = "templates/header_content.php",
-                $main_content       = "templates/main_content.php",
-                $sidebar_content    = "templates/sidebar_right.php",
-                $footer_content     = "templates/footer_section.php") 
+                $header_content     = null,
+                $main_content       = null,
+                $sidebar_content    = null,
+                $footer_content     = null) 
         {
             $this->config           = $config;
             $this->template         = $template;

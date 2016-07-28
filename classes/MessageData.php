@@ -28,6 +28,7 @@
             return $messages;
         }
         
+        /** @return int number of messages in database */
         public function CountMessages()
         {
             $result = $this->CountRows($this->table_name);
@@ -52,18 +53,44 @@
             return $this->InsertRows($this->table_name, $columns, $values);
         }
         
-        function DeleteMessages(
+        public function DeleteMessages(
                 $column,
                 $value)
         {
             return $this->DeleteRows($this->table_name, $column, $value);
         }
         
-        function UpdateMessages(
+        public function UpdateMessages(
                 array $set_assoc,
                 array $where_assoc)
         {
             return $this->UpdateRows($this->table_name, $set_assoc, $where_assoc);
+        }
+        
+        /** @return string html string */
+        public function ConstructHtml(Message $message)
+        {
+            $buffer = "";
+            if (isset($message->header))
+            {
+                $buffer .= "<div class='message_header boxed_content'"
+                        . "id=" . $message->id . ">"
+                        . "<h2>" . $message->header . "</h2></div>";
+            }
+            if (isset($message->brief))
+            {
+                $buffer .= "<div class='message_brief boxed_content"
+                    . " boxed_border'>" . $message->brief . "</div>";
+            }
+            if (isset($message->text))
+            {
+                $buffer .= "<div class='message_brief boxed_content"
+                    . " boxed_border'>" . $message->text . "</div>";
+            }
+
+            $html = "<div class='message_content'>"
+                    . $buffer . "</div>";
+            return $html;
         }
     }
 ?>

@@ -3,7 +3,7 @@
         <img src='<?php echo ROOT_URL . "images/header.png";?>' 
              alt="home_index"/></a>
     <div>
-        <h1>E2E4 TEST ASSIGNMENT</h1>
+        <h1><?php echo $this->header_content; ?></h1>
     </div>
     <hr />
 </div>
