@@ -39,7 +39,7 @@
         /** Gets required messages with criterions
          * 
          * @param array array of required parts of message ("id", "brief", ...)
-         * @param array array of criterions ("id"=>"5")  
+         * @param array array of criterions ("id=5", "id>6", ...)  
          * @return array array of required messages
          */
         public function SelectMessages(
@@ -72,33 +72,6 @@
                 array $where_assoc)
         {
             return $this->UpdateRows($this->table_name, $set_assoc, $where_assoc);
-        }
-        
-        /** Constructs html tags for message
-         *  @return string html string */
-        public function ConstructHtml(Message $message)
-        {
-            $buffer = "";
-            if (isset($message->header))
-            {
-                $buffer .= "<div class='message_header boxed_content'"
-                        . "id=" . $message->id . ">"
-                        . "<h2>" . $message->header . "</h2></div>";
-            }
-            if (isset($message->brief))
-            {
-                $buffer .= "<div class='message_brief boxed_content"
-                    . " boxed_border'>" . $message->brief . "</div>";
-            }
-            if (isset($message->text))
-            {
-                $buffer .= "<div class='message_brief boxed_content"
-                    . " boxed_border'>" . $message->text . "</div>";
-            }
-
-            $html = "<div class='message_content'>"
-                    . $buffer . "</div>";
-            return $html;
         }
     }
 ?>

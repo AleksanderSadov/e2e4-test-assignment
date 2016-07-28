@@ -38,6 +38,5 @@
     $page->footer_content = "Разработчик: Александр Садов<br />" . 
             "Последние изменения: " .
             date(DATE_RFC850, filemtime(__FILE__));
-    
     $page->Render();
 ?>

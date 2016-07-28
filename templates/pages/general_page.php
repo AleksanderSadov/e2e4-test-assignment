@@ -17,11 +17,8 @@
             </div>
             
             <div id="main_section">
-                <?php isset($this->vars['hidden_form']) && $this->vars['hidden_form'] ?
-                        $this->AddElement("hidden_form") :
-                        null; ?>
-                <?php $this->AddElement("main_section_header", "Hello"); ?>
-                <?php echo $this->main_content; ?>
+                <?php $this->AddElement("main_section_header"); ?>
+                <?php $this->AddRequestedElement("all_messages"); ?>
             </div>
             
             <div id="sidebar_right">
