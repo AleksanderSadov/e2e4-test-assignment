@@ -1,8 +1,8 @@
 .boxed_content
 {
     margin: 1em;
-    padding-left: 1em;
-    padding-right: 1em;
+    padding-left: 2%;
+    padding-right: 2%;
 }
 
 .boxed_border
@@ -31,6 +31,17 @@
 {
     cursor: pointer;
     color: #0645FF;
+}
+
+.editor
+{
+    margin: 1.35%;
+}
+
+.input_message
+{
+    font-size: 1em;
+    font-family: "Times New Roman";
 }
 
 #whole_page
@@ -79,6 +90,14 @@
 {
     background-color: #F0F0F0;
     font-size: 1.5em;
+    margin: 0% 1.5% 0% 1.5%;
+    text-align: center;
+    border: 1px solid #D0D0D0;
+}
+
+#main_section_header h3
+{
+    margin: 0;
 }
 
 #sidebar_right
@@ -86,6 +105,11 @@
     margin-right: 2%;
     float: right;
     width: 15%;
+}
+
+#user_window
+{
+    margin-top: 0;
 }
 
 #nickname

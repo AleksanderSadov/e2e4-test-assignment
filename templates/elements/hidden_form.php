@@ -5,7 +5,6 @@
     id="hidden_form">
     <input 
         type="hidden" 
-        id="navigation" 
         name="navigation" 
         value="select_message" />
     <input

@@ -1,20 +1,28 @@
 <?php
+
+    include ("config.php");
+    function my_autoloader($class)
+    {
+        include ROOT_DIR . "/classes/" . $class . ".php";
+    }
+    spl_autoload_register("my_autoloader");
     ob_start();
-    require_once ("config.php");
-    require_once (ROOT_DIR . "/models/messages.php");
-    require_once (ROOT_DIR . "/controllers/messages_controller.php");
     
-    $message = new Message();
-    $message->header = filter_input(INPUT_POST, "input_header", 
+    $message_data = new MessageData();
+    var_dump($message_data);
+    
+    $header = filter_input(INPUT_POST, "input_header", 
             FILTER_SANITIZE_STRING);
-    $message->brief = filter_input(INPUT_POST, "input_brief", 
+    $brief = filter_input(INPUT_POST, "input_brief", 
             FILTER_SANITIZE_STRING);
-    $message->text = filter_input(INPUT_POST, "input_text", 
+    $text = filter_input(INPUT_POST, "input_text", 
             FILTER_SANITIZE_STRING);
-    InsertMessage($message);
+    $message_data->InsertMessages(
+            array("header", "brief", "text"),
+            array($header, $brief, $text));
     
     while(@ob_end_clean());
     
-    header("Location: " . ROOT_URL . "index.php");
+    header("Location: index.php");
 ?>
 

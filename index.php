@@ -8,6 +8,12 @@
     spl_autoload_register("my_autoloader");
     
     $page = new GeneralPage();
+    $formhandler = new FormHandler();
+    
+    if (isset($_POST['add_message']))
+    {
+        $formhandler->AddMessage();
+    }
     
     // header
     $page->header_content = "E2E4 TEST ASSIGNMENT";
@@ -26,6 +32,9 @@
                 break;
             case "select_message":
                 $page->NavigateToNewPage("select_message_page");
+                break;
+            case "add_message":
+                $page->NavigateToNewPage("add_message_page");
                 break;
         }
     }

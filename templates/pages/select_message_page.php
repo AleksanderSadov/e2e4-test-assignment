@@ -5,7 +5,6 @@
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
         <title><?php $this->title; ?></title>
         <?php $this->LoadStylesheet(); ?>
-        <?php $this->LoadScript(); ?>
     </head>
     
     <body>
@@ -13,21 +12,21 @@
         <div id="whole_page">
             
             <div id="header_section">
-                <?php $this->AddElement("header"); ?>
+                <?php $this->AddTemplate("header"); ?>
             </div>
             
             <div id="main_section">
-                <?php $this->AddElement("main_section_header"); ?>
-                <?php $this->AddRequestedElement("all_messages"); ?>
+                <?php $this->AddTemplate("main_section_header"); ?>
+                <?php $this->RequestItem("selected_message"); ?>
             </div>
             
             <div id="sidebar_right">
-                <?php $this->AddElement("user_window"); ?>
-                <?php $this->AddElement("add_button"); ?>
+                <?php $this->AddTemplate("user_window"); ?>
+                <?php $this->AddTemplate("add_button"); ?>
             </div>
             
             <div id="footer_section">
-                <?php $this->AddElement("footer"); ?>
+                <?php $this->AddTemplate("footer"); ?>
             </div>
             
         </div>
