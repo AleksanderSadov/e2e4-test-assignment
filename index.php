@@ -8,18 +8,30 @@
     spl_autoload_register("my_autoloader");
     
     $page = new GeneralPage();
-    $message_data = new MessageData();
     
     // header
     $page->header_content = "E2E4 TEST ASSIGNMENT";
     
     // main section
-    $page->vars["main_section_header"] = "Всего сообщений: " .
-    $message_data->CountMessages();
-    $messages = $message_data->SelectMessages(array("id, header", "brief"));
-    foreach ($messages as $message)
+    if (isset($_GET['navigation']))
     {
-       $page->main_content .= $message_data->ConstructHtml($message); 
+        $navigation = filter_input(
+                INPUT_GET,
+                "navigation",
+                FILTER_SANITIZE_STRING);
+        switch($navigation)
+        {
+            default: 
+                $page->NavigateToNewPage("main_page");
+                break;
+            case "select_message":
+                $page->NavigateToNewPage("select_message_page");
+                break;
+        }
+    }
+    else
+    {
+        $page->NavigateToNewPage("main_page");
     }
     
     // footer

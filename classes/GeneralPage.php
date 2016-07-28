@@ -29,9 +29,8 @@
             $this->vars             = array();
         }
         
-        public function AddElement($template, $content = "Default Content")
+        public function AddElement($template)
         {
-            $content = "Hello";
             $path = "templates/elements/" . $template . ".php";
             $this->LoadFile($path);
         }
@@ -52,6 +51,14 @@
         {
             $html = "<script src='scripts/" . $script . "'></script>";
             echo $html;
+        }
+        
+        public function NavigateToNewPage($page_name)
+        {
+            $file_path = ROOT_DIR . $page_name . ".php";
+                file_exists($file_path) ?
+            require_once ($file_path) :
+            require_once (ROOT_DIR . "page_not_found.php"); 
         }
         
         protected function LoadFile($file_path)

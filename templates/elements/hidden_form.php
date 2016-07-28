@@ -1,8 +1,16 @@
-<form style="display: hidden" 
-      action="<?php echo ROOT_URL . 'whole_message.php';?>"
-      method="GET" id="hidden_form" >
-    <input type="hidden" 
-           id="hidden_input_id_message" 
-           name="selected_message" 
-           value="0" />
+<form 
+    style="display: hidden" 
+    action="" 
+    method="GET"
+    id="hidden_form">
+    <input 
+        type="hidden" 
+        id="navigation" 
+        name="navigation" 
+        value="select_message" />
+    <input
+        type="hidden"
+        id="hidden_input_id_message"
+        name="id"
+        value="0" />
 </form>

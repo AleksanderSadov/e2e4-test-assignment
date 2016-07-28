@@ -28,13 +28,20 @@
             return $messages;
         }
         
-        /** @return int number of messages in database */
+        /** Counts number of messages in database 
+         * @return int number of messages in database */
         public function CountMessages()
         {
             $result = $this->CountRows($this->table_name);
             return $result[0][0];
         }
         
+        /** Gets required messages with criterions
+         * 
+         * @param array array of required parts of message ("id", "brief", ...)
+         * @param array array of criterions ("id"=>"5")  
+         * @return array array of required messages
+         */
         public function SelectMessages(
                 array $selection,
                 array $where_clause = NULL)
@@ -67,7 +74,8 @@
             return $this->UpdateRows($this->table_name, $set_assoc, $where_assoc);
         }
         
-        /** @return string html string */
+        /** Constructs html tags for message
+         *  @return string html string */
         public function ConstructHtml(Message $message)
         {
             $buffer = "";
