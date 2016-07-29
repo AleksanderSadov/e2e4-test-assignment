@@ -25,9 +25,9 @@
         
         public function RequestItem($request)
         {
-            isset($this->vars[$request]) ? 
-                $element = $this->vars[$request] :
-                die("Элемента соответстующего запросу не найдено");
+            $element = isset($this->vars[$request]) ? 
+                $this->vars[$request] :
+                "";
             switch(gettype($element))
             {
                 case "array":

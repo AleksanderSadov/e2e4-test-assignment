@@ -21,7 +21,7 @@
             name="comment_text"></textarea><br />
         <div>
             <Button
-                name="post_commit"
+                name="post_comment"
                 type="submit">Добавить комментарий</button>
         </div>
         <input
@@ -29,6 +29,5 @@
             name="comment_topic"
             value="<?php echo $this->vars['id']; ?>" />
     </form>
-    <hr />
 </div>
 

@@ -1,4 +1,5 @@
 <div class="comments">
+    <hr />
     <p><b><?php echo $this->vars['comment']->author; ?></b></p>
     <p><?php echo $this->vars['comment']->date; ?></p>
     <textarea 

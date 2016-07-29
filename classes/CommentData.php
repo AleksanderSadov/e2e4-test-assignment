@@ -15,18 +15,22 @@
         
         protected function ProcessResult($result) 
         {
-            $comments = array ();
-            foreach($result as $row)
+            if (isset($result))
             {
-                $comment = new Comment(
-                array_key_exists('text', $row)   ? $row['text']   : null,
-                array_key_exists('author', $row) ? $row['author']    : null,
-                array_key_exists('date', $row)   ? $row['date']      : null,
-                array_key_exists('id', $row)     ? $row['id']         : null,
-                array_key_exists('topic', $row)  ? $row['topic']      : null);
-                array_push($comments, $comment);
+            $comments = array ();
+                foreach($result as $row)
+                {
+                    $comment = new Comment(
+                    array_key_exists('text', $row)   ? $row['text']   : null,
+                    array_key_exists('author', $row) ? $row['author']    : null,
+                    array_key_exists('date', $row)   ? $row['date']      : null,
+                    array_key_exists('id', $row)     ? $row['id']         : null,
+                    array_key_exists('topic', $row)  ? $row['topic']      : null);
+                    array_push($comments, $comment);
+                }
+                return $comments;
             }
-            return $comments;
+            return null;
         }
         
         public function CountComments()
@@ -37,12 +41,14 @@
        
         public function SelectComments(
                 array $selection,
-                array $where_clause = NULL)
+                array $where_clause = NULL,
+                $additional_option = NULL)
         {
             $result =  $this->SelectRows(
                     $this->table_name,
                     $selection,
-                    $where_clause);
+                    $where_clause,
+                    $additional_option);
             return $this->ProcessResult($result);
         }
         

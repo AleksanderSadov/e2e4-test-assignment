@@ -48,7 +48,7 @@
                 }
                 else
                 {
-                    return "";
+                    return null;
                 }
             }
 
@@ -76,12 +76,15 @@
         protected function SelectRows(
                 $table_name,
                 array $selection,
-                array $where_clause = NULL)
+                array $where_clause = NULL,
+                $additional_option = NULL)
         {
             $sql =  "SELECT " . join(", ", $selection) .
                     " FROM " . $table_name;
             $sql .= isset($where_clause) ?
-                    " WHERE " . join(", ", $where_clause) . ";" : ";";
+                    " WHERE " . join(", ", $where_clause) . "" : "";
+            $sql .= isset($additional_option) ?
+                    " " . $additional_option . ";" : ";";
             return $this->SqlQuery($sql);
         }
         

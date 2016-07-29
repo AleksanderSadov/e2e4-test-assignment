@@ -44,12 +44,14 @@
          */
         public function SelectMessages(
                 array $selection,
-                array $where_clause = NULL)
+                array $where_clause = NULL,
+                $additional_option = NULL)
         {
             $result =  $this->SelectRows(
                     $this->table_name,
                     $selection,
-                    $where_clause);
+                    $where_clause,
+                    $additional_option);
             return $this->ProcessResult($result);
         }
         

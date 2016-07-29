@@ -53,7 +53,7 @@
             $comment_topic = filter_input(INPUT_POST, "comment_topic", 
                     FILTER_SANITIZE_STRING);
             $comment_data->InsertComments(
-                    array("comment_author", "comment_text", "comment_topic"),
+                    array("author", "text", "topic"),
                     array($comment_author, $comment_text, $comment_topic));
         }
         

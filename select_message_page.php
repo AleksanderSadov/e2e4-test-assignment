@@ -16,6 +16,7 @@
     $comment_data = new CommentData();
     $this->vars["all_comments"] = $comment_data->SelectComments(
             array("*"),
-            array("topic='" . $message->id . "'"));
+            array("topic='" . $message->id . "'"),
+            "ORDER BY date DESC");
 ?>
 
