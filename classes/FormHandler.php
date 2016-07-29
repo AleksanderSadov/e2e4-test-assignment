@@ -53,10 +53,8 @@
             $comment_topic = filter_input(INPUT_POST, "comment_topic", 
                     FILTER_SANITIZE_STRING);
             $comment_data->InsertComments(
-                    array("comment_author", "comment_text",
-                        "comment_data", "comment_topic"),
-                    array($comment_author, $comment_text,
-                        $comment_date, $comment_topic));
+                    array("comment_author", "comment_text", "comment_topic"),
+                    array($comment_author, $comment_text, $comment_topic));
         }
         
         public function CheckServerPost()

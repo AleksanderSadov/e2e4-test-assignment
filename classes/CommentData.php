@@ -19,30 +19,22 @@
             foreach($result as $row)
             {
                 $comment = new Comment(
-                array_key_exists('content', $row)   ? $row['content']   : null,
-                array_key_exists('author', $row)    ? $row['author']    : null,
-                array_key_exists('date', $row)      ? $row['date']      : null,
-                array_key_exists('id', $row)       ? $row['id']         : null,
-                array_key_exists('topic', $row)    ? $row['topic']      : null);
+                array_key_exists('text', $row)   ? $row['text']   : null,
+                array_key_exists('author', $row) ? $row['author']    : null,
+                array_key_exists('date', $row)   ? $row['date']      : null,
+                array_key_exists('id', $row)     ? $row['id']         : null,
+                array_key_exists('topic', $row)  ? $row['topic']      : null);
                 array_push($comments, $comment);
             }
             return $comments;
         }
         
-        /** Counts number of messages in database 
-         * @return int number of messages in database */
         public function CountComments()
         {
             $result = $this->CountRows($this->table_name);
             return $result[0][0];
         }
-        
-        /** Gets required messages with criterions
-         * 
-         * @param array array of required parts of message ("id", "brief", ...)
-         * @param array array of criterions ("id=5", "id>6", ...)  
-         * @return array array of required messages
-         */
+       
         public function SelectComments(
                 array $selection,
                 array $where_clause = NULL)

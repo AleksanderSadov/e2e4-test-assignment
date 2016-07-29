@@ -12,5 +12,10 @@
     $message->header = null; // not display again, we included it in main_section_header
     $this->vars["selected_message"] = $message;
     $this->vars["id"] = $message->id;
+    
+    $comment_data = new CommentData();
+    $this->vars["all_comments"] = $comment_data->SelectComments(
+            array("*"),
+            array("topic='" . $message->id . "'"));
 ?>
 

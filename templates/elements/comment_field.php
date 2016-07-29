@@ -1,4 +1,6 @@
-<div id="comment_field">
+<div
+    class="comments"
+    id="comment_field">
     <form
     action=""
     method="POST">
@@ -12,7 +14,7 @@
             name="comment_author"></textarea><br />
         <textarea
             rows="10"
-            cols="30"
+            cols="60"
             maxlength="1000"
             placeholder="Комментарий"
             required
@@ -27,5 +29,6 @@
             name="comment_topic"
             value="<?php echo $this->vars['id']; ?>" />
     </form>
+    <hr />
 </div>
 

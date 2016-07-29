@@ -106,13 +106,13 @@
     margin: 0;
 }
 
-#comment_field
+.comments
 {
     margin: 0 1.5% 0 1.5%;
     padding: 0;
 }
 
-#comment_field form
+.comment form
 {
     font-family: "Times New Roman";
     font-size: 1em;

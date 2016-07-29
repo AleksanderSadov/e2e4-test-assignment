@@ -1,15 +1,24 @@
 <?php
     class Comment
     {
-        public $content;
+        public $text;
+        public $author;
         public $date;
+        public $id;
+        public $topic;
         
         function __construct(
-                $content = null,
-                $date = null) 
-        {
-            $this->content  = $content;
+                $text = null,
+                $author = null,
+                $date = null,
+                $id = null,
+                $topic = null) {
+            $this->text     = $text;
+            $this->author   = $author;
             $this->date     = $date;
+            $this->id       = $id;
+            $this->topic    = $topic;
         }
+
     }
 ?>

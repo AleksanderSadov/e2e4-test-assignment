@@ -20,6 +20,7 @@
                 <?php $this->AddTemplate("main_section_header"); ?>
                 <?php $this->RequestItem("selected_message"); ?>
                 <?php $this->AddTemplate("comment_field"); ?>
+                <?php $this->RequestItem("all_comments"); ?>
             </div>
             
             <div id="sidebar_right">
