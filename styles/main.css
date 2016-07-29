@@ -33,6 +33,11 @@
     color: #0645FF;
 }
 
+.message_brief
+{
+    padding: 2%;
+}
+
 .editor
 {
     margin: 1.35%;
@@ -99,6 +104,18 @@
 #main_section_header h3
 {
     margin: 0;
+}
+
+#comment_field
+{
+    margin: 0 1.5% 0 1.5%;
+    padding: 0;
+}
+
+#comment_field form
+{
+    font-family: "Times New Roman";
+    font-size: 1em;
 }
 
 #sidebar_right

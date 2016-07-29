@@ -42,7 +42,24 @@
                     array("id='" . $id . "'"));
         }
         
-        public function CheckPOST()
+        public function PostComment()
+        {
+            $comment_data = new CommentData();
+    
+            $comment_author = filter_input(INPUT_POST, "comment_author", 
+                    FILTER_SANITIZE_STRING);
+            $comment_text = filter_input(INPUT_POST, "comment_text", 
+                    FILTER_SANITIZE_STRING);
+            $comment_topic = filter_input(INPUT_POST, "comment_topic", 
+                    FILTER_SANITIZE_STRING);
+            $comment_data->InsertComments(
+                    array("comment_author", "comment_text",
+                        "comment_data", "comment_topic"),
+                    array($comment_author, $comment_text,
+                        $comment_date, $comment_topic));
+        }
+        
+        public function CheckServerPost()
         {
             if($_SERVER['REQUEST_METHOD'] == "POST")  
             {
@@ -57,6 +74,10 @@
                 if (isset($_POST["edit_message"]))
                 {
                     $this->EditMessage();
+                }
+                if (isset($_POST["post_comment"]))
+                {
+                    $this->PostComment();
                 }
             }
         }

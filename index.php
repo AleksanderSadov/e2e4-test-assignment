@@ -3,11 +3,12 @@
     
     function my_autoloader($class)
     {
-        include ROOT_DIR . "/classes/" . $class . ".php";
+        include ROOT_DIR . "classes/" . $class . ".php";
     }
     spl_autoload_register("my_autoloader");
+    
     $formhandler = new FormHandler();
-    $formhandler->CheckPOST();
+    $formhandler->CheckServerPost();
     
     $page = new GeneralPage();
     

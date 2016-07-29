@@ -1,5 +1,5 @@
 <?php
-    class MessageData extends Database
+    class CommentData extends Database
     {
         private $table_name;
         
@@ -10,27 +10,28 @@
                     "e2e4-test-assignment",
                     "0mfB4Vxs9jiOaYCf",
                     "e2e4-test-assignment");
-            $this->table_name = "messages";
+            $this->table_name = "comments";
         }
         
         protected function ProcessResult($result) 
         {
-            $messages = array ();
+            $comments = array ();
             foreach($result as $row)
             {
-                $message = new Message(
-                array_key_exists('id', $row)        ? $row['id']        : null,
-                array_key_exists('header', $row)    ? $row['header']    : null,
-                array_key_exists('text', $row)      ? $row['text']      : null,
-                array_key_exists('brief', $row)     ? $row['brief']     : null);
-                array_push($messages, $message);
+                $comment = new Comment(
+                array_key_exists('content', $row)   ? $row['content']   : null,
+                array_key_exists('author', $row)    ? $row['author']    : null,
+                array_key_exists('date', $row)      ? $row['date']      : null,
+                array_key_exists('id', $row)       ? $row['id']         : null,
+                array_key_exists('topic', $row)    ? $row['topic']      : null);
+                array_push($comments, $comment);
             }
-            return $messages;
+            return $comments;
         }
         
         /** Counts number of messages in database 
          * @return int number of messages in database */
-        public function CountMessages()
+        public function CountComments()
         {
             $result = $this->CountRows($this->table_name);
             return $result[0][0];
@@ -42,7 +43,7 @@
          * @param array array of criterions ("id=5", "id>6", ...)  
          * @return array array of required messages
          */
-        public function SelectMessages(
+        public function SelectComments(
                 array $selection,
                 array $where_clause = NULL)
         {
@@ -53,21 +54,21 @@
             return $this->ProcessResult($result);
         }
         
-        public function InsertMessages(
+        public function InsertComments(
                 array $columns,
                 array $values)
         {
             return $this->InsertRows($this->table_name, $columns, $values);
         }
         
-        public function DeleteMessages(
+        public function DeleteComments(
                 $column,
                 $value)
         {
             return $this->DeleteRows($this->table_name, $column, $value);
         }
         
-        public function UpdateMessages(
+        public function UpdateComments(
                 array $set_assoc,
                 array $where)
         {
