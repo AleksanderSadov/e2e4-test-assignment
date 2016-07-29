@@ -5,6 +5,7 @@
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
         <title><?php $this->title; ?></title>
         <?php $this->LoadStylesheet(); ?>
+        <?php $this->LoadScript("select_message_page"); ?>
     </head>
     
     <body>
@@ -23,6 +24,8 @@
             <div id="sidebar_right">
                 <?php $this->AddTemplate("user_window"); ?>
                 <?php $this->AddTemplate("add_button"); ?>
+                <?php $this->AddTemplate("edit_button"); ?>
+                <?php $this->AddTemplate("delete_button"); ?>
             </div>
             
             <div id="footer_section">

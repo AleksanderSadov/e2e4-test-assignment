@@ -1,26 +1,34 @@
 <!DOCTYPE html>
 <html lang="ru">
+    
     <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <title><?php echo $title; ?></title>
-        <link type="text/css" rel="stylesheet"
-              href="<?php echo ROOT_URL . 'styles/global.css';?>"/>
-        <link type="text/css" rel="stylesheet"
-              href="<?php echo ROOT_URL . 
-                      'styles/editor_page.css';?>"/>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <title><?php $this->title; ?></title>
+        <?php $this->LoadStylesheet(); ?>
     </head>
     
     <body>
-        <div class="whole_page">
-            <div class="header">
-                <?php include (ROOT_DIR . "templates/elements/header.php");?>
+        
+        <div id="whole_page">
+            
+            <div id="header_section">
+                <?php $this->AddTemplate("header"); ?>
             </div>
             
-            <div class="editor">
-                <?php require(ROOT_DIR . "templates/elements/editor.php");?>
-            </div>        
+            <div id="main_section">
+                <?php $this->AddTemplate("main_section_header"); ?>
+                <?php $this->AddTemplate("editor"); ?>
+            </div>
+            
+            <div id="sidebar_right">
+                <?php $this->AddTemplate("user_window"); ?>
+            </div>
+            
+            <div id="footer_section">
+                <?php $this->AddTemplate("footer"); ?>
+            </div>
+            
         </div>
+        
     </body>
-    
 </html>
-

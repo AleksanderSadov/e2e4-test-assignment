@@ -109,7 +109,7 @@
         protected function UpdateRows(
                 $table_name,
                 array $set_assoc,
-                array $where_assoc)
+                array $where)
         {
             $sql = "UPDATE " . $table_name . " SET ";
             $buffer = array();
@@ -119,9 +119,9 @@
             }
             $sql .= join(", ", $buffer) . " WHERE ";
             $buffer = array();
-            foreach ($where_assoc as $column => $value)
+            foreach ($where as $selection)
             {
-                array_push($buffer, $column . "='" . $value . "'");
+                array_push($buffer, $selection);
             }
             $sql .= join(", ", $buffer) . ";";
             return $this->SqlQuery($sql);

@@ -6,16 +6,11 @@
         include ROOT_DIR . "/classes/" . $class . ".php";
     }
     spl_autoload_register("my_autoloader");
+    $formhandler = new FormHandler();
+    $formhandler->CheckPOST();
     
     $page = new GeneralPage();
-    $formhandler = new FormHandler();
     
-    if (isset($_POST['add_message']))
-    {
-        $formhandler->AddMessage();
-    }
-    
-    // header
     $page->header_content = "E2E4 TEST ASSIGNMENT";
     
     // main section
@@ -36,6 +31,9 @@
             case "add_message":
                 $page->NavigateToNewPage("add_message_page");
                 break;
+            case "edit_message":
+                $page->NavigateToNewPage("edit_message_page");
+                break;
         }
     }
     else
@@ -43,7 +41,6 @@
         $page->NavigateToNewPage("main_page");
     }
     
-    // footer
     $page->footer_content = "Разработчик: Александр Садов<br />" . 
             "Последние изменения: " .
             date(DATE_RFC850, filemtime(__FILE__));

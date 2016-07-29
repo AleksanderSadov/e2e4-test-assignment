@@ -3,7 +3,7 @@
     id="add_message">
     <form
         method="GET"
-        action="" >
+        action="index.php" >
         <button
             name="navigation"
             value="add_message">

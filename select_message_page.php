@@ -11,5 +11,6 @@
     $this->vars["main_section_header"] = $message->header;
     $message->header = null; // not display again, we included it in main_section_header
     $this->vars["selected_message"] = $message;
+    $this->vars["id"] = $message->id;
 ?>
 

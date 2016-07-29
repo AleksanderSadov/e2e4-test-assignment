@@ -56,7 +56,6 @@
             }
             else
             {
-                var_dump($object_name);
                 die("Отображение данного элемента не реализовано");
             }
         }
@@ -100,9 +99,9 @@
             echo $html;
         }
         
-        public function LoadScript($script = "main_page.js")
+        public function LoadScript($script = "main_page")
         {
-            $html = "<script src='scripts/" . $script . "'></script>";
+            $html = "<script src='scripts/" . $script . ".js'></script>";
             echo $html;
         }
         

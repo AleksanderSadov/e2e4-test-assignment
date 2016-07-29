@@ -1,8 +1,18 @@
-<div class="boxed_content action_button" id="edit_message">
-    <form method="GET" action="<?php echo ROOT_URL . 'edit_message.php';?>">
-        <button name="edited_message" id="edit_message_button"
-            value="<?php echo $message_id ?>" >
+<div
+    class="boxed_content action_button"
+    id="edit_message">
+    <form
+        method="GET"
+        action="index.php">
+        <button 
+            name="navigation"
+            id="edit_message_button"
+            value="edit_message" >
         Редактировать <br /> сообщение
         </button>
+        <input
+            type="hidden"
+            name="id"
+            value=<?php echo $this->vars['id']; ?> /> 
     </form>
 </div>

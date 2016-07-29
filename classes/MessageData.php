@@ -69,9 +69,9 @@
         
         public function UpdateMessages(
                 array $set_assoc,
-                array $where_assoc)
+                array $where)
         {
-            return $this->UpdateRows($this->table_name, $set_assoc, $where_assoc);
+            return $this->UpdateRows($this->table_name, $set_assoc, $where);
         }
     }
 ?>
