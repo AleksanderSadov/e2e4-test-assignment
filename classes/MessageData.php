@@ -6,10 +6,10 @@
         public function __construct()
         {
             parent::__construct(
-                    "localhost",
-                    "e2e4-test-assignment",
-                    "0mfB4Vxs9jiOaYCf",
-                    "e2e4-test-assignment");
+                    "us-cdbr-iron-east-04.cleardb.net",
+                    "bb789c86ba85ec",
+                    "bdc7b778",
+                    "heroku_ffebb8177a0e328");
             $this->table_name = "messages";
         }
         
