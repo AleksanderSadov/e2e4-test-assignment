@@ -81,11 +81,11 @@
         {
             $sql =  "SELECT " . $selection .
                     " FROM " . $table_name;
-            $sql .= isset($where_clause) ?
+            $sql .= !empty($where_clause) ?
                     " WHERE " . $where_clause : "";
-            $sql .= isset($order_by) ?
+            $sql .= !empty($order_by) ?
                     " ORDER BY " . $order_by : "";
-            $sql .= isset($type_of_order) ?
+            $sql .= !empty($type_of_order) ?
                     " " . $type_of_order : "";
             $sql .= ";";
             return $this->SqlQuery($sql);

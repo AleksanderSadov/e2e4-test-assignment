@@ -25,5 +25,6 @@
     $comment->setTopic(1);
     
     $comment_data = new ObjectData("comments", "Comment");
-    var_dump($comment_data->Select("author"));
+    $comments = $comment_data->Select("date", "", "date");
+    var_dump($comments);
 ?>

@@ -19,15 +19,15 @@
         {
             if (isset($result) && !empty($result))
             {
-                $object = new $this->object_name();
                 $objects = array ();
                 foreach($result as $row)
                 {
+                    $object = new $this->object_name();
                     foreach($object as $property => &$value)
                     {
                         $value = $row[$property];
-                        array_push($objects, $object);
                     }
+                    array_push($objects, $object);
                 }
                 return $objects;
             }
