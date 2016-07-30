@@ -5,7 +5,7 @@
         private $credentials;
         private $sqli;
         
-        function __construct(
+        protected function __construct(
                 $host = "host",
                 $user = "user",
                 $password = "password",
@@ -51,7 +51,6 @@
                     return null;
                 }
             }
-
             return $output_result;
         }
 
@@ -77,14 +76,17 @@
                 $table_name,
                 array $selection,
                 array $where_clause = NULL,
-                $additional_option = NULL)
+                array $order_by = NULL,
+                $type_of_order = NULL)
         {
             $sql =  "SELECT " . join(", ", $selection) .
                     " FROM " . $table_name;
             $sql .= isset($where_clause) ?
                     " WHERE " . join(", ", $where_clause) . "" : "";
-            $sql .= isset($additional_option) ?
-                    " " . $additional_option . ";" : ";";
+            $sql .= isset($order_by) ?
+                    " ORDER BY " . join(", ", $order_by) : "";
+            $sql .= isset($type_of_order) ?
+                    " " . $type_of_order . " ;" : ";";
             return $this->SqlQuery($sql);
         }
         
@@ -127,6 +129,11 @@
                 array_push($buffer, $selection);
             }
             $sql .= join(", ", $buffer) . ";";
+            return $this->SqlQuery($sql);
+        }
+        
+        public function PerformQuery($sql)
+        {
             return $this->SqlQuery($sql);
         }
     }

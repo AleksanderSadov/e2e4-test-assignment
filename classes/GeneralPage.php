@@ -25,24 +25,27 @@
         
         public function RequestItem($request)
         {
-            $element = isset($this->vars[$request]) ? 
-                $this->vars[$request] :
-                "";
-            switch(gettype($element))
+            if (isset($this->vars[$request]) && !empty($this->vars[$request]))
             {
-                case "array":
-                    $this->AddArrayOfElements($element);
-                    break;
-                case "object":
-                    $this->AddObjectElement($element);
-                    break;
-                case "boolean":
-                case "integer":
-                case "string":
-                    echo $element;
-                    break;
-                case "NULL":
-                    break;
+                $element = $this->vars[$request];
+                switch(gettype($element))
+                {
+                    case "array":
+                        $this->AddArrayOfElements($element);
+                        break;
+                    case "object":
+                        $this->AddObjectElement($element);
+                        break;
+                    case "boolean":
+                    case "integer":
+                    case "string":
+                        echo $element;
+                        break;
+                    case "NULL":
+                        die("Ошибка запроса RequestItem");
+                        break; 
+                }
+
             }
         }
         

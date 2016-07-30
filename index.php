@@ -11,6 +11,7 @@
     $formhandler->CheckServerPost();
     
     $page = new GeneralPage();
+    header("Location: test.php");
     
     $page->header_content = "E2E4 TEST ASSIGNMENT";
     
