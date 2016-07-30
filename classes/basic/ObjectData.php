@@ -1,15 +1,17 @@
 <?php
     class ObjectData extends Database
     {
-        public $table_name;
+        private $table_name;
+        private $object_name;
         
-        public function __construct($table_name) 
+        public function __construct($table_name, $object_name) 
         {
             $host = "localhost";
             $user = "e2e4-test-assignment";
             $password = "0mfB4Vxs9jiOaYCf";
             $database = "e2e4-test-assignment";
             $this->table_name = $table_name;
+            $this->object_name = $object_name;
             parent::__construct($host, $user, $password, $database);
         }
         
@@ -17,13 +19,14 @@
         {
             if (isset($result) && !empty($result))
             {
+                $object = new $this->object_name();
                 $objects = array ();
                 foreach($result as $row)
                 {
-                    foreach($this->object as $property => $value)
+                    foreach($object as $property => &$value)
                     {
-                        $this->object[$property] = $row[$property];
-                        array_push($objects, $this->object);
+                        $value = $row[$property];
+                        array_push($objects, $object);
                     }
                 }
                 return $objects;
@@ -33,7 +36,7 @@
         
         public function Count()
         {
-            $result = $this->CountRows($this->table_name);
+            $result = parent::CountRows($this->table_name);
             return $result[0][0];
         }
        
@@ -43,7 +46,7 @@
                 array $order_by = NULL,
                 $type_of_order = NULL)
         {
-            $result =  $this->SelectRows(
+            $result =  parent::SelectRows(
                     $this->table_name,
                     $selection,
                     $where_clause,
@@ -54,20 +57,17 @@
         
         public function Insert($object)
         {
-            var_dump($object);
             $columns = array();
             $values = array();
             foreach ($object as $property => $value)
             {
-                var_dump($property);
-                var_dump($value);
                 if (isset($value))
                 {
                     array_push($columns, $property);
                     array_push($values, $value);
                 }
             }
-            return $this->InsertRows(
+            return parent::InsertRows(
                     $this->table_name,
                     $columns,
                     $values);
@@ -77,14 +77,14 @@
                 $column,
                 $value)
         {
-            return $this->DeleteRows($this->table_name, $column, $value);
+            return parent::DeleteRows($this->table_name, $column, $value);
         }
         
         public function Update(
                 array $set_assoc,
                 array $where)
         {
-            return $this->UpdateRows($this->table_name, $set_assoc, $where);
+            return parent::UpdateRows($this->table_name, $set_assoc, $where);
         }
     }
 ?>
