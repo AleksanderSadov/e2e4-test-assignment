@@ -2,32 +2,40 @@
     class GeneralPage
     {
         public $config;
-        public $template;
+        public $main_template;
         public $title;
         public $header_content;
         public $footer_content;
-        public $vars;
+        public $templates;
+        public $requests;
         
         public function __construct(
                 $config             = "config.php",
-                $template           = "templates/pages/main_page.php",
+                $template           = "main_page",
                 $title              = "E2E4 TEST ASSIGNMENT",
                 $header_content     = null,
                 $footer_content     = null) 
         {
             $this->config           = $config;
-            $this->template         = $template;
+            $this->LoadFile($config);
+            $this->setMain_template($template);
             $this->title            = $title;
             $this->header_content   = $header_content;
             $this->footer_content   = $footer_content;
-            $this->vars             = array();
+            $this->templates        = array();
+            $this->requests         = array();
         }
         
+        function setMain_template($main_template) {
+            $this->main_template = "templates/pages/" . $main_template . ".php";
+        }
+
+                
         public function RequestItem($request)
         {
-            if (isset($this->vars[$request]) && !empty($this->vars[$request]))
+            if (isset($this->requests[$request]) && !empty($this->requests[$request]))
             {
-                $element = $this->vars[$request];
+                $element = $this->requests[$request];
                 switch(gettype($element))
                 {
                     case "array":
@@ -45,7 +53,10 @@
                         die("Ошибка запроса RequestItem");
                         break; 
                 }
-
+            }
+            else
+            {
+                echo "Данные ещё не добавлены";
             }
         }
         
@@ -54,8 +65,11 @@
             $object_name = strtolower(get_class($element));
             if (file_exists(ROOT_DIR . "templates/elements/" . $object_name . ".php"))
             {
-                $this->vars[$object_name] = $element;
-                $this->AddTemplate($object_name);
+                foreach ($element as $property => $value)
+                {
+                    $this->templates[$object_name][$property] = $value;
+                }
+                $this->LoadTemplate($object_name);
             }
             else
             {
@@ -81,7 +95,7 @@
             }
         }
         
-        public function AddTemplate($template)
+        public function LoadTemplate($template)
         {
             $path = ROOT_DIR . "templates/elements/" . $template . ".php";
             if (!$this->LoadFile($path))
@@ -92,7 +106,7 @@
         
         public function Render()
         {
-            $this->LoadFile($this->template);
+            $this->LoadFile($this->main_template);
         }
         
         public function LoadStylesheet($stylesheet = "main")

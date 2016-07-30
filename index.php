@@ -1,5 +1,6 @@
 <?php
     require_once "config.php";
+    header("Location: test.php");
     
     function my_autoloader($class)
     {
@@ -11,7 +12,6 @@
     $formhandler->CheckServerPost();
     
     $page = new GeneralPage();
-    header("Location: test.php");
     
     $page->header_content = "E2E4 TEST ASSIGNMENT";
     

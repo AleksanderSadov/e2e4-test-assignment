@@ -12,20 +12,20 @@
         <div id="whole_page">
             
             <div id="header_section">
-                <?php $this->AddTemplate("header"); ?>
+                <?php $this->LoadTemplate("header"); ?>
             </div>
             
             <div id="main_section">
-                <?php $this->AddTemplate("main_section_header"); ?>
-                <?php $this->AddTemplate("editor"); ?>
+                <?php $this->LoadTemplate("main_section_header"); ?>
+                <?php $this->LoadTemplate("editor"); ?>
             </div>
             
             <div id="sidebar_right">
-                <?php $this->AddTemplate("user_window"); ?>
+                <?php $this->LoadTemplate("user_window"); ?>
             </div>
             
             <div id="footer_section">
-                <?php $this->AddTemplate("footer"); ?>
+                <?php $this->LoadTemplate("footer"); ?>
             </div>
             
         </div>

@@ -1,11 +1,11 @@
 <div class="message_content">
-    <?php isset($this->vars["message"]->header) ?
-        $this->AddTemplate("message_header") :
+    <?php isset($this->templates["message"]["header"]) ?
+        $this->LoadTemplate("message_header") :
         null; ?>
-    <?php isset($this->vars["message"]->brief) ?
-        $this->AddTemplate("message_brief") :
+    <?php isset($this->templates["message"]["brief"]) ?
+        $this->LoadTemplate("message_brief") :
         null; ?>
-    <?php isset($this->vars["message"]->text) ?
-        $this->AddTemplate("message_text") :
+    <?php isset($this->templates["message"]["text"]) ?
+        $this->LoadTemplate("message_text") :
         null; ?>
 </div>

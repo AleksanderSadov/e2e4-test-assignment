@@ -1,13 +1,16 @@
 <div
-    class="boxed_content"
+    class="row"
     id="header">
-    <a href=<?php echo ROOT_URL . "index.php";?> >
-        <img 
-            src='<?php echo ROOT_URL . "images/header.png";?>' 
-            alt="home_index" /></a>
-    <div>
-        <h1><?php echo $this->header_content; ?></h1>
-    </div>
-    <hr />
+        <div class="col-1">
+        <a href='<?php echo ROOT_URL . "index.php";?>' >
+            <img 
+                src='<?php echo ROOT_URL . "images/header.png";?>'
+                alt="home_index" /></a>
+        </div>
+        <div class="col-11">
+            <h1><?php echo $this->templates["header"]["content"]; ?></h1>
+        </div>
 </div>
+<hr />
+
 

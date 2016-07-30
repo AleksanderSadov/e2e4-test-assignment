@@ -1,7 +1,6 @@
 <div 
-    class="boxed_content"
     id="footer">
     <hr />
-    <h4><?php echo $this->footer_content; ?></h4>
+    <h4><?php echo $this->templates["footer"]["content"]; ?></h4>
 </div>
 

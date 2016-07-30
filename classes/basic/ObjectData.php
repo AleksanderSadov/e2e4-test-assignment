@@ -25,7 +25,10 @@
                     $object = new $this->object_name();
                     foreach($object as $property => &$value)
                     {
-                        $value = $row[$property];
+                        if (isset($row[$property]))
+                        {
+                            $value = $row[$property];
+                        }
                     }
                     array_push($objects, $object);
                 }
