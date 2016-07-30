@@ -74,19 +74,20 @@
         
         protected function SelectRows(
                 $table_name,
-                array $selection,
-                array $where_clause = NULL,
-                array $order_by = NULL,
+                $selection,
+                $where_clause = NULL,
+                $order_by = NULL,
                 $type_of_order = NULL)
         {
-            $sql =  "SELECT " . join(", ", $selection) .
+            $sql =  "SELECT " . $selection .
                     " FROM " . $table_name;
             $sql .= isset($where_clause) ?
-                    " WHERE " . join(", ", $where_clause) . "" : "";
+                    " WHERE " . $where_clause : "";
             $sql .= isset($order_by) ?
-                    " ORDER BY " . join(", ", $order_by) : "";
+                    " ORDER BY " . $order_by : "";
             $sql .= isset($type_of_order) ?
-                    " " . $type_of_order . " ;" : ";";
+                    " " . $type_of_order : "";
+            $sql .= ";";
             return $this->SqlQuery($sql);
         }
         

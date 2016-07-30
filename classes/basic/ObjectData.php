@@ -41,9 +41,9 @@
         }
        
         public function Select(
-                array $selection,
-                array $where_clause = NULL,
-                array $order_by = NULL,
+                $selection,
+                $where_clause = NULL,
+                $order_by = NULL,
                 $type_of_order = NULL)
         {
             $result =  parent::SelectRows(
