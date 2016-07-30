@@ -19,12 +19,11 @@
     }
     spl_autoload_register("my_autoloader");
     
-    $comment = new Comment();
-    $comment->setAuthor("mather");
-    $comment->setText("Коммент");
-    $comment->setTopic(1);
-    
-    $comment_data = new ObjectData("comments", "Comment");
-    $comments = $comment_data->Select("date", "", "date");
-    var_dump($comments);
+    $message_data = new ObjectData("messages", "Message");
+    $messages = $message_data->Select("*");
+    var_dump($messages);
+    $message_data->Update("header='Header'", "id='1'");
+    echo "<br /><br />";
+    $messages = $message_data->Select("*");
+    var_dump($messages);
 ?>

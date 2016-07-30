@@ -73,18 +73,14 @@
                     $values);
         }
         
-        public function Delete(
-                $column,
-                $value)
+        public function Delete($selection)
         {
-            return parent::DeleteRows($this->table_name, $column, $value);
+            return parent::DeleteRows($this->table_name, $selection);
         }
         
-        public function Update(
-                array $set_assoc,
-                array $where)
+        public function Update($new_values, $selection)
         {
-            return parent::UpdateRows($this->table_name, $set_assoc, $where);
+            return parent::UpdateRows($this->table_name, $new_values, $selection);
         }
     }
 ?>

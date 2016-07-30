@@ -104,32 +104,20 @@
         
         protected function DeleteRows(
                 $table_name,
-                $column,
-                $value)
+                $selection)
         {
             $sql = "DELETE FROM " . $table_name .
-                    " WHERE " . $column . "='" . $value . "';";
+                    " WHERE " . $selection . ";";
             return $this->SqlQuery($sql);
         }
         
         protected function UpdateRows(
                 $table_name,
-                array $set_assoc,
-                array $where)
+                $new_values,
+                $selection)
         {
-            $sql = "UPDATE " . $table_name . " SET ";
-            $buffer = array();
-            foreach ($set_assoc as $column => $value)
-            {
-                array_push($buffer, $column . "='" . $value . "'");
-            }
-            $sql .= join(", ", $buffer) . " WHERE ";
-            $buffer = array();
-            foreach ($where as $selection)
-            {
-                array_push($buffer, $selection);
-            }
-            $sql .= join(", ", $buffer) . ";";
+            $sql = "UPDATE " . $table_name . " SET " . $new_values . 
+                   " WHERE " . $selection . ";";
             return $this->SqlQuery($sql);
         }
         
