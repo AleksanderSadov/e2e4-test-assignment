@@ -114,7 +114,7 @@
         
         public function LoadScript($script = "main_page")
         {
-            $html = "<script src='" . ROOT_URL . "scripts/" . 
+            $html = "<script src='scripts/" . 
                     $script . ".js'></script>";
             echo $html;
         }
