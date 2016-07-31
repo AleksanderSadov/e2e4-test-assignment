@@ -5,7 +5,7 @@
         private $credentials;
         private $sqli;
         
-        function __construct(
+        protected function __construct(
                 $host = "host",
                 $user = "user",
                 $password = "password",
@@ -51,7 +51,6 @@
                     return null;
                 }
             }
-
             return $output_result;
         }
 
@@ -75,16 +74,20 @@
         
         protected function SelectRows(
                 $table_name,
-                array $selection,
-                array $where_clause = NULL,
-                $additional_option = NULL)
+                $selection,
+                $where_clause = NULL,
+                $order_by = NULL,
+                $type_of_order = NULL)
         {
-            $sql =  "SELECT " . join(", ", $selection) .
+            $sql =  "SELECT " . $selection .
                     " FROM " . $table_name;
-            $sql .= isset($where_clause) ?
-                    " WHERE " . join(", ", $where_clause) . "" : "";
-            $sql .= isset($additional_option) ?
-                    " " . $additional_option . ";" : ";";
+            $sql .= !empty($where_clause) ?
+                    " WHERE " . $where_clause : "";
+            $sql .= !empty($order_by) ?
+                    " ORDER BY " . $order_by : "";
+            $sql .= !empty($type_of_order) ?
+                    " " . $type_of_order : "";
+            $sql .= ";";
             return $this->SqlQuery($sql);
         }
         
@@ -101,32 +104,25 @@
         
         protected function DeleteRows(
                 $table_name,
-                $column,
-                $value)
+                $selection)
         {
             $sql = "DELETE FROM " . $table_name .
-                    " WHERE " . $column . "='" . $value . "';";
+                    " WHERE " . $selection . ";";
             return $this->SqlQuery($sql);
         }
         
         protected function UpdateRows(
                 $table_name,
-                array $set_assoc,
-                array $where)
+                $new_values,
+                $selection)
         {
-            $sql = "UPDATE " . $table_name . " SET ";
-            $buffer = array();
-            foreach ($set_assoc as $column => $value)
-            {
-                array_push($buffer, $column . "='" . $value . "'");
-            }
-            $sql .= join(", ", $buffer) . " WHERE ";
-            $buffer = array();
-            foreach ($where as $selection)
-            {
-                array_push($buffer, $selection);
-            }
-            $sql .= join(", ", $buffer) . ";";
+            $sql = "UPDATE " . $table_name . " SET " . $new_values . 
+                   " WHERE " . $selection . ";";
+            return $this->SqlQuery($sql);
+        }
+        
+        public function PerformQuery($sql)
+        {
             return $this->SqlQuery($sql);
         }
     }

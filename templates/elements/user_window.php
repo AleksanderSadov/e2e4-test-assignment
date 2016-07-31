@@ -1,4 +1,4 @@
-<?php $user_name = "Aleksander";
+<?php $user_name = "aleksander";
       $avatar_path = ROOT_URL . "images/man-avatar.png" ;?>
 <div class="boxed_content boxed_border" id="user_window">
     <img id="avatar" src="<?php echo $avatar_path;?>"

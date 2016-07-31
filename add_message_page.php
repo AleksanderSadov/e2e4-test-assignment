@@ -1,13 +1,15 @@
 <?php
-    $this->template = ROOT_DIR . "templates/pages/editor_page.php";
-    $this->vars["main_section_header"] = "Редактор сообщений";
-    $this->vars["editor_legend"] = "Добавление сообщения";
-    $this->vars["editor_submit_legend"] = "Добавить сообщение";
-    $this->vars["editor_submit_name"] = "add_message";
-    $this->vars["editor_submit_value"] = "";
+    $this->setMain_template("editor_page");
+    $this->title = "E2E4 TEST ASSIGNMENT";
     
-    $this->vars["editor_header"] = "";
-    $this->vars["editor_brief"] = "";
-    $this->vars["editor_text"] = "";
+    $this->templates['main_section_header']['content'] = "Редактор сообщений";
     
+    $this->templates['editor']['legend'] = "Добавление сообщения";
+    // as we creating new message no text should appear in textarea
+    $this->templates['editor']['header'] = "";
+    $this->templates['editor']['brief'] = "";
+    $this->templates['editor']['text'] = "";
+    $this->templates['editor']['submit_name'] = "add_message";
+    $this->templates['editor']['submit_legend'] = "Добавить сообщение";
+    $this->templates['editor']['submit_value'] = "placeholder_for_author";
 ?>

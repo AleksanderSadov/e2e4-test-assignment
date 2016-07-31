@@ -1,10 +1,10 @@
 <div 
     class="boxed_content action_button"
-    id="delete_message">
+    id="delete_button">
     <button 
         name="delete_message"
         id="delete_message_button"
-        value="<?php echo $this->vars["id"]; ?>" >
+        value="<?php echo $this->templates['delete_button']['message_id']; ?>" >
         Удалить <br /> сообщение
     </button>
 </div>

@@ -1,22 +1,30 @@
 <?php
+    $this->setMain_template("select_message_page");
+    $this->title = "E2E4 TEST ASSIGNMENT";
+    
+    $message_data = new ObjectData("messages", "Message");
     $id = filter_input(INPUT_GET, "id", 
             FILTER_SANITIZE_NUMBER_INT);
     
-    $this->template = ROOT_DIR . "templates/pages/select_message_page.php";
-    $message_data = new MessageData();
-    $messages = $message_data->SelectMessages(
-            array("id", "header", "text"),
-            array("id='" . $id . "'"));
-    $message = $messages[0];
-    $this->vars["main_section_header"] = $message->header;
-    $message->header = null; // not display again, we included it in main_section_header
-    $this->vars["selected_message"] = $message;
-    $this->vars["id"] = $message->id;
+    $this->templates["edit_button"]["message_id"] = $id;
+    $this->templates["delete_button"]["message_id"] = $id;
     
-    $comment_data = new CommentData();
-    $this->vars["all_comments"] = $comment_data->SelectComments(
-            array("*"),
-            array("topic='" . $message->id . "'"),
-            "ORDER BY date DESC");
+    $this->templates["comment_field"]["message_id"] = $id;
+    
+    $messages = $message_data->Select("id, header, text, author", "id='" . $id . "'");
+    $selected_message = $messages[0];
+    $this->requests["selected_message"] = $selected_message;
+    
+    $comment_data = new ObjectData("comments", "Comment");
+    $comments = $comment_data->Select("*", "topic='" . $id . "'", "date", "DESC");
+    if (isset($comments) && !empty($comments))
+    {
+        $this->requests["all_comments"] = $comments;
+    }
+    else 
+    {
+        $this->requests["all_comments"] = "Нет комментариев";
+    }
+        
 ?>
 

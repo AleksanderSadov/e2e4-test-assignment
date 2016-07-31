@@ -1,4 +1,4 @@
 <div class="message_brief boxed_content boxed_border">
-    <?php echo $this->vars["message"]->text; ?>
+    <?php echo $this->templates["message"]["text"]; ?>
 </div>                
 

@@ -1,48 +1,58 @@
 <?php
-    class GeneralPage
+    class Page
     {
         public $config;
-        public $template;
+        public $main_template;
         public $title;
-        public $header_content;
-        public $footer_content;
-        public $vars;
+        public $templates;
+        public $requests;
+        public $forms;
         
         public function __construct(
                 $config             = "config.php",
-                $template           = "templates/pages/main_page.php",
-                $title              = "E2E4 TEST ASSIGNMENT",
-                $header_content     = null,
-                $footer_content     = null) 
+                $template           = "main_page",
+                $title              = "E2E4 TEST ASSIGNMENT") 
         {
             $this->config           = $config;
-            $this->template         = $template;
+            $this->LoadFile($config);
+            $this->setMain_template($template);
             $this->title            = $title;
-            $this->header_content   = $header_content;
-            $this->footer_content   = $footer_content;
-            $this->vars             = array();
+            $this->templates        = array();
+            $this->requests         = array();
+            $this->forms            = array();
         }
         
+        function setMain_template($main_template) {
+            $this->main_template = "templates/pages/" . $main_template . ".php";
+        }
+
+                
         public function RequestItem($request)
         {
-            $element = isset($this->vars[$request]) ? 
-                $this->vars[$request] :
-                "";
-            switch(gettype($element))
+            if (isset($this->requests[$request]) && !empty($this->requests[$request]))
             {
-                case "array":
-                    $this->AddArrayOfElements($element);
-                    break;
-                case "object":
-                    $this->AddObjectElement($element);
-                    break;
-                case "boolean":
-                case "integer":
-                case "string":
-                    echo $element;
-                    break;
-                case "NULL":
-                    break;
+                $element = $this->requests[$request];
+                switch(gettype($element))
+                {
+                    case "array":
+                        $this->AddArrayOfElements($element);
+                        break;
+                    case "object":
+                        $this->AddObjectElement($element);
+                        break;
+                    case "boolean":
+                    case "integer":
+                    case "string":
+                        echo $element;
+                        break;
+                    case "NULL":
+                        die("Ошибка запроса RequestItem");
+                        break; 
+                }
+            }
+            else
+            {
+                echo "Данные ещё не добавлены";
             }
         }
         
@@ -51,8 +61,11 @@
             $object_name = strtolower(get_class($element));
             if (file_exists(ROOT_DIR . "templates/elements/" . $object_name . ".php"))
             {
-                $this->vars[$object_name] = $element;
-                $this->AddTemplate($object_name);
+                foreach ($element as $property => $value)
+                {
+                    $this->templates[$object_name][$property] = $value;
+                }
+                $this->LoadTemplate($object_name);
             }
             else
             {
@@ -78,7 +91,7 @@
             }
         }
         
-        public function AddTemplate($template)
+        public function LoadTemplate($template)
         {
             $path = ROOT_DIR . "templates/elements/" . $template . ".php";
             if (!$this->LoadFile($path))
@@ -89,7 +102,7 @@
         
         public function Render()
         {
-            $this->LoadFile($this->template);
+            $this->LoadFile($this->main_template);
         }
         
         public function LoadStylesheet($stylesheet = "main")
@@ -101,16 +114,17 @@
         
         public function LoadScript($script = "main_page")
         {
-            $html = "<script src='scripts/" . $script . ".js'></script>";
+            $html = "<script src='" . ROOT_URL . "scripts/" . 
+                    $script . ".js'></script>";
             echo $html;
         }
         
-        public function NavigateToNewPage($page_name)
+        public function GoToNewPage($page_name)
         {
-            $file_path = ROOT_DIR . $page_name . ".php";
-            file_exists($file_path) ?
-                require_once ($file_path) :
-                die("Данной страницы не существует: " . $page_name);
+            $path = ROOT_DIR . $page_name . "_page.php";
+            file_exists($path) ?
+                require_once ($path) :
+                die("Данной страницы не существует: " . $path);
         }
         
         protected function LoadFile($file_path)
