@@ -1,29 +1,25 @@
 <?php
-    class GeneralPage
+    class Page
     {
         public $config;
         public $main_template;
         public $title;
-        public $header_content;
-        public $footer_content;
         public $templates;
         public $requests;
+        public $forms;
         
         public function __construct(
                 $config             = "config.php",
                 $template           = "main_page",
-                $title              = "E2E4 TEST ASSIGNMENT",
-                $header_content     = null,
-                $footer_content     = null) 
+                $title              = "E2E4 TEST ASSIGNMENT") 
         {
             $this->config           = $config;
             $this->LoadFile($config);
             $this->setMain_template($template);
             $this->title            = $title;
-            $this->header_content   = $header_content;
-            $this->footer_content   = $footer_content;
             $this->templates        = array();
             $this->requests         = array();
+            $this->forms            = array();
         }
         
         function setMain_template($main_template) {
@@ -118,16 +114,17 @@
         
         public function LoadScript($script = "main_page")
         {
-            $html = "<script src='scripts/" . $script . ".js'></script>";
+            $html = "<script src='" . ROOT_URL . "scripts/" . 
+                    $script . ".js'></script>";
             echo $html;
         }
         
-        public function NavigateToNewPage($page_name)
+        public function GoToNewPage($page_name)
         {
-            $file_path = ROOT_DIR . $page_name . ".php";
-            file_exists($file_path) ?
-                require_once ($file_path) :
-                die("Данной страницы не существует: " . $page_name);
+            $path = ROOT_DIR . $page_name . "_page.php";
+            file_exists($path) ?
+                require_once ($path) :
+                die("Данной страницы не существует: " . $path);
         }
         
         protected function LoadFile($file_path)

@@ -1,50 +1,58 @@
 <?php
-    require_once "config.php";
-    header("Location: test.php");
-    
+    // classes auto loader
     function my_autoloader($class)
     {
-        include ROOT_DIR . "classes/" . $class . ".php";
+        if (file_exists("classes/" . $class . ".php"))
+        {
+            require_once ("classes/" . $class . ".php");
+        }
+        else
+        {
+            if (file_exists("classes/basic/" . $class . ".php"))
+            {
+                require_once("classes/basic/" . $class . ".php");
+            }
+            else
+            {
+                die("Не удалось подключить класс: " . $class);
+            }
+        }
     }
     spl_autoload_register("my_autoloader");
     
-    $formhandler = new FormHandler();
+    $page = new Page();
+    $formhandler = new FormHandler($page->forms);
+    // process submitted forms
     $formhandler->CheckServerPost();
     
-    $page = new GeneralPage();
-    
-    $page->header_content = "E2E4 TEST ASSIGNMENT";
-    
-    // main section
+    // navigation system determines required data computation
     if (isset($_GET['navigation']))
     {
         $navigation = filter_input(
                 INPUT_GET,
                 "navigation",
                 FILTER_SANITIZE_STRING);
-        switch($navigation)
+        $path = ROOT_DIR . $navigation . "_page.php";
+        if (file_exists($path))
         {
-            default: 
-                $page->NavigateToNewPage("main_page");
-                break;
-            case "select_message":
-                $page->NavigateToNewPage("select_message_page");
-                break;
-            case "add_message":
-                $page->NavigateToNewPage("add_message_page");
-                break;
-            case "edit_message":
-                $page->NavigateToNewPage("edit_message_page");
-                break;
+            $page->GoToNewPage($navigation);
+        }
+        else
+        {
+            $page->GoToNewPage("main");
         }
     }
     else
     {
-        $page->NavigateToNewPage("main_page");
+        $page->GoToNewPage("main");
     }
     
-    $page->footer_content = "Разработчик: Александр Садов<br />" . 
+    // header and footer are the same for all pages
+    $page->templates["header"]["content"] = "E2E4 TEST ASSIGNMENT";
+    $page->templates["footer"]["content"] = "Разработчик: Александр Садов<br />" . 
             "Последние изменения: " .
             date(DATE_RFC850, filemtime(__FILE__));
+    
+    // load page template
     $page->Render();
 ?>

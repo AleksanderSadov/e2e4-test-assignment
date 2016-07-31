@@ -19,7 +19,7 @@
     }
     spl_autoload_register("my_autoloader");
     
-    $page = new GeneralPage();
+    $page = new Page();
     $page->setMain_template("test_page");
     $message_data = new ObjectData("messages", "Message");
     

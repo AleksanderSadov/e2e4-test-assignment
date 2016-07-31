@@ -16,11 +16,11 @@
          * @param int        $topic
          */
         function __construct(
-                $text = null,
                 $author = null,
+                $text = null,
+                $topic = null,
                 $date = null,
-                $id = null,
-                $topic = null) {
+                $id = null) {
             $this->text     = $text;
             $this->author   = $author;
             $this->date     = $date;

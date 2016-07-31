@@ -1,7 +1,42 @@
 <?php
     class FormHandler
     {
-        public function AddMessage()
+        private $page_forms_buffer;
+        
+        public function __construct(& $page_forms_buffer)
+        {
+            $this->page_forms_buffer = &$page_forms_buffer;
+        }
+        
+        public function CheckServerPost()
+        {
+            $form_names = array(
+                "delete_message",
+                "add_message",
+                "edit_message",
+                "post_comment",
+                "select_message");
+            
+            foreach ($form_names as $action)
+            {
+                if ($_SERVER['REQUEST_METHOD'] == "POST")
+                {
+                    if (isset($_POST[$action]))
+                    {
+                        $this->$action();
+                    }
+                }
+                if ($_SERVER['REQUEST_METHOD'] == "GET")
+                {
+                    if (isset($_GET[$action]))
+                    {
+                        $this->$action();
+                    }  
+                }
+            }
+        }
+        
+        private function add_message()
         {
             $message_data = new MessageData();
     
@@ -16,7 +51,7 @@
                     array($header, $brief, $text));
         }
         
-        public function DeleteMessage()
+        private function delete_message()
         {
             $message_data = new MessageData();
             
@@ -25,7 +60,7 @@
             $message_data->DeleteMessages("id", $message_id);
         }
         
-        public function EditMessage()
+        private function edit_message()
         {
             $message_data = new MessageData();
     
@@ -42,9 +77,9 @@
                     array("id='" . $id . "'"));
         }
         
-        public function PostComment()
+        private function post_comment()
         {
-            $comment_data = new CommentData();
+            $comment_data = new ObjectData("comments", "Comment");
     
             $comment_author = filter_input(INPUT_POST, "comment_author", 
                     FILTER_SANITIZE_STRING);
@@ -52,32 +87,16 @@
                     FILTER_SANITIZE_STRING);
             $comment_topic = filter_input(INPUT_POST, "comment_topic", 
                     FILTER_SANITIZE_STRING);
-            $comment_data->InsertComments(
-                    array("author", "text", "topic"),
-                    array($comment_author, $comment_text, $comment_topic));
+            
+            $comment = new Comment($comment_author, $comment_text, $comment_topic);
+            $comment_data->Insert($comment);
         }
         
-        public function CheckServerPost()
+        private function select_message()
         {
-            if($_SERVER['REQUEST_METHOD'] == "POST")  
-            {
-                if (isset($_POST["delete_message"]))
-                {
-                    $this->DeleteMessage();
-                }
-                if (isset($_POST["add_message"]))
-                {
-                    $this->AddMessage();
-                }
-                if (isset($_POST["edit_message"]))
-                {
-                    $this->EditMessage();
-                }
-                if (isset($_POST["post_comment"]))
-                {
-                    $this->PostComment();
-                }
-            }
+            $id = filter_input(INPUT_GET, "select_message", 
+            FILTER_SANITIZE_NUMBER_INT);
+            $this->page_forms_buffer['select_message']['id'] = $id;
         }
     }
 ?>
