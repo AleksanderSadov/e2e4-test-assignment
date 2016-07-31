@@ -2,12 +2,11 @@
     class="boxed_content action_button"
     id="add_button">
     <form
-        method='<?php echo $this->templates["add_button"]["method"]; ?>'
-        action='<?php echo $this->templates["add_button"]["action"]; ?>' >
+        method='GET'>
         <button
-            name='<?php echo $this->templates["add_button"]["name"]; ?>'
-            value='<?php echo $this->templates["add_button"]["value"]; ?>'>
-            <?php echo $this->templates["add_button"]["content"]; ?>
+            name='navigation'
+            value='add_message'>
+            Добавить <br /> сообщение
         </button>
     </form>
 </div>

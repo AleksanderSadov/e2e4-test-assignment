@@ -11,5 +11,5 @@
     $this->templates['editor']['text'] = "";
     $this->templates['editor']['submit_name'] = "add_message";
     $this->templates['editor']['submit_legend'] = "Добавить сообщение";
-    $this->templates['editor']['submit_value'] = "placeholder_for_user_name";
+    $this->templates['editor']['submit_value'] = "placeholder_for_author";
 ?>

@@ -3,17 +3,14 @@
     $this->title = "E2E4 TEST ASSIGNMENT";
     
     $message_data = new ObjectData("messages", "Message");
-    $id = $this->forms['select_message']['id'];
-    $message = $message_data->Select("id, header, text",
-            "id='" . $id . "'");
+    $id = filter_input(INPUT_GET, "id", 
+            FILTER_SANITIZE_NUMBER_INT);
     
-    $this->templates["add_button"]["content"]   = "Добавить <br /> сообщение";
-    $this->templates["add_button"]["method"]    = "GET";
-    $this->templates["add_button"]["action"]    = "index.php";
-    $this->templates["add_button"]["name"]      = "navigation";
-    $this->templates["add_button"]["value"]     = "add_message";
+    $this->templates["edit_button"]["message_id"] = $id;
+    $this->templates["delete_button"]["message_id"] = $id;
     
-    $all_messages = $message_data->Select("id, header, text", "id='" . $id . "'");
-    $this->requests["selected_message"] = $all_messages;
+    $messages = $message_data->Select("id, header, text", "id='" . $id . "'");
+    $selected_message = $messages[0];
+    $this->requests["selected_message"] = $selected_message;
 ?>
 

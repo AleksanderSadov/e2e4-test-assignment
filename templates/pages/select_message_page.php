@@ -26,6 +26,8 @@
                 <div id="sidebar_right" class="col-2" >
                     <?php $this->LoadTemplate("user_window"); ?>
                     <?php $this->LoadTemplate("add_button"); ?>
+                    <?php $this->LoadTemplate("edit_button"); ?>
+                    <?php $this->LoadTemplate("delete_button"); ?>
                 </div>
             </div>
             

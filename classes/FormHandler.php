@@ -26,13 +26,6 @@
                         $this->$action();
                     }
                 }
-                if ($_SERVER['REQUEST_METHOD'] == "GET")
-                {
-                    if (isset($_GET[$action]))
-                    {
-                        $this->$action();
-                    }  
-                }
             }
         }
         
@@ -53,16 +46,16 @@
         
         private function delete_message()
         {
-            $message_data = new MessageData();
+            $message_data = new ObjectData("messages", "Message");
             
             $message_id = filter_input(INPUT_POST, "delete_message", 
                 FILTER_SANITIZE_NUMBER_INT);
-            $message_data->DeleteMessages("id", $message_id);
+            $message_data->Delete("id='" . $message_id . "'");
         }
         
         private function edit_message()
         {
-            $message_data = new MessageData();
+            $message_data = new ObjectData("messages", "Message");
     
             $header = filter_input(INPUT_POST, "input_header", 
                     FILTER_SANITIZE_STRING);
@@ -72,9 +65,11 @@
                     FILTER_SANITIZE_STRING);
             $id = filter_input(INPUT_POST, "edit_message", 
                 FILTER_SANITIZE_NUMBER_INT);
-            $message_data->UpdateMessages(
-                    array("header" => $header, "brief" => $brief, "text" => $text),
-                    array("id='" . $id . "'"));
+            $message_data->Update(
+                    "header='" . $header . "', " .
+                    "brief='" . $brief . "', " .
+                    "text='" . $text . "' ",
+                    "id='" . $id . "'");             
         }
         
         private function post_comment()
@@ -90,13 +85,6 @@
             
             $comment = new Comment($comment_author, $comment_text, $comment_topic);
             $comment_data->Insert($comment);
-        }
-        
-        private function select_message()
-        {
-            $id = filter_input(INPUT_GET, "select_message", 
-            FILTER_SANITIZE_NUMBER_INT);
-            $this->page_forms_buffer['select_message']['id'] = $id;
         }
     }
 ?>

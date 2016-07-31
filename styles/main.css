@@ -67,6 +67,25 @@ a
     color: #0645FF;
 }
 
+.editor
+{
+    text-align: center;
+}
+
+.editor button
+{
+    display: inline-block;
+    margin-top: 1em;
+    width: 40%;
+    height: 3em;
+}
+
+.input_message
+{
+    font-size: 1em;
+    font-family: "Times New Roman";
+}
+
 #header img
 {
     opacity: 0.5;
@@ -122,4 +141,26 @@ a
 #add_button button:hover
 {
     background-color: #4CE050;
+}
+
+#edit_button button
+{
+    background-color: #06458D;
+    color: white;
+}
+
+#edit_button button:hover
+{
+    background-color: #0645FF;
+}
+
+#delete_button button
+{
+    background-color: crimson;
+    color: white;
+}
+
+#delete_button button:hover
+{
+    background-color: red;
 }

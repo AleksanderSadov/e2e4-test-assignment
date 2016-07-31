@@ -18,6 +18,6 @@ function main()
         }
 
     };
-    document.getElementById("delete_message").onclick = DeleteMessageButton;
+    document.getElementById("delete_message_button").onclick = DeleteMessageButton;
 }
 

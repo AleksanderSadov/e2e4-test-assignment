@@ -42,7 +42,14 @@
             $result = parent::CountRows($this->table_name);
             return $result[0][0];
         }
-       
+        
+        /** Retrieves requested items from database  
+         * @param string $selection     string of requested parts of object ("id, header, ...)"
+         * @param string $where_clause  specific selection ("id=5, ...")
+         * @param string $order_by      order by selected part of object ("id, ...")
+         * @param string $type_of_order asceding or descending order ("ASC" or "DISC")
+         * @return object return requested object(s) from database
+         */
         public function Select(
                 $selection,
                 $where_clause = NULL,
