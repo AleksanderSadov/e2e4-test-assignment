@@ -21,6 +21,7 @@
             <div class="row">
                 <div id="main_section" class="col-10" >
                     <?php $this->RequestItem("selected_message"); ?>
+                    <hr />
                     <?php $this->LoadTemplate("comment_field"); ?>
                     <?php $this->RequestItem("all_comments"); ?>
                 </div>

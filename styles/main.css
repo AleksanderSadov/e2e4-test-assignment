@@ -19,7 +19,13 @@
 [class*="col-"] 
 {
     float: left;
-    border: 1px solid red;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
 }
 
 .row::after {
@@ -36,6 +42,11 @@ div h1, div h2, div h3
 a 
 {
     text-decoration: none;
+}
+
+textarea
+{
+    width: 80%;
 }
 
 .boxed_content

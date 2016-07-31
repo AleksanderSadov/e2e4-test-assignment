@@ -8,4 +8,7 @@
     <?php isset($this->templates["message"]["text"]) ?
         $this->LoadTemplate("message_text") :
         null; ?>
+    <?php isset($this->templates["message"]["author"]) ?
+        $this->LoadTemplate("message_author") :
+        null; ?>
 </div>

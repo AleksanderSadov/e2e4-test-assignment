@@ -1,5 +1,4 @@
 <div class="comments boxed_content">
-    <hr />
     <p><b><?php echo $this->templates['comment']['author']; ?></b></p>
     <p><?php echo $this->templates['comment']['date']; ?></p>
     <textarea 

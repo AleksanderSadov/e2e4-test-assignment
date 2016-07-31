@@ -1,4 +1,3 @@
-<hr />
 <div
     class="comments boxed_content"
     id="comment_field">
