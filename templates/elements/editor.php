@@ -4,7 +4,7 @@
         method="POST"
         action='<?php echo ROOT_URL . "index.php";?>' >
         <fieldset>
-            <legend><?php echo $this->vars["editor_legend"]; ?> </legend>
+            <legend><?php echo $this->templates['editor']['legend']; ?> </legend>
             <h3>Введите заголовок</h3>
             <textarea 
                 id="input_header"
@@ -14,7 +14,7 @@
                 class="input_message"
                 required wrap="hard"
                 cols="100"
-                rows="5"><?php echo $this->vars["editor_header"]; ?></textarea>
+                rows="5"><?php echo $this->templates['editor']['header']; ?></textarea>
             <h3>Введите краткое содеражние</h3>
             <textarea
                 id="input_brief"
@@ -24,7 +24,7 @@
                 class="input_message"
                 required wrap="hard"
                 cols="100"
-                rows="10"><?php echo $this->vars["editor_brief"]; ?></textarea>
+                rows="10"><?php echo $this->templates['editor']['brief']; ?></textarea>
             <h3>Введите основной текст</h3>
             <textarea
                 id="input_text"
@@ -33,12 +33,14 @@
                 placeholder="Основной текст"
                 class="input_message"
                 required wrap="hard"
-                cols="100" rows="20"><?php echo $this->vars["editor_text"];?></textarea>
+                cols="100"
+                rows="20"><?php echo $this->templates['editor']['text'];?></textarea>
             <button
                 type="submit"
-                name='<?php echo $this->vars["editor_submit_name"]; ?>'
+                name='<?php echo $this->templates['editor']['submit_name']; ?>'
                 id="editor_submit_button"
-                value='<?php echo $this->vars["editor_submit_value"]; ?>' ><?php echo $this->vars["editor_submit_legend"]; ?>
+                value='<?php echo $this->templates['editor']['submit_value']; ?>' ><?php 
+                    echo $this->templates['editor']['submit_legend']; ?>
             </button>
         </fieldset>
     </form>

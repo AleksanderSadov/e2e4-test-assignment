@@ -7,18 +7,18 @@ class Message
     public $text;
     public $brief;
     
-    /** @param type $name Description
+    /**
      * 
-     * @param int $id
      * @param string $header
-     * @param string $text
      * @param string $brief
+     * @param string $text
+     * @param id $id
      */
     function __construct(
-            $id = null,
             $header = null,
+            $brief = null,
             $text = null,
-            $brief = null) 
+            $id = null) 
     {
         $this->id = $id;
         $this->header = $header;

@@ -11,21 +11,27 @@
         
         <div id="whole_page">
             
-            <div id="header_section">
-                <?php $this->LoadTemplate("header"); ?>
+            <div class="row">
+                <div id="header_section" class="col-12">
+                    <?php $this->LoadTemplate("header"); ?>
+                </div>
             </div>
             
-            <div id="main_section">
-                <?php $this->LoadTemplate("main_section_header"); ?>
-                <?php $this->LoadTemplate("editor"); ?>
+            <div class="row">
+                <div id="main_section" class="col-10" >
+                    <?php $this->LoadTemplate("main_section_header"); ?>
+                    <?php $this->LoadTemplate("editor"); ?>
+                </div>
+            
+                <div id="sidebar_right" class="col-2" >
+                    <?php $this->LoadTemplate("user_window"); ?>
+                </div>
             </div>
             
-            <div id="sidebar_right">
-                <?php $this->LoadTemplate("user_window"); ?>
-            </div>
-            
-            <div id="footer_section">
-                <?php $this->LoadTemplate("footer"); ?>
+            <div class="row">
+                <div id="footer_section" class="col-12">
+                    <?php $this->LoadTemplate("footer"); ?>
+                </div>
             </div>
             
         </div>

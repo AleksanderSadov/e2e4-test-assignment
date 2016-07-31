@@ -5,14 +5,17 @@
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
         <title><?php $this->title; ?></title>
         <?php $this->LoadStylesheet(); ?>
+        <?php $this->LoadScript("select_message_page"); ?>
     </head>
     
     <body>
         
         <div id="whole_page">
             
-            <div id="header_section">
-                <?php $this->LoadTemplate("header"); ?>
+            <div class="row">
+                <div id="header_section" class="col-12">
+                    <?php $this->LoadTemplate("header"); ?>
+                </div>
             </div>
             
             <div class="row">

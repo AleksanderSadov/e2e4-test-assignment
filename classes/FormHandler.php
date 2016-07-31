@@ -38,7 +38,7 @@
         
         private function add_message()
         {
-            $message_data = new MessageData();
+            $message_data = new ObjectData("messages", "Message");
     
             $header = filter_input(INPUT_POST, "input_header", 
                     FILTER_SANITIZE_STRING);
@@ -46,9 +46,9 @@
                     FILTER_SANITIZE_STRING);
             $text = filter_input(INPUT_POST, "input_text", 
                     FILTER_SANITIZE_STRING);
-            $message_data->InsertMessages(
-                    array("header", "brief", "text"),
-                    array($header, $brief, $text));
+            
+            $message = new Message($header, $brief, $text);
+            $message_data->Insert($message);
         }
         
         private function delete_message()
