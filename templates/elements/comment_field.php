@@ -1,5 +1,6 @@
+<hr />
 <div
-    class="comments"
+    class="comments boxed_content"
     id="comment_field">
     <form
     action=""
@@ -27,7 +28,7 @@
         <input
             type="hidden"
             name="comment_topic"
-            value="<?php echo $this->vars['id']; ?>" />
+            value="<?php echo $this->templates["comment_field"]["message_id"]; ?>" />
     </form>
 </div>
 

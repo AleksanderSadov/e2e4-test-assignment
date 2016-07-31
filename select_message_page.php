@@ -9,8 +9,14 @@
     $this->templates["edit_button"]["message_id"] = $id;
     $this->templates["delete_button"]["message_id"] = $id;
     
+    $this->templates["comment_field"]["message_id"] = $id;
+    
     $messages = $message_data->Select("id, header, text", "id='" . $id . "'");
     $selected_message = $messages[0];
     $this->requests["selected_message"] = $selected_message;
+    
+    $comment_data = new ObjectData("comments", "Comment");
+    $comments = $comment_data->Select("*", "topic='" . $id . "'", "date", "DESC");
+    $this->requests["all_comments"] = $comments;
 ?>
 
