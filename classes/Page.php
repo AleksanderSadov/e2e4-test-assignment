@@ -15,15 +15,15 @@
         {
             $this->config           = $config;
             $this->LoadFile($config);
-            $this->setMain_template($template);
+            $this->SetMain_template($template);
             $this->title            = $title;
             $this->templates        = array();
             $this->requests         = array();
             $this->forms            = array();
         }
         
-        function setMain_template($main_template) {
-            $this->main_template = "templates/pages/" . $main_template . ".php";
+        function SetMain_template($main_template) {
+            $this->main_template = ROOT_DIR . "templates/pages/" . $main_template . ".php";
         }
 
                 

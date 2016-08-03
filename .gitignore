@@ -1,2 +1,5 @@
 apache_error.log
 apache_error_log
+/nbproject/private/
+/nbproject/
+git_diff.txt

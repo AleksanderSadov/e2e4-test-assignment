@@ -1,5 +1,5 @@
 <?php 
-    $this->setMain_template("editor_page");
+    $this->SetMain_template("editor_page");
     $this->title = "E2E4 TEST ASSIGNMENT";
     
     $message_data = new ObjectData("messages", "Message");

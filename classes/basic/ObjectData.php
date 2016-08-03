@@ -6,10 +6,10 @@
         
         public function __construct($table_name, $object_name) 
         {
-            $host = "localhost";
-            $user = "e2e4-test-assignment";
-            $password = "0mfB4Vxs9jiOaYCf";
-            $database = "e2e4-test-assignment";
+            $host = DB_HOST;
+            $user = DB_USER;
+            $password = DB_PASSWORD;
+            $database = DB_NAME;
             $this->table_name = $table_name;
             $this->object_name = $object_name;
             parent::__construct($host, $user, $password, $database);

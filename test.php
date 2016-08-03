@@ -20,7 +20,7 @@
     spl_autoload_register("my_autoloader");
     
     $page = new Page();
-    $page->setMain_template("test_page");
+    $page->SetMain_template("test_page");
     $message_data = new ObjectData("messages", "Message");
     
     $page->templates["header"]["content"] = "TEST PAGE";
