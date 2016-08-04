@@ -6,13 +6,9 @@
         
         public function __construct($table_name, $object_name) 
         {
-            $host = DB_HOST;
-            $user = DB_USER;
-            $password = DB_PASSWORD;
-            $database = DB_NAME;
             $this->table_name = $table_name;
             $this->object_name = $object_name;
-            parent::__construct($host, $user, $password, $database);
+            parent::__construct();
         }
         
         private function ProcessResult($result) 

@@ -1,22 +1,16 @@
 <?php
-    // Login data for the database. Use this file in all models
     abstract class Database
     {
         private $credentials;
         private $sqli;
         
-        protected function __construct(
-                $host = "host",
-                $user = "user",
-                $password = "password",
-                $database = "database")
+        protected function __construct()
         {
             $this->credentials = array(
-            "host" => $host,
-            "user" => $user,
-            "password" => $password,
-            "database" => $database
-            );
+            "host" => DB_HOST,
+            "user" => DB_USER,
+            "password" => DB_PASSWORD,
+            "database" => DB_NAME);
             
             $this->sqli = new mysqli(
                     $this->credentials["host"],
@@ -25,7 +19,7 @@
                     $this->credentials["database"]);
             if ($this->sqli->connect_error)
             {
-                die("Connection to database is not established!");
+                die("Не удалось установить соединение с базой данных.");
             }
             $this->sqli->set_charset('utf8');
         }
