@@ -1,7 +1,7 @@
 <?php
-    $this->SetMain_template("main_page");
+    $this->main_template = "main_page";
     $this->title = "E2E4 TEST ASSIGNMENT";
-    $message_data = new ObjectData("messages", "Message");
+    $message_data = new MessagesTable();
     
     $this->templates["header"]["content"] = "E2E4 TEST ASSIGNMENT";
     

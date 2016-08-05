@@ -1,6 +1,5 @@
 <?php
-
-class Message
+class Message extends Entity
 {
     public $id;
     public $header;
@@ -21,11 +20,11 @@ class Message
             $author = null,
             $id = null) 
     {
-        $this->id = $id;
-        $this->header = $header;
-        $this->text = $text;
-        $this->brief = $brief;
-        $this->author = $author;
+        $this->id       = $id;
+        $this->header   = $header;
+        $this->text     = $text;
+        $this->brief    = $brief;
+        $this->author   = $author;
     }
 }
 ?>

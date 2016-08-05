@@ -1,5 +1,5 @@
 <?php
-    $this->SetMain_template("editor_page");
+    $this->main_template = "editor_page";
     $this->title = "E2E4 TEST ASSIGNMENT";
     
     $this->templates['main_section_header']['content'] = "Редактор сообщений";

@@ -1,8 +1,8 @@
 <?php
-    class ObjectData extends Database
+    abstract class Table extends Database
     {
-        private $table_name;
-        private $object_name;
+        protected $table_name;
+        protected $object_name;
         
         public function __construct($table_name, $object_name) 
         {

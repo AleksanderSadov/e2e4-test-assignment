@@ -1,32 +1,21 @@
 <?php
-    class Page
+    abstract class Page
     {
-        public $config;
         public $main_template;
         public $title;
         public $templates;
         public $requests;
         public $forms;
         
-        public function __construct(
-                $config             = "config.php",
-                $template           = "main_page",
-                $title              = "E2E4 TEST ASSIGNMENT") 
+        public function __construct($template = "main_page", $title = "Новая страница") 
         {
-            $this->config           = $config;
-            $this->LoadFile($config);
-            $this->SetMain_template($template);
+            $this->main_template    = $template;
             $this->title            = $title;
             $this->templates        = array();
             $this->requests         = array();
             $this->forms            = array();
         }
-        
-        function SetMain_template($main_template) {
-            $this->main_template = ROOT_DIR . "templates/pages/" . $main_template . ".php";
-        }
-
-                
+           
         public function RequestItem($request)
         {
             if (isset($this->requests[$request]) && !empty($this->requests[$request]))
@@ -94,21 +83,26 @@
         public function LoadTemplate($template)
         {
             $path = ROOT_DIR . "templates/elements/" . $template . ".php";
-            if (!$this->LoadFile($path))
+            if (file_exists($path))
             {
-                die("Не удалось загрузить элемент: " . $template);
+                require ($path);
+            }
+            else
+            {
+                die("Не удалось загрузить элемент: " . $path);
             }
         }
         
         public function Render()
         {
-            $this->LoadFile($this->main_template);
+            $main_template_path = ROOT_DIR . "templates/pages/" . $this->main_template . ".php";
+            require_once($main_template_path);
         }
         
         public function LoadStylesheet($stylesheet = "main")
         {
             $html = "<link type='text/css' rel='stylesheet'
-                href='styles/" . $stylesheet . ".css' />";
+                href='" . ROOT_URL . "styles/" . $stylesheet . ".css' />";
             echo $html;
         }
         
@@ -119,25 +113,15 @@
             echo $html;
         }
         
-        public function GoToNewPage($page_name)
+        public function LoadPage($path)
         {
-            $path = ROOT_DIR . $page_name . "_page.php";
-            file_exists($path) ?
-                require_once ($path) :
-                die("Данной страницы не существует: " . $path);
-        }
-        
-        protected function LoadFile($file_path)
-        {
-            if (file_exists($file_path) )
+            if (file_exists($path))
             {
-                include $file_path;
-                return true;
-            } 
-            else 
+                require_once ($path);
+            }
+            else
             {
-                die("Файл недоступен: " . $file_path);
-                return false;
+                die ("Не удалось перейти на страницу: " . $path);
             }
         }
     }

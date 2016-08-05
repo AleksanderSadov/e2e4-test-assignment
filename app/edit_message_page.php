@@ -1,8 +1,8 @@
 <?php 
-    $this->SetMain_template("editor_page");
+    $this->main_template = "editor_page";
     $this->title = "E2E4 TEST ASSIGNMENT";
     
-    $message_data = new ObjectData("messages", "Message");
+    $message_data = new MessagesTable();
     $id = filter_input(INPUT_GET, "id", 
         FILTER_SANITIZE_NUMBER_INT);
     $messages = $message_data->Select(

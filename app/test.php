@@ -21,7 +21,7 @@
     
     $page = new Page();
     $page->SetMain_template("test_page");
-    $message_data = new ObjectData("messages", "Message");
+    $message_data = new MessagesTable();
     
     $page->templates["header"]["content"] = "TEST PAGE";
     
