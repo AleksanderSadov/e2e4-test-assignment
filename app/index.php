@@ -1,8 +1,8 @@
 <?php
     // Load config
-    if (file_exists("config.php"))
+    if (file_exists("app/config.php"))
     {
-        require_once ("config.php");
+        require_once ("app/config.php");
     }
     else
     {
