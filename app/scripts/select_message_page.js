@@ -16,7 +16,6 @@ function main()
         {
             alert("Нельзя удалить пост, в котором были оставлены комментарии");
         }
-
     };
     document.getElementById("delete_message_button").onclick = DeleteMessageButton;
 }

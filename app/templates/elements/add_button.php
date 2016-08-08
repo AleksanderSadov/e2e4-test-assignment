@@ -3,10 +3,17 @@
     id="add_button">
     <form
         method='GET'>
-        <button
-            name='navigation'
-            value='add_message'>
+        <button>
             Добавить <br /> сообщение
         </button>
+        
+        <input
+            type="hidden"
+            name="controller"
+            value="AddMessage" />
+        <input
+            type="hidden"
+            name="action"
+            value="View" />
     </form>
 </div>

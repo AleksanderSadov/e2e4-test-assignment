@@ -2,7 +2,7 @@
     class="editor">
     <form 
         method="POST"
-        action='<?php echo ROOT_URL . "index.php";?>' >
+        action="<?php echo $this->templates['editor']['form_action']; ?>" >
         <fieldset>
             <legend><?php echo $this->templates['editor']['legend']; ?> </legend>
             <h3>Введите заголовок</h3>
@@ -35,13 +35,10 @@
                 required wrap="hard"
                 cols="100"
                 rows="20"><?php echo $this->templates['editor']['text'];?></textarea>
-            <button
-                type="submit"
-                name='<?php echo $this->templates['editor']['submit_name']; ?>'
-                id="editor_submit_button"
-                value='<?php echo $this->templates['editor']['submit_value']; ?>' ><?php 
-                    echo $this->templates['editor']['submit_legend']; ?>
+            <button id="editor_submit_button">
+                <?php echo $this->templates['editor']['submit_legend']; ?>
             </button>
+            
         </fieldset>
     </form>
 </div>

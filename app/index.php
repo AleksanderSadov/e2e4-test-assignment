@@ -45,29 +45,7 @@
     }
     spl_autoload_register("my_autoloader");
     
-    $page = new MainPage();
-    $form_controller = new FormController();
-    $navigation_controller = new NavigationController();
-    
-    // process submitted forms
-    $form_controller->CheckServerPost();
-    
-    // navigation controller determines required data computation
-    if (isset($_GET['navigation']))
-    {
-        $page->LoadPage($navigation_controller->FindPage("navigation"));
-    }
-    else
-    {
-        $page->LoadPage(ROOT_DIR . "main_page.php");
-    }
-    
-    // header and footer are the same for all pages
-    $page->templates["header"]["content"] = "E2E4 TEST ASSIGNMENT";
-    $page->templates["footer"]["content"] = "Разработчик: Александр Садов<br />" . 
-            "Последние изменения: " .
-            date(DATE_RFC850, filemtime(__FILE__));
-    
-    // load page template
-    $page->Render();
+    // dispatch query
+    $controller_front = new ControllerFront();
+    $controller_front->Dispatch();
 ?>

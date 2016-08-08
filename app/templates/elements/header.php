@@ -2,7 +2,7 @@
     class="row"
     id="header">
         <div class="col-1">
-        <a href="index.php" >
+        <a href="index.php?controller=Main&action=View" >
             <img 
                 src='<?php echo ROOT_URL . "images/header.png";?>'
                 alt="home_index" /></a>
