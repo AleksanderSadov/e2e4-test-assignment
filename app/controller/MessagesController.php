@@ -46,8 +46,7 @@ class MessagesController
         $message_data = new MessagesTable();
         $comment_data = new CommentsTable();
         
-        $selected_message = $message_data->Get(['id', 'header', 'text'], $id);
-        $comments = $comment_data->GetAllComments($id);
+        $selected_message = $message_data->Get(['id', 'header', 'text', 'comments'], $id);
         
         $page->main_template = "select_message_page";
         $page->title = "E2E4 TEST ASSIGNMENT";
@@ -55,7 +54,7 @@ class MessagesController
         $page->templates["delete_button"]["message_id"] = $id;
         $page->templates["comment_field"]["message_id"] = $id;
         $page->requests["selected_message"] = $selected_message;
-        $page->requests["all_comments"] = $comments;
+        $page->requests["all_comments"] = $selected_message->comments;
         $page->templates["header"]["content"] = "E2E4 TEST ASSIGNMENT";
         $page->templates["footer"]["content"] = "Разработчик: Александр Садов<br />" . 
             "Последние изменения: " .

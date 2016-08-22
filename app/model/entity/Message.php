@@ -5,6 +5,7 @@ class Message extends Entity
     public $header;
     public $text;
     public $brief;
+    public $comments;
     
     /**
      * 
