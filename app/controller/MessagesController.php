@@ -44,7 +44,6 @@ class MessagesController
         
         $page = new MainPage();
         $message_data = new MessagesTable();
-        $comment_data = new CommentsTable();
         
         $selected_message = $message_data->Get(['id', 'header', 'text', 'comments'], $id);
         
