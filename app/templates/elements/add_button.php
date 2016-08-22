@@ -10,10 +10,10 @@
         <input
             type="hidden"
             name="controller"
-            value="AddMessage" />
+            value="Messages" />
         <input
             type="hidden"
             name="action"
-            value="View" />
+            value="Add" />
     </form>
 </div>

@@ -1,9 +1,10 @@
 <?php
     // root path and url
     $root_dir = __DIR__ . "/";
-    $root_url = !empty($_SERVER['HTTPS']) ? "https://" : "http://";
+    /*$root_url = !empty($_SERVER['HTTPS']) ? "https://" : "http://";
     $root_url .= $_SERVER['HTTP_HOST'] . "/";
-    $root_url .= "aleksander.sadov/e2e4-test-assignment/app/";
+    $root_url .= "aleksander.sadov/e2e4-test-assignment/app/";*/
+    $root_url = "app/";
     define("ROOT_URL", $root_url);
     define("ROOT_DIR", $root_dir);
     

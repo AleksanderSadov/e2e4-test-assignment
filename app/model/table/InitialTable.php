@@ -1,9 +1,9 @@
 <?php
 class InitialTable extends Table
 {
-    public function __construct($table_name, $object_name) 
+    public function __construct() 
     {
-        parent::__construct($table_name, $object_name);
+        parent::__construct();
     }
 }
 ?>

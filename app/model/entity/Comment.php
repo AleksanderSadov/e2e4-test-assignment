@@ -7,26 +7,13 @@ class Comment extends Entity
     public $id;
     public $topic;
 
-    /** @param
+    /**
      * 
-     * @param string     $text
-     * @param string     $author
-     * @param date       $date
-     * @param int        $id
-     * @param int        $topic
+     * @param array fields data
      */
-    function __construct(
-            $author = null,
-            $text = null,
-            $topic = null,
-            $date = null,
-            $id = null) 
+    function __construct(array $data = null)
     {
-        $this->text     = $text;
-        $this->author   = $author;
-        $this->date     = $date;
-        $this->id       = $id;
-        $this->topic    = $topic;
+        parent::__construct($this, $data);
     }
 }
 ?>

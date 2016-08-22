@@ -110,7 +110,7 @@
                 $new_values,
                 $selection)
         {
-            $sql = "UPDATE " . $table_name . " SET " . $new_values . 
+            $sql = "UPDATE " . $table_name . " SET " . join(", ", $new_values) . 
                    " WHERE " . $selection . ";";
             return $this->SqlQuery($sql);
         }

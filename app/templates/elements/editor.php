@@ -8,7 +8,7 @@
             <h3>Введите заголовок</h3>
             <textarea 
                 id="input_header"
-                name="input_header"
+                name="header"
                 maxlength="200"
                 placeholder="Заголовок"
                 class="input_message"
@@ -18,7 +18,7 @@
             <h3>Введите краткое содеражние</h3>
             <textarea
                 id="input_brief"
-                name="input_brief"
+                name="brief"
                 maxlength="500"
                 placeholder="Краткое содержание"
                 class="input_message"
@@ -28,7 +28,7 @@
             <h3>Введите основной текст</h3>
             <textarea
                 id="input_text"
-                name="input_text"
+                name="text"
                 maxlength="30000"
                 placeholder="Основной текст"
                 class="input_message"

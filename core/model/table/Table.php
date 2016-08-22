@@ -4,10 +4,10 @@
         protected $table_name;
         protected $object_name;
         
-        public function __construct($table_name, $object_name) 
+        public function __construct() 
         {
-            $this->table_name = $table_name;
-            $this->object_name = $object_name;
+            $this->table_name = strtolower(preg_replace("/Table/", "", get_class($this)));
+            $this->object_name = rtrim(preg_replace("/Table/", "", get_class($this)), "s");
             parent::__construct();
         }
         
@@ -61,6 +61,20 @@
             return $this->ProcessResult($result);
         }
         
+        public function Get(array $fields, $id = null)
+        {
+            $selection = join(", ", $fields);
+            if (isset($id))
+            {
+                $where = "id='$id'";
+                return $this->Select($selection, $where, 'id', 'DESC')[0];
+            }
+            else
+            {
+                return $this->Select($selection, null, 'id', 'DESC');
+            }
+        }
+        
         public function Insert($object)
         {
             $columns = array();
@@ -84,8 +98,17 @@
             return parent::DeleteRows($this->table_name, $selection);
         }
         
-        public function Update($new_values, $selection)
+        public function Update($id, $data)
         {
+            $new_values = [];
+            foreach ($data as $property => $value)
+            {
+                if (isset($value))
+                {
+                    array_push($new_values, "$property='$value'");
+                }
+            }
+            $selection = "id='$id'";
             return parent::UpdateRows($this->table_name, $new_values, $selection);
         }
     }

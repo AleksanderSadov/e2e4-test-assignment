@@ -1,14 +1,14 @@
 <?php
 
-class ControllerFront extends Controller
+class FrontController extends Controller
 {
     public function Dispatch()
     {
-        $controller_name = "Controller";
-        $controller_name .= filter_input(
+        $controller_name = filter_input(
             INPUT_GET,
             "controller",
             FILTER_SANITIZE_STRING);
+        $controller_name .= "Controller";
         $action = filter_input(
             INPUT_GET,
             "action",
@@ -21,8 +21,8 @@ class ControllerFront extends Controller
         }
         else
         {
-            $controller = new ControllerMain();
-            $controller->View();
+            $controller = new MessagesController();
+            $controller->Index();
         }
     }
 }

@@ -8,23 +8,11 @@ class Message extends Entity
     
     /**
      * 
-     * @param string $header
-     * @param string $brief
-     * @param string $text
-     * @param id $id
+     * @param array fields data
      */
-    function __construct(
-            $header = null,
-            $brief = null,
-            $text = null,
-            $author = null,
-            $id = null) 
+    function __construct(array $data = null)
     {
-        $this->id       = $id;
-        $this->header   = $header;
-        $this->text     = $text;
-        $this->brief    = $brief;
-        $this->author   = $author;
+        parent::__construct($this, $data);
     }
 }
 ?>

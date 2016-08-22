@@ -10,11 +10,11 @@
         <input
             type="hidden"
             name="controller"
-            value="EditMessage" />
+            value="Messages" />
         <input
             type="hidden"
             name="action"
-            value="View" />
+            value="Edit" />
         <input
             type="hidden"
             name="id"

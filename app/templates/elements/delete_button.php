@@ -13,7 +13,7 @@
         <input
             type="hidden"
             name="controller"
-            value="SelectMessage" />
+            value="Messages" />
         <input
             type="hidden"
             name="action"
