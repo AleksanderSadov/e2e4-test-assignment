@@ -45,7 +45,7 @@ class MessagesController
         $page = new MainPage();
         $message_data = new MessagesTable();
         
-        $selected_message = $message_data->Get(['id', 'header', 'text', 'comments'], $id);
+        $selected_message = $message_data->GetWithComments(['id', 'header', 'text'], $id);
         
         $page->main_template = "select_message_page";
         $page->title = "E2E4 TEST ASSIGNMENT";
