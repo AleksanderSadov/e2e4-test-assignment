@@ -23,13 +23,13 @@ class FrontController extends Controller
         
         if (class_exists($controller_name) && method_exists($controller_name, $action))
         {
-            $controller = new $controller_name();
+            $controller = new $controller_name($_POST, $_GET);
             $controller->$action();
         }
         else
         {
             $default_controller_name = $default_controller . "Controller";
-            $controller = new $default_controller_name();
+            $controller = new $default_controller_name($_POST, $_GET);
             $controller->$default_action();
         }
     }

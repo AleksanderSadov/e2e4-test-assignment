@@ -1,6 +1,6 @@
 <?php
 
-class MessagesController 
+class MessagesController extends Controller
 {
     public function Index()
     {
