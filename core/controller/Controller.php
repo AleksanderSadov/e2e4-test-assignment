@@ -3,6 +3,7 @@
 abstract class Controller
 {
     public $data;
+    public $view;
     
     public function __construct(array $data_post, array $data_get) 
     {

@@ -7,8 +7,9 @@ class FrontController extends Controller
      * 
      * @param string $default_controller default controller name
      * @param string $default_action default action name
+     * @param string $view_name name of the developer view class
      */
-    public function Dispatch($default_controller, $default_action)
+    public function Dispatch($default_controller, $default_action, $view_name)
     {
         $controller_name = "";
         if (isset($this->data['get']['controller']))
@@ -24,12 +25,14 @@ class FrontController extends Controller
         if (class_exists($controller_name) && method_exists($controller_name, $action))
         {
             $controller = new $controller_name($_POST, $_GET);
+            $controller->view = new $view_name();
             $controller->$action();
         }
         else
         {
             $default_controller_name = $default_controller . "Controller";
             $controller = new $default_controller_name($_POST, $_GET);
+            $controller->view = new $view_name();
             $controller->$default_action();
         }
     }
