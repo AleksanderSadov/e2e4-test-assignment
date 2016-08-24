@@ -47,5 +47,5 @@
     
     // dispatch query
     $controller_front = new FrontController();
-    $controller_front->Dispatch();
+    $controller_front->Dispatch("Messages", "Index");
 ?>

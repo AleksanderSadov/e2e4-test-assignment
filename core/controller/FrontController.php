@@ -2,7 +2,13 @@
 
 class FrontController extends Controller
 {
-    public function Dispatch()
+    /**
+     * Invokes required actions of controllers
+     * 
+     * @param string $default_controller
+     * @param string $default_action
+     */
+    public function Dispatch($default_controller, $default_action)
     {
         $controller_name = filter_input(
             INPUT_GET,
@@ -21,8 +27,9 @@ class FrontController extends Controller
         }
         else
         {
-            $controller = new MessagesController();
-            $controller->Index();
+            $default_controller_name = $default_controller . "Controller";
+            $controller = new $default_controller_name();
+            $controller->$default_action();
         }
     }
 }
