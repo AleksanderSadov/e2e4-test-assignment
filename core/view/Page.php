@@ -95,8 +95,14 @@
         
         public function Render()
         {
-            $main_template_path = ROOT_DIR . "templates/pages/" . $this->main_template . ".php";
-            require_once($main_template_path);
+            $layout_path = ROOT_DIR . "templates/layout.php";
+            require_once($layout_path);
+        }
+        
+        public function LoadContent()
+        {
+            $content_view_path = ROOT_DIR . "templates/" . $this->main_template . ".php";
+            require_once($content_view_path);
         }
         
         public function LoadStylesheet($stylesheet = "main")
@@ -106,7 +112,7 @@
             echo $html;
         }
         
-        public function LoadScript($script = "main_page")
+        public function LoadScript($script = "main")
         {
             $html = "<script src='" . ROOT_URL . "scripts/" . 
                     $script . ".js'></script>";

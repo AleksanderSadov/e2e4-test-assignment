@@ -10,7 +10,7 @@ class MessagesController
         $all_messages = $message_data->Get(['id', 'header', 'brief']);
         $messages_count = $message_data->Count();
         
-        $page->main_template = "main_page";
+        $page->main_template = "messages/index";
         $page->title = "E2E4 TEST ASSIGNMENT";
         $page->templates["header"]["content"] = "E2E4 TEST ASSIGNMENT";
         $page->templates["main_section_header"]["content"] = "Всего сообщений: $messages_count";
@@ -47,7 +47,7 @@ class MessagesController
         
         $selected_message = $message_data->GetWithComments(['id', 'header', 'text'], $id);
         
-        $page->main_template = "select_message_page";
+        $page->main_template = "messages/view";
         $page->title = "E2E4 TEST ASSIGNMENT";
         $page->templates["edit_button"]["message_id"] = $id;
         $page->templates["delete_button"]["message_id"] = $id;
@@ -94,7 +94,7 @@ class MessagesController
         
         $page = new MainPage();
         
-        $page->main_template = "editor_page";
+        $page->main_template = "messages/add";
         $page->title = "E2E4 TEST ASSIGNMENT";
         $page->templates['main_section_header']['content'] = "Редактор сообщений";
         $page->templates['editor']['legend'] = "Добавление сообщения";
@@ -140,7 +140,7 @@ class MessagesController
         
         $selected_message = $message_data->Get(['id', 'header', 'brief', 'text'], $id);
 
-        $page->main_template = "editor_page";
+        $page->main_template = "messages/edit";
         $page->title = "E2E4 TEST ASSIGNMENT";
         $page->templates['main_section_header']['content'] = "Редактор сообщений";
         $page->templates['editor']['form_action'] = 
