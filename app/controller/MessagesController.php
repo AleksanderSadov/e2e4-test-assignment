@@ -28,14 +28,7 @@ class MessagesController extends Controller
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
             $comment_data = new CommentsTable();
-
-            $data = [];
-            foreach($_POST as $field => $value)
-            {
-                $data[$field] = filter_input(INPUT_POST, "$field", FILTER_SANITIZE_STRING);
-            }
-
-            $comment = new Comment($data);
+            $comment = new Comment($this->data['post']);
             $comment_data->Insert($comment);       
         }
         
@@ -64,13 +57,8 @@ class MessagesController extends Controller
     
     public function Delete()
     {
-        $message_id = filter_input(INPUT_GET, "id", 
-            FILTER_SANITIZE_NUMBER_INT);
-        
         $message_data = new MessagesTable();
-        
-        $message_data->Delete("id='$message_id'");
-        
+        $message_data->Delete("id='{$this->data['get']['id']}'");
         header('Location: index.php?controller=Messages&action=Index');
     }
     
@@ -79,16 +67,8 @@ class MessagesController extends Controller
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
             $message_data = new MessagesTable();
-            
-            $data = [];
-            foreach($_POST as $field => $value)
-            {
-                $data[$field] = filter_input(INPUT_POST, "$field", FILTER_SANITIZE_STRING);
-            }
-
-            $message = new Message($data);
+            $message = new Message($this->data['post']);
             $message_data->Insert($message);
-
             header("Location: index.php?controller=Messages&action=Index");            
         }
         
@@ -117,34 +97,20 @@ class MessagesController extends Controller
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
             $message_data = new MessagesTable();
-
-            $data = [];
-            foreach($_POST as $field => $value)
-            {
-                $data[$field] = filter_input(INPUT_POST, "$field", FILTER_SANITIZE_STRING);
-            }
-            $id = filter_input(INPUT_GET, "id", 
-                FILTER_SANITIZE_NUMBER_INT);
-
-            $message_data->Update($id, $data);
-
-            header("Location: index.php?controller=Messages&action=View&id='$id'");
+            $message_data->Update($this->data['get']['id'], $this->data['post']);
+            header("Location: index.php?controller=Messages&action=View&id='{$this->data['get']['id']}'");
         }
         
         $page = new MainPage();
 
         $message_data = new MessagesTable();
-        
-        $id = filter_input(INPUT_GET, "id", 
-            FILTER_SANITIZE_NUMBER_INT);
-        
-        $selected_message = $message_data->Get(['id', 'header', 'brief', 'text'], $id);
+        $selected_message = $message_data->Get(['id', 'header', 'brief', 'text'], $this->data['get']['id']);
 
         $page->main_template = "messages/edit";
         $page->title = "E2E4 TEST ASSIGNMENT";
         $page->templates['main_section_header']['content'] = "Редактор сообщений";
         $page->templates['editor']['form_action'] = 
-                "index.php?controller=Messages&action=Edit&id='$id'";
+                "index.php?controller=Messages&action=Edit&id={$this->data['get']['id']}";
         $page->templates['editor']['legend'] = "Редактирование сообщения";
         $page->templates['editor']['header'] = $selected_message->header;
         $page->templates['editor']['brief'] = $selected_message->brief;
