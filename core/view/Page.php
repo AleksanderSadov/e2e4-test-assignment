@@ -5,7 +5,6 @@
         public $title;
         public $templates;
         public $requests;
-        public $forms;
         
         public function __construct($template = "main_page", $title = "Новая страница") 
         {
@@ -13,7 +12,6 @@
             $this->title            = $title;
             $this->templates        = array();
             $this->requests         = array();
-            $this->forms            = array();
         }
            
         public function RequestItem($request)

@@ -46,6 +46,6 @@
     spl_autoload_register("my_autoloader");
     
     // dispatch query
-    $controller_front = new FrontController();
+    $controller_front = new FrontController($_POST, $_GET);
     $controller_front->Dispatch("Messages", "Index");
 ?>

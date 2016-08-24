@@ -5,20 +5,21 @@ class FrontController extends Controller
     /**
      * Invokes required actions of controllers
      * 
-     * @param string $default_controller
-     * @param string $default_action
+     * @param string $default_controller default controller name
+     * @param string $default_action default action name
      */
     public function Dispatch($default_controller, $default_action)
     {
-        $controller_name = filter_input(
-            INPUT_GET,
-            "controller",
-            FILTER_SANITIZE_STRING);
-        $controller_name .= "Controller";
-        $action = filter_input(
-            INPUT_GET,
-            "action",
-            FILTER_SANITIZE_STRING);
+        $controller_name = "";
+        if (isset($this->data['get']['controller']))
+        {
+            $controller_name = $this->data['get']['controller'] . "Controller"; 
+        }
+        $action = "";
+        if (isset($this->data['get']['action']))
+        {
+            $action = $this->data['get']['action']; 
+        }
         
         if (class_exists($controller_name) && method_exists($controller_name, $action))
         {
