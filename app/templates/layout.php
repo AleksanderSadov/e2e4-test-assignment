@@ -3,7 +3,7 @@
     
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-        <title><?php $this->title; ?></title>
+        <title><?php echo $this->title; ?></title>
         <?php $this->LoadStylesheet(); ?>
         <?php $this->LoadScript(); ?>
     </head>

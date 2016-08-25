@@ -68,8 +68,8 @@
         
         public function Insert($object)
         {
-            $columns = array();
-            $values = array();
+            $columns = [];
+            $values = [];
             foreach ($object as $property => $value)
             {
                 if (isset($value))
@@ -78,29 +78,32 @@
                     array_push($values, $value);
                 }
             }
+            $columns = join(", ", $columns);
+            $values = "'" . join("', '", $values) . "'";
             return parent::InsertRows(
                     $this->table_name,
                     $columns,
                     $values);
         }
         
-        public function Delete($selection)
+        public function Delete($id)
         {
-            return parent::DeleteRows($this->table_name, $selection);
+            return parent::DeleteRows($this->table_name, "id='{$id}'");
         }
         
         public function Update($id, $data)
         {
-            $new_values = [];
+            $set = [];
             foreach ($data as $property => $value)
             {
                 if (isset($value))
                 {
-                    array_push($new_values, "$property='$value'");
+                    array_push($set, "$property='$value'");
                 }
             }
-            $selection = "id='$id'";
-            return parent::UpdateRows($this->table_name, $new_values, $selection);
+            $set = join(", ", $set);
+            $where = "id='$id'";
+            return parent::UpdateRows($this->table_name, $set, $where);
         }
     }
 ?>

@@ -62,56 +62,57 @@
         
         protected function CountRows($table_name)
         {
-            $sql = "SELECT COUNT(*) FROM " . $table_name . ";";
+            $sql = "SELECT COUNT(*) FROM $table_name;";
             return $this->SqlQuery($sql);
         }
         
         protected function SelectRows(
                 $table_name,
-                $selection,
-                $where_clause = NULL,
+                $select,
+                $where = NULL,
                 $order_by = NULL,
                 $type_of_order = NULL)
         {
-            $sql =  "SELECT " . $selection .
-                    " FROM " . $table_name;
-            $sql .= !empty($where_clause) ?
-                    " WHERE " . $where_clause : "";
+            $sql =  "SELECT $select " .
+                    "FROM $table_name ";
+            $sql .= !empty($where) ?
+                    "WHERE $where " : "";
             $sql .= !empty($order_by) ?
-                    " ORDER BY " . $order_by : "";
+                    "ORDER BY $order_by " : "";
             $sql .= !empty($type_of_order) ?
-                    " " . $type_of_order : "";
+                    "$type_of_order" : "";
             $sql .= ";";
             return $this->SqlQuery($sql);
         }
         
         protected function InsertRows(
                 $table_name,
-                array $columns,
-                array $values)
+                $columns,
+                $values)
         {
-            $sql = "INSERT INTO " . $table_name . 
-                    " (" . join(", ", $columns) . ")" .
-                    " VALUES ('" . join("', '", $values) . "');";
+            $sql = "INSERT INTO $table_name " . 
+                   "({$columns})" .
+                   "VALUES ({$values});";
             return $this->SqlQuery($sql);
         }
         
         protected function DeleteRows(
                 $table_name,
-                $selection)
+                $where)
         {
-            $sql = "DELETE FROM " . $table_name .
-                    " WHERE " . $selection . ";";
+            $sql = "DELETE FROM $table_name " .
+                   "WHERE $where;";
             return $this->SqlQuery($sql);
         }
         
         protected function UpdateRows(
                 $table_name,
-                $new_values,
-                $selection)
+                $set,
+                $where)
         {
-            $sql = "UPDATE " . $table_name . " SET " . join(", ", $new_values) . 
-                   " WHERE " . $selection . ";";
+            $sql = "UPDATE $table_name " . 
+                   "SET $set " . 
+                   "WHERE $where;";
             return $this->SqlQuery($sql);
         }
         

@@ -33,7 +33,7 @@ class MessagesController extends Controller
     public function Delete()
     {
         $message_data = new MessagesTable();
-        $message_data->Delete("id='{$this->data['get']['id']}'");
+        $message_data->Delete($this->data['get']['id']);
         header('Location: index.php?controller=Messages&action=Index');
     }
     
