@@ -6,10 +6,8 @@
         public $templates;
         public $requests;
         
-        public function __construct($template = "main_page", $title = "Новая страница") 
+        public function __construct() 
         {
-            $this->main_template    = $template;
-            $this->title            = $title;
             $this->templates        = array();
             $this->requests         = array();
         }

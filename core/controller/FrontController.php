@@ -11,10 +11,10 @@ class FrontController extends Controller
      */
     public function Dispatch($default_controller, $default_action, $view_name)
     {
-        $controller_name = "";
+        $controller_class = "";
         if (isset($this->data['get']['controller']))
         {
-            $controller_name = $this->data['get']['controller'] . "Controller"; 
+            $controller_class = $this->data['get']['controller'] . "Controller"; 
         }
         $action = "";
         if (isset($this->data['get']['action']))
@@ -22,18 +22,16 @@ class FrontController extends Controller
             $action = $this->data['get']['action']; 
         }
         
-        if (class_exists($controller_name) && method_exists($controller_name, $action))
+        if (!class_exists($controller_class) || !method_exists($controller_class, $action))
         {
-            $controller = new $controller_name();
-            $controller->view = new $view_name();
-            $controller->$action();
+            $controller_class = $default_controller . "Controller";
+            $action = $default_action;
         }
-        else
-        {
-            $default_controller_name = $default_controller . "Controller";
-            $controller = new $default_controller_name();
-            $controller->view = new $view_name();
-            $controller->$default_action();
-        }
+        
+        $controller = new $controller_class();
+        $controller->view = new $view_name();
+        $controller->view->main_template = strtolower(preg_replace("/Controller/", "", $controller_class)) . "/" . strtolower($action);
+        $controller->$action();
+        $controller->view->Render();
     }
 }
