@@ -8,7 +8,7 @@
                 alt="home_index" /></a>
         </div>
         <div class="col-11">
-            <h1><?php echo $this->templates["header"]["content"]; ?></h1>
+            <h1><?php echo "E2E4 TEST ASSIGNMENT"; ?></h1>
         </div>
 </div>
 <hr />

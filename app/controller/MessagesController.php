@@ -12,13 +12,8 @@ class MessagesController extends Controller
         
         $page->main_template = "messages/index";
         $page->title = "E2E4 TEST ASSIGNMENT";
-        $page->templates["header"]["content"] = "E2E4 TEST ASSIGNMENT";
         $page->templates["main_section_header"]["content"] = "Всего сообщений: $messages_count";
         $page->requests["all_messages"] = $all_messages;
-        $page->templates["header"]["content"] = "E2E4 TEST ASSIGNMENT";
-        $page->templates["footer"]["content"] = "Разработчик: Александр Садов<br />" . 
-            "Последние изменения: " .
-            date(DATE_RFC850, filemtime(__FILE__));
         
         $page->Render();
     }
@@ -47,10 +42,6 @@ class MessagesController extends Controller
         $page->templates["comment_field"]["message_id"] = $id;
         $page->requests["selected_message"] = $selected_message;
         $page->requests["all_comments"] = $selected_message->comments;
-        $page->templates["header"]["content"] = "E2E4 TEST ASSIGNMENT";
-        $page->templates["footer"]["content"] = "Разработчик: Александр Садов<br />" . 
-            "Последние изменения: " .
-            date(DATE_RFC850, filemtime(__FILE__));
         
         $page->Render();
     }
@@ -84,10 +75,6 @@ class MessagesController extends Controller
         $page->templates['editor']['header'] = "";
         $page->templates['editor']['brief'] = "";
         $page->templates['editor']['text'] = "";
-        $page->templates["header"]["content"] = "E2E4 TEST ASSIGNMENT";
-        $page->templates["footer"]["content"] = "Разработчик: Александр Садов<br />" . 
-            "Последние изменения: " .
-            date(DATE_RFC850, filemtime(__FILE__));
         
         $page->Render();
     }
@@ -116,10 +103,6 @@ class MessagesController extends Controller
         $page->templates['editor']['brief'] = $selected_message->brief;
         $page->templates['editor']['text'] = $selected_message->text;
         $page->templates['editor']['submit_legend'] = "Редактировать сообщение";
-        $page->templates["header"]["content"] = "E2E4 TEST ASSIGNMENT";
-        $page->templates["footer"]["content"] = "Разработчик: Александр Садов<br />" . 
-            "Последние изменения: " .
-            date(DATE_RFC850, filemtime(__FILE__));
         
         $page->Render();        
     }
