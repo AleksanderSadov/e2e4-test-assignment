@@ -1,9 +1,13 @@
 <div class="row">
     <div id="main_section" class="col-10" >
-        <?php $this->RequestItem("selected_message"); ?>
+        <?php $this->LoadTemplate("message_header"); ?>
+        <?php $this->LoadTemplate("message_text"); ?>
         <hr />
         <?php $this->LoadTemplate("comment_field"); ?>
-        <?php $this->RequestItem("all_comments"); ?>
+        <?php foreach($this->templates['comments'] as $comment): ?>
+            <?php $this->templates['comment'] = $comment; ?>
+            <?php $this->LoadTemplate("comment"); ?>
+        <?php endforeach; ?>
     </div>
 
     <div id="sidebar_right" class="col-2" >

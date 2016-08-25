@@ -1,7 +1,11 @@
 <div class="row">
     <div id="main_section" class="col-10" >
         <?php $this->LoadTemplate("main_section_header"); ?>
-        <?php $this->RequestItem("all_messages"); ?>
+        <?php foreach($this->templates['messages'] as $message): ?>
+            <?php $this->templates['message'] = $message; ?>
+            <?php $this->LoadTemplate("message_header"); ?>
+            <?php $this->LoadTemplate("message_brief"); ?>
+        <?php endforeach; ?>
     </div>
 
     <div id="sidebar_right" class="col-2" >

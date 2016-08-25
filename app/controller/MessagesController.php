@@ -9,7 +9,7 @@ class MessagesController extends Controller
         $messages_count = $message_data->Count();
         
         $this->view->templates["main_section_header"]["content"] = "Всего сообщений: $messages_count";
-        $this->view->requests["all_messages"] = $all_messages;
+        $this->view->templates["messages"] = $all_messages;
     }
     
     public function View()
@@ -26,8 +26,8 @@ class MessagesController extends Controller
         $this->view->templates["edit_button"]["message_id"] = $this->data['get']['id'];
         $this->view->templates["delete_button"]["message_id"] = $this->data['get']['id'];
         $this->view->templates["comment_field"]["message_id"] = $this->data['get']['id'];
-        $this->view->requests["selected_message"] = $selected_message;
-        $this->view->requests["all_comments"] = $selected_message->comments;
+        $this->view->templates["message"] = $selected_message;
+        $this->view->templates["comments"] = $selected_message->comments;
     }
     
     public function Delete()

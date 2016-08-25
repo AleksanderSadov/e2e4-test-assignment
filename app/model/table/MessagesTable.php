@@ -12,7 +12,7 @@ class MessagesTable extends InitialTable
         
         $comments_data = new CommentsTable();
         $comments = $comments_data->Select("*", "topic='$id'", "date", "DESC");
-        $message->comments = $comments;
+        $message->set("comments", $comments);
         
         return $message;
     }

@@ -15,22 +15,15 @@
         {
             if (isset($result) && !empty($result))
             {
-                $objects = array ();
+                $objects = [];
                 foreach($result as $row)
                 {
-                    $object = new $this->object_name();
-                    foreach($object as $property => &$value)
-                    {
-                        if (isset($row[$property]))
-                        {
-                            $value = $row[$property];
-                        }
-                    }
+                    $object = new $this->object_name($row);
                     array_push($objects, $object);
                 }
                 return $objects;
             }
-            return null;
+            return [];
         }
         
         public function Count()
