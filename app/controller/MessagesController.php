@@ -5,7 +5,7 @@ class MessagesController extends Controller
     public function Index()
     {
         $message_data = new MessagesTable();
-        $all_messages = $message_data->Get(['id', 'header', 'brief']);
+        $all_messages = $message_data->Get();
         $messages_count = $message_data->Count();
         
         $this->view->templates["main_section_header"]["content"] = "Всего сообщений: $messages_count";
@@ -21,7 +21,7 @@ class MessagesController extends Controller
             $comment_data->Insert($comment);       
         }
         $message_data = new MessagesTable();
-        $selected_message = $message_data->GetWithComments(['id', 'header', 'text'], $this->data['get']['id']);
+        $selected_message = $message_data->GetWithComments($this->data['get']['id']);
         
         $this->view->templates["edit_button"]["message_id"] = $this->data['get']['id'];
         $this->view->templates["delete_button"]["message_id"] = $this->data['get']['id'];
@@ -65,7 +65,7 @@ class MessagesController extends Controller
             header("Location: index.php?controller=Messages&action=View&id={$this->data['get']['id']}");
         }
         $message_data = new MessagesTable();
-        $selected_message = $message_data->Get(['id', 'header', 'brief', 'text'], $this->data['get']['id']);
+        $selected_message = $message_data->Get($this->data['get']['id']);
 
         $this->view->templates['main_section_header']['content'] = "Редактор сообщений";
         $this->view->templates['editor']['form_action'] = 

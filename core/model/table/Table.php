@@ -54,17 +54,15 @@
             return $this->ProcessResult($result);
         }
         
-        public function Get(array $fields, $id = null)
+        public function Get($id = null)
         {
-            $selection = join(", ", $fields);
             if (isset($id))
             {
-                $where = "id='$id'";
-                return $this->Select($selection, $where, 'id', 'DESC')[0];
+                return $this->Select("*", "id='$id'", 'id', 'DESC')[0];
             }
             else
             {
-                return $this->Select($selection, null, 'id', 'DESC');
+                return $this->Select("*", null, 'id', 'DESC');
             }
         }
         

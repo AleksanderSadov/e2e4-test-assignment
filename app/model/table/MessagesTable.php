@@ -6,9 +6,9 @@ class MessagesTable extends InitialTable
         parent::__construct();
     }
     
-    public function GetWithComments(array $fields, $id = null)
+    public function GetWithComments($id = null)
     {   
-        $message = parent::Get($fields, $id);
+        $message = parent::Get($id);
         
         $comments_data = new CommentsTable();
         $comments = $comments_data->Select("*", "topic='$id'", "date", "DESC");
