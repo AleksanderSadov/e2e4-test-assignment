@@ -21,11 +21,11 @@
             '../core/utility/',
             '../core/view/',
             
-            '/controller/',
-            '/model/database/',
-            '/model/entity/',
-            '/model/table/',
-            '/view/',
+            'controller/',
+            'model/database/',
+            'model/entity/',
+            'model/table/',
+            'view/',
         );
        
         //for each directory
@@ -41,11 +41,11 @@
             }
         }
         // if class exists function would've returned before this 'die' statement
-        die ("Не удалось загрузить класс: " . $path);
+        // die ("Не удалось загрузить класс: " . $path);
     }
     spl_autoload_register("my_autoloader");
     
     // dispatch query
     $controller_front = new FrontController();
-    $controller_front->Dispatch("Messages", "Index", "MainPage");
+    $controller_front->Dispatch("Messages", "Index", "MainView");
 ?>

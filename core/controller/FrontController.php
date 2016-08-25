@@ -30,7 +30,8 @@ class FrontController extends Controller
         
         $controller = new $controller_class();
         $controller->view = new $view_name();
-        $controller->view->main_template = strtolower(preg_replace("/Controller/", "", $controller_class)) . "/" . strtolower($action);
+        $main_template_path = strtolower(preg_replace("/Controller/", "", $controller_class)) . "/" . strtolower($action);
+        $controller->view->main_template = $main_template_path;
         $controller->$action();
         $controller->view->Render();
     }

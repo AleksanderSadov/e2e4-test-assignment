@@ -15,8 +15,8 @@
     
     // database credentials
     define("DB_HOST", "localhost");
-    define("DB_USER", "aleksander.sadov");
-    define("DB_PASSWORD", "aleksander");
+    define("DB_USER", "e2e4-test-assignment");
+    define("DB_PASSWORD", "e2e4-test-assignment");
     define("DB_NAME", "e2e4-test-assignment");
 ?>
 

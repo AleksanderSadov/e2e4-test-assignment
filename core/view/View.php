@@ -1,5 +1,5 @@
 <?php
-    abstract class Page
+    abstract class View
     {
         public $main_template;
         public $title;
