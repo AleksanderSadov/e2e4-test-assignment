@@ -4,9 +4,8 @@ class MessagesController extends Controller
 {
     public function Index()
     {
-        $message_data = new MessagesTable();
-        $all_messages = $message_data->Get();
-        $messages_count = $message_data->Count();
+        $all_messages = $this->model->Get();
+        $messages_count = $this->model->Count();
         
         $this->view->templates["main_section_header"]["content"] = "Всего сообщений: $messages_count";
         $this->view->templates["messages"] = $all_messages;
@@ -20,8 +19,8 @@ class MessagesController extends Controller
             $comment = new Comment($this->data['post']);
             $comment_data->Insert($comment);       
         }
-        $message_data = new MessagesTable();
-        $selected_message = $message_data->GetWithComments($this->data['get']['id']);
+        
+        $selected_message = $this->model->GetWithComments($this->data['get']['id']);
         
         $this->view->templates["edit_button"]["message_id"] = $this->data['get']['id'];
         $this->view->templates["delete_button"]["message_id"] = $this->data['get']['id'];
@@ -32,8 +31,7 @@ class MessagesController extends Controller
     
     public function Delete()
     {
-        $message_data = new MessagesTable();
-        $message_data->Delete($this->data['get']['id']);
+        $this->model->Delete($this->data['get']['id']);
         header('Location: index.php?controller=Messages&action=Index');
     }
     
@@ -41,11 +39,11 @@ class MessagesController extends Controller
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
-            $message_data = new MessagesTable();
             $message = new Message($this->data['post']);
-            $message_data->Insert($message);
+            $this->model->Insert($message);
             header("Location: index.php?controller=Messages&action=Index");            
         }
+        
         $this->view->templates['main_section_header']['content'] = "Редактор сообщений";
         $this->view->templates['editor']['legend'] = "Добавление сообщения";
         $this->view->templates['editor']['form_action'] = "index.php?controller=Messages&action=Add";
@@ -60,12 +58,11 @@ class MessagesController extends Controller
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
-            $message_data = new MessagesTable();
-            $message_data->Update($this->data['get']['id'], $this->data['post']);
+            $this->model->Update($this->data['get']['id'], $this->data['post']);
             header("Location: index.php?controller=Messages&action=View&id={$this->data['get']['id']}");
         }
-        $message_data = new MessagesTable();
-        $selected_message = $message_data->Get($this->data['get']['id']);
+        
+        $selected_message = $this->model->Get($this->data['get']['id']);
 
         $this->view->templates['main_section_header']['content'] = "Редактор сообщений";
         $this->view->templates['editor']['form_action'] = 
