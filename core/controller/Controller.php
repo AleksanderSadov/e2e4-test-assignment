@@ -4,6 +4,7 @@ abstract class Controller
 {
     public $data;
     public $view;
+    public $model;
     
     public function __construct() 
     {

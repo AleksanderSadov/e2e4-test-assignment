@@ -2,36 +2,49 @@
 
 class FrontController extends Controller
 {
+    private $controller_name;
+    private $controller_class;
+    private $controller_action;
+    private $view_name;
+    
     /**
-     * Invokes required actions of controllers
+     * Initialize FrontController instance
      * 
      * @param string $default_controller default controller name
      * @param string $default_action default action name
      * @param string $view_name name of the developer view class
      */
-    public function Dispatch($default_controller, $default_action, $view_name)
+    public function __construct($default_controller, $default_action, $view_name)
     {
-        $controller_class = "";
+        parent::__construct();
+        
         if (isset($this->data['get']['controller']))
         {
-            $controller_class = $this->data['get']['controller'] . "Controller"; 
+            $this->controller_name = $this->data['get']['controller'];
+            $this->controller_class = $this->controller_name . "Controller"; 
         }
-        $action = "";
         if (isset($this->data['get']['action']))
         {
-            $action = $this->data['get']['action']; 
+            $this->controller_action = $this->data['get']['action']; 
         }
-        
-        if (!class_exists($controller_class) || !method_exists($controller_class, $action))
+
+        if (!class_exists($this->controller_class) || !method_exists($this->controller_class, $this->controller_action))
         {
-            $controller_class = $default_controller . "Controller";
-            $action = $default_action;
+            $this->controller_name = $default_controller;
+            $this->controller_class = $this->controller_name . "Controller";
+            $this->controller_action = $default_action;
         }
         
-        $controller = new $controller_class();
-        $controller->view = new $view_name();
-        $main_template_path = strtolower(preg_replace("/Controller/", "", $controller_class)) . "/" . strtolower($action);
+        $this->view_name = $view_name;
+    }
+    
+    public function Dispatch()
+    {   
+        $controller = new $this->controller_class();
+        $controller->view = new $this->view_name();
+        $main_template_path = strtolower($this->controller_name) . "/" . strtolower($this->controller_action);
         $controller->view->main_template = $main_template_path;
+        $action = $this->controller_action;
         $controller->$action();
         $controller->view->Render();
     }
