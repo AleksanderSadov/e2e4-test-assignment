@@ -6,5 +6,4 @@ class InitialTable extends Table
         parent::__construct();
     }
 }
-?>
 

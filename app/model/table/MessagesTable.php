@@ -6,6 +6,12 @@ class MessagesTable extends InitialTable
         parent::__construct();
     }
     
+    /**
+     * Получение сообщения с комментариями
+     * 
+     * @param integer $id id сообщения в БД
+     * @return app/entity/Message
+     */
     public function GetWithComments($id = null)
     {   
         $message = parent::Get($id);
@@ -17,5 +23,4 @@ class MessagesTable extends InitialTable
         return $message;
     }
 }
-?>
 

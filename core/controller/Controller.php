@@ -1,5 +1,4 @@
 <?php
-
 abstract class Controller
 {
     public $data;
@@ -18,6 +17,3 @@ abstract class Controller
         }
     }
 }
-
-?>
-

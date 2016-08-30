@@ -6,4 +6,3 @@ class AppView extends View
         parent::__construct();
     }
 }
-?>

@@ -11,6 +11,12 @@
             parent::__construct();
         }
         
+        /**
+         * Формирование массива объектов из массива ассоциативных массивов, полученных в результате выполнения sql запроса
+         * 
+         * @param array $result массив ассоциативных массивов - результате выполнения sql запроса
+         * @return array массив сущностей, соответствующих запросу
+         */
         private function ProcessResult($result) 
         {
             if (isset($result) && !empty($result))
@@ -26,18 +32,23 @@
             return [];
         }
         
+        /**
+         * Подсчет количества записей в БД
+         * 
+         * @return integer количество записей в БД
+         */
         public function Count()
         {
             $result = parent::CountRows($this->table_name);
             return $result[0][0];
         }
         
-        /** Retrieves requested items from database  
-         * @param string $selection     string of requested parts of object ("id, header, ...)"
-         * @param string $where_clause  specific selection ("id=5, ...")
-         * @param string $order_by      order by selected part of object ("id, ...")
-         * @param string $type_of_order asceding or descending order ("ASC" or "DESC")
-         * @return object return requested object(s) from database
+        /** Выполнение выборки из БД  
+         * @param string $selection     необходимые поля
+         * @param string $where_clause  условие выборки [optional]
+         * @param string $order_by      поле для сортировки [optional]
+         * @param string $type_of_order вид сортировки (ASC или DESC) [optional]
+         * @return array массив сущностей, соответствующих выборке
          */
         public function Select(
                 $selection,
@@ -54,6 +65,12 @@
             return $this->ProcessResult($result);
         }
         
+        /**
+         * Получение сущности из БД
+         * 
+         * @param integer $id ID сущности в БД [optional]. Если ID не указано будут возвращены все существующие сущности
+         * @return Entity сущность или массив сущностей, соответствующих запросу
+         */
         public function Get($id = null)
         {
             if (isset($id))
@@ -66,6 +83,12 @@
             }
         }
         
+        /**
+         * Сохранение сущности в БД
+         * 
+         * @param Entity $object сущность для сохранения
+         * @return bool true в случае успешного сохранения сущности, false иначе
+         */
         public function Insert($object)
         {
             $columns = [];
@@ -86,11 +109,24 @@
                     $values);
         }
         
+        /**
+         * Удаление сущности из БД
+         * 
+         * @param integer $id ID сущности в БД
+         * @return bool true в случае успешного сохранения сущности, false иначе
+         */
         public function Delete($id)
         {
             return parent::DeleteRows($this->table_name, "id='{$id}'");
         }
         
+        /**
+         * Изменение сущности в БД
+         * 
+         * @param integer $id ID сущности в БД
+         * @param array $data ассоциативный массив данных
+         * @return bool true в случае успешного изменения сущности в БД, false иначе
+         */
         public function Update($id, $data)
         {
             $set = [];
@@ -106,4 +142,3 @@
             return parent::UpdateRows($this->table_name, $set, $where);
         }
     }
-?>

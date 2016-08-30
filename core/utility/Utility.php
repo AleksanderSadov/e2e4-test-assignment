@@ -1,6 +1,12 @@
 <?php
 class Utility
 {
+    /**
+     * Загрузка файла
+     * 
+     * @param string $file_path путь к файлу
+     * @return boolean true в случае загрузки файла, false иначе
+     */
     static public function LoadFile($file_path)
     {
         if (file_exists($file_path) )
@@ -15,4 +21,3 @@ class Utility
         }
     }
 }
-?>

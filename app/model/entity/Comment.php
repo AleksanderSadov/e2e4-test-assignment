@@ -8,12 +8,13 @@ class Comment extends Entity
     public $topic;
 
     /**
+     * Создание сущности комментария
      * 
-     * @param array fields data
+     * @param array ассоциативный массив со значениями полей
      */
     function __construct(array $data = null)
     {
         parent::__construct($this, $data);
     }
 }
-?>
+

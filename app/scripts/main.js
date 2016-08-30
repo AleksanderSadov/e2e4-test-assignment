@@ -5,7 +5,7 @@ function main()
     var DeleteMessageButton = function() 
     {
         if (document.getElementsByClassName("comments").length <= 1)
-        // comment field is comments class too so it counts as 1
+        // Поле добавления комментариев принадлежит классу comments поэтому сравнение от 1
         {
             if (confirm("Вы действительно хотите удалить сообщение?"))
             {

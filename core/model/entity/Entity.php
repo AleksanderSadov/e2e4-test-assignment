@@ -2,23 +2,46 @@
 
 abstract class Entity implements ArrayAccess
 {
+    // Контейнер служит для обращения к полям объекта как к массиву
     protected $container = [];
     
+    /**
+     * Создание сущности
+     * 
+     * @param Entity $object конкретная сущность
+     * @param array $data ассоциативный массив данных для заполнения полей сущности
+     */
     protected function __construct($object, $data)
     {
         foreach ($object as $property => $value)
         {
             if (isset($data) && array_key_exists($property, $data))
             {
-                $this->set($property, $data[$property]);
+                $this->Set($property, $data[$property]);
             }
             else
             {
-                $this->set($property, null);
+                $this->Set($property, null);
             }
         }
     }
     
+    /**
+     * Задание значения полю объекта
+     * 
+     * @param string $property название поля объекта
+     * @param mixed $value значение поля
+     */
+    public function Set($property, $value)
+    {
+        if ($property != "container")
+        {
+            $this->$property = $value;
+            $this->container[$property] = $value;            
+        }
+    }
+    
+    // Функции ниже служат реализацией интерфейса ArrayAccess
     public function offsetSet($offset, $value) 
     {
         if (is_null($offset)) {
@@ -42,16 +65,5 @@ abstract class Entity implements ArrayAccess
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
-
-    public function set($property, $value)
-    {
-        if ($property != "container")
-        {
-            $this->$property = $value;
-            $this->container[$property] = $value;            
-        }
-    }
 }
-
-?>
 

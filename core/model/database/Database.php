@@ -4,6 +4,9 @@
         private $credentials;
         private $sqli;
         
+        /**
+         * Создание класса Database и установка соединения с БД
+         */
         protected function __construct()
         {
             $this->credentials = array(
@@ -24,6 +27,13 @@
             $this->sqli->set_charset('utf8');
         }
         
+        
+        /**
+         * Формирование массива ассоциативных массивов, содержащих результат запроса
+         * 
+         * @param mysql_result $result 
+         * @return array
+         */
         protected function BuidOutputArray($result)
         {
             $output_result = array();
@@ -48,7 +58,12 @@
             return $output_result;
         }
 
-
+        /**
+         * Выполнение sql запроса 
+         * 
+         * @param string $sql сформированный sql запроса
+         * @return array массив ассоциативных массивов, содержащих результат запроса
+         */
         protected function SqlQuery($sql)
         {
             $result = $this->sqli->query($sql);
@@ -60,12 +75,28 @@
             return $this->BuidOutputArray($result);
         }
         
+        /**
+         * Подсчет количества записей в БД
+         * 
+         * @param string $table_name название таблицы
+         * @return array массив ассоциативных массивов, содержащих результат запроса
+         */
         protected function CountRows($table_name)
         {
             $sql = "SELECT COUNT(*) FROM $table_name;";
             return $this->SqlQuery($sql);
         }
         
+        /**
+         * Выборка записей из БД
+         * 
+         * @param string $table_name название таблицы
+         * @param string $select необходимые поля записи
+         * @param string $where условие выборки
+         * @param string $order_by поле сортировки
+         * @param string $type_of_order тип сортировки (ASC или DESC)
+         * @return array массив ассоциативных массивов, содержащих результат запроса
+         */
         protected function SelectRows(
                 $table_name,
                 $select,
@@ -85,6 +116,14 @@
             return $this->SqlQuery($sql);
         }
         
+        /**
+         * Вставка записи
+         * 
+         * @param string $table_name название таблицы
+         * @param string $columns названия полей
+         * @param string $values значения полей
+         * @return bool true в случае успешного выполнения запроса, false иначе
+         */
         protected function InsertRows(
                 $table_name,
                 $columns,
@@ -96,6 +135,13 @@
             return $this->SqlQuery($sql);
         }
         
+        /**
+         * Удаление записи
+         * 
+         * @param string $table_name название таблицы
+         * @param string $where условие выборки
+         * @return bool true в случае успешного выполнения запроса, false иначе
+         */
         protected function DeleteRows(
                 $table_name,
                 $where)
@@ -105,6 +151,14 @@
             return $this->SqlQuery($sql);
         }
         
+        /**
+         * Изменение существующей записи
+         * 
+         * @param string $table_name название таблицы
+         * @param string $set указание полей и их новых значений
+         * @param string $where условие выборки
+         * @return bool true в случае успешного выполнения запроса, false иначе
+         */
         protected function UpdateRows(
                 $table_name,
                 $set,
@@ -116,10 +170,15 @@
             return $this->SqlQuery($sql);
         }
         
+        /**
+         * Выполнение кастомного sql запроса
+         * 
+         * @param string $sql строка содержащая sql запрос
+         * @return mixed 
+         */
         public function PerformQuery($sql)
         {
             return $this->SqlQuery($sql);
         }
     }
-?>
 

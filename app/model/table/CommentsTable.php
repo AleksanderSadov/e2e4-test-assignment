@@ -6,4 +6,4 @@ class CommentsTable extends InitialTable
         parent::__construct();
     }
 }
-?>
+
