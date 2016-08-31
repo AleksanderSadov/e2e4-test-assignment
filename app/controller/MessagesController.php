@@ -21,7 +21,7 @@ class MessagesController extends Controller
     public function Delete()
     {
         $this->model->Delete($this->data['get']['id']);
-        header('Location: index.php?controller=Messages&action=Index');
+        $this->Redirect("index.php?controller=Messages&action=Index");
     }
     
     public function Add()
@@ -30,7 +30,7 @@ class MessagesController extends Controller
         {
             $message = new Message($this->data['post']);
             $this->model->Insert($message);
-            header("Location: index.php?controller=Messages&action=Index");  
+            $this->Redirect("index.php?controller=Messages&action=Index");
         }
     }
     
@@ -39,7 +39,7 @@ class MessagesController extends Controller
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
             $this->model->Update($this->data['get']['id'], $this->data['post']);
-            header("Location: index.php?controller=Messages&action=View&id={$this->data['get']['id']}");
+            $this->Redirect("index.php?controller=Messages&action=View&id={$this->data['get']['id']}");
         }
         $this->view->vars['message'] = $this->model->Get($this->data['get']['id']);
     }

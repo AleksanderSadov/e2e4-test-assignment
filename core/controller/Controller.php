@@ -16,4 +16,9 @@ abstract class Controller
             $this->data['get'][htmlspecialchars($key)] = htmlspecialchars($value);
         }
     }
+    
+    public function Redirect($location)
+    {
+        header("Location: $location");
+    }
 }
