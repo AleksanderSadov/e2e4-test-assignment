@@ -21,5 +21,5 @@
         <input
             type="hidden"
             name="id"
-            value="<?php echo $this->templates['delete_button']['message_id']; ?>" />
+            value="<?php echo $this->vars['message']['id']; ?>" />
 </form>

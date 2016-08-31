@@ -2,7 +2,7 @@
     class="comments boxed_content"
     id="comment_field">
     <form
-    action="index.php?controller=Messages&action=View&id=<?php echo $this->templates['comment_field']['message_id']; ?>"
+    action="index.php?controller=Messages&action=View&id=<?php echo $this->vars['message']['id']; ?>"
     method="POST">
         <textarea
             rows="1"
@@ -22,7 +22,7 @@
         <input
             type="hidden"
             name="topic"
-            value="<?php echo $this->templates['comment_field']['message_id']; ?>" />
+            value="<?php echo $this->vars['message']['id']; ?>" />
         <div>
             <Button>Добавить комментарий</button>
         </div>

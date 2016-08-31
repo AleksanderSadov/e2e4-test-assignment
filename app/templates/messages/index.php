@@ -1,8 +1,9 @@
 <div class="row">
     <div id="main_section" class="col-10" >
+        <?php $this->vars['main_section_header']['content'] = "Всего сообщений: {$this->vars['messages_count']}"; ?>
         <?php $this->LoadTemplate("main_section_header"); ?>
-        <?php foreach($this->templates['messages'] as $message): ?>
-            <?php $this->templates['message'] = $message; ?>
+        <?php foreach($this->vars['messages'] as $message): ?>
+            <?php $this->vars['message'] = $message; ?>
             <?php $this->LoadTemplate("message_header"); ?>
             <?php $this->LoadTemplate("message_brief"); ?>
         <?php endforeach; ?>

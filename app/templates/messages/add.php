@@ -1,6 +1,10 @@
 <div class="row">
     <div id="main_section" class="col-10" >
+        <?php $this->vars['main_section_header']['content'] = "Редактор сообщений"; ?>
         <?php $this->LoadTemplate("main_section_header"); ?>
+        <?php $this->vars['editor']['legend'] = "Добавления сообщения"; ?>
+        <?php $this->vars['editor']['form_action'] = "index.php?controller=Messages&action=Add"; ?>
+        <?php $this->vars['editor']['submit_legend'] = "Добавить сообщение"; ?>
         <?php $this->LoadTemplate("editor"); ?>
     </div>
 

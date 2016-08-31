@@ -4,8 +4,8 @@
         <?php $this->LoadTemplate("message_text"); ?>
         <hr />
         <?php $this->LoadTemplate("comment_field"); ?>
-        <?php foreach($this->templates['comments'] as $comment): ?>
-            <?php $this->templates['comment'] = $comment; ?>
+        <?php foreach($this->vars['message']['comments'] as $comment): ?>
+            <?php $this->vars['comment'] = $comment; ?>
             <?php $this->LoadTemplate("comment"); ?>
         <?php endforeach; ?>
     </div>

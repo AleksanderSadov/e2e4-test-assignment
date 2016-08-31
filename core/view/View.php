@@ -3,7 +3,7 @@
     {
         public $main_template;
         public $title;
-        public $templates = [];
+        public $vars = [];
         
         protected function __construct() 
         {

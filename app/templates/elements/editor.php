@@ -2,9 +2,9 @@
     class="editor">
     <form 
         method="POST"
-        action="<?php echo $this->templates['editor']['form_action']; ?>" >
+        action="<?php echo $this->vars['editor']['form_action']; ?>" >
         <fieldset>
-            <legend><?php echo $this->templates['editor']['legend']; ?> </legend>
+            <legend><?php echo $this->vars['editor']['legend']; ?> </legend>
             <h3>Введите заголовок</h3>
             <textarea 
                 id="input_header"
@@ -14,7 +14,8 @@
                 class="input_message"
                 required wrap="hard"
                 cols="100"
-                rows="5"><?php echo $this->templates['editor']['header']; ?></textarea>
+                rows="5"><?php if (!empty($this->vars['message']['header'])) : 
+                    echo $this->vars['message']['header']; endif; ?></textarea>
             <h3>Введите краткое содеражние</h3>
             <textarea
                 id="input_brief"
@@ -24,7 +25,8 @@
                 class="input_message"
                 required wrap="hard"
                 cols="100"
-                rows="10"><?php echo $this->templates['editor']['brief']; ?></textarea>
+                rows="10"><?php if (!empty($this->vars['message']['header'])) : 
+                    echo $this->vars['message']['brief']; endif; ?></textarea>
             <h3>Введите основной текст</h3>
             <textarea
                 id="input_text"
@@ -34,9 +36,10 @@
                 class="input_message"
                 required wrap="hard"
                 cols="100"
-                rows="20"><?php echo $this->templates['editor']['text'];?></textarea>
+                rows="20"><?php if (!empty($this->vars['message']['header'])) : 
+                    echo $this->vars['message']['text']; endif; ?></textarea>
             <button id="editor_submit_button">
-                <?php echo $this->templates['editor']['submit_legend']; ?>
+                <?php echo $this->vars['editor']['submit_legend']; ?>
             </button>
             
         </fieldset>

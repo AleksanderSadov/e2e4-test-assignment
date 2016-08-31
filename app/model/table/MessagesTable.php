@@ -9,10 +9,10 @@ class MessagesTable extends InitialTable
     /**
      * Получение сообщения с комментариями
      * 
-     * @param integer $id id сообщения в БД
+     * @param integer $id ID сообщения в базе данных
      * @return app/entity/Message
      */
-    public function GetWithComments($id = null)
+    public function GetWithComments($id)
     {   
         $message = parent::Get($id);
         

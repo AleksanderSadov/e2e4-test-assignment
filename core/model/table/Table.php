@@ -33,9 +33,9 @@
         }
         
         /**
-         * Подсчет количества записей в БД
+         * Подсчет количества записей в базе данных
          * 
-         * @return integer количество записей в БД
+         * @return integer количество записей в базе данных
          */
         public function Count()
         {
@@ -43,7 +43,7 @@
             return $result[0][0];
         }
         
-        /** Выполнение выборки из БД  
+        /** Выполнение выборки из базы данных  
          * @param string $selection     необходимые поля
          * @param string $where_clause  условие выборки [optional]
          * @param string $order_by      поле для сортировки [optional]
@@ -66,25 +66,31 @@
         }
         
         /**
-         * Получение сущности из БД
+         * Получение сущности из базы данных
          * 
-         * @param integer $id ID сущности в БД [optional]. Если ID не указано будут возвращены все существующие сущности
-         * @return Entity сущность или массив сущностей, соответствующих запросу
+         * @param integer $id ID сущности в базе данных
+         * @return Entity запрашиваемая сущность
          */
-        public function Get($id = null)
+        public function Get($id)
         {
             if (isset($id))
             {
                 return $this->Select("*", "id='$id'", 'id', 'DESC')[0];
             }
-            else
-            {
-                return $this->Select("*", null, 'id', 'DESC');
-            }
         }
         
         /**
-         * Сохранение сущности в БД
+         * Получение всех сущностей из базы данных
+         * 
+         * @return array массив запрашиваемых сущностей
+         */
+        public function GetAll()
+        {
+            return $this->Select("*", null, 'id', 'DESC');
+        }
+        
+        /**
+         * Сохранение сущности в базе данных
          * 
          * @param Entity $object сущность для сохранения
          * @return bool true в случае успешного сохранения сущности, false иначе
@@ -110,9 +116,9 @@
         }
         
         /**
-         * Удаление сущности из БД
+         * Удаление сущности из базы данных
          * 
-         * @param integer $id ID сущности в БД
+         * @param integer $id ID сущности в базе данных
          * @return bool true в случае успешного сохранения сущности, false иначе
          */
         public function Delete($id)
@@ -121,11 +127,11 @@
         }
         
         /**
-         * Изменение сущности в БД
+         * Изменение сущности в базе данных
          * 
-         * @param integer $id ID сущности в БД
+         * @param integer $id ID сущности в базе данных
          * @param array $data ассоциативный массив данных
-         * @return bool true в случае успешного изменения сущности в БД, false иначе
+         * @return bool true в случае успешного изменения сущности в базе данных, false иначе
          */
         public function Update($id, $data)
         {
