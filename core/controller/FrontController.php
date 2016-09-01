@@ -43,7 +43,7 @@ class FrontController extends Controller
     /**
      * Вызов соответствующего url запросу экшена и отображения. 
      */
-    public function dispatch()
+    final public function dispatch()
     {   
         $controller = new $this->controller_class();
         $controller->view = new $this->view_name();

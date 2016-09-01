@@ -34,7 +34,7 @@
          * @param mysql_result $result 
          * @return array
          */
-        protected function buildOutputArray($result)
+        final protected function buildOutputArray($result)
         {
             $output_result = array();
             if (is_bool($result))
@@ -64,7 +64,7 @@
          * @param string $sql сформированный sql запроса
          * @return array массив ассоциативных массивов, содержащих результат запроса
          */
-        protected function sqlQuery($sql)
+        final protected function sqlQuery($sql)
         {
             $result = $this->sqli->query($sql);
             if ($this->sqli->error || $result === FALSE)
@@ -81,7 +81,7 @@
          * @param string $table_name название таблицы
          * @return array массив ассоциативных массивов, содержащих результат запроса
          */
-        protected function countRows($table_name)
+        final protected function countRows($table_name)
         {
             $sql = "SELECT COUNT(*) FROM $table_name;";
             return $this->sqlQuery($sql);
@@ -97,7 +97,7 @@
          * @param string $type_of_order тип сортировки (ASC или DESC)
          * @return array массив ассоциативных массивов, содержащих результат запроса
          */
-        protected function selectRows(
+        final protected function selectRows(
                 $table_name,
                 $select,
                 $where = NULL,
@@ -124,7 +124,7 @@
          * @param string $values значения полей
          * @return bool true в случае успешного выполнения запроса, false иначе
          */
-        protected function insertRows(
+        final protected function insertRows(
                 $table_name,
                 $columns,
                 $values)
@@ -142,7 +142,7 @@
          * @param string $where условие выборки
          * @return bool true в случае успешного выполнения запроса, false иначе
          */
-        protected function deleteRows(
+        final protected function deleteRows(
                 $table_name,
                 $where)
         {
@@ -159,7 +159,7 @@
          * @param string $where условие выборки
          * @return bool true в случае успешного выполнения запроса, false иначе
          */
-        protected function updateRows(
+        final protected function updateRows(
                 $table_name,
                 $set,
                 $where)
@@ -176,7 +176,7 @@
          * @param string $sql строка содержащая sql запрос
          * @return mixed 
          */
-        public function performQuery($sql)
+        final public function performQuery($sql)
         {
             return $this->sqlQuery($sql);
         }

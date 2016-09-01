@@ -17,7 +17,7 @@
          * @param array $result массив ассоциативных массивов - результате выполнения sql запроса
          * @return array массив сущностей, соответствующих запросу
          */
-        private function processResult($result) 
+        final private function processResult($result) 
         {
             if (isset($result) && !empty($result))
             {
@@ -37,7 +37,7 @@
          * 
          * @return integer количество записей в базе данных
          */
-        public function count()
+        final public function count()
         {
             $result = parent::CountRows($this->table_name);
             return $result[0][0];
@@ -50,7 +50,7 @@
          * @param string $type_of_order вид сортировки (ASC или DESC) [optional]
          * @return array массив сущностей, соответствующих выборке
          */
-        public function select(
+        final public function select(
                 $selection,
                 $where_clause = NULL,
                 $order_by = NULL,
@@ -71,7 +71,7 @@
          * @param integer $id ID сущности в базе данных
          * @return Entity запрашиваемая сущность
          */
-        public function get($id)
+        final public function get($id)
         {
             if (isset($id))
             {
@@ -84,7 +84,7 @@
          * 
          * @return array массив запрашиваемых сущностей
          */
-        public function getAll()
+        final public function getAll()
         {
             return $this->select("*", null, 'id', 'DESC');
         }
@@ -95,7 +95,7 @@
          * @param Entity $object сущность для сохранения
          * @return bool true в случае успешного сохранения сущности, false иначе
          */
-        public function insert($object)
+        final public function insert($object)
         {
             $columns = [];
             $values = [];
@@ -121,7 +121,7 @@
          * @param integer $id ID сущности в базе данных
          * @return bool true в случае успешного сохранения сущности, false иначе
          */
-        public function delete($id)
+        final public function delete($id)
         {
             return parent::DeleteRows($this->table_name, "id='{$id}'");
         }
@@ -133,7 +133,7 @@
          * @param array $data ассоциативный массив данных
          * @return bool true в случае успешного изменения сущности в базе данных, false иначе
          */
-        public function update($id, $data)
+        final public function update($id, $data)
         {
             $set = [];
             foreach ($data as $property => $value)
