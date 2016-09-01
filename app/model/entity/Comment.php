@@ -1,11 +1,11 @@
 <?php
 class Comment extends Entity
 {
-    public $text;
-    public $author;
-    public $date;
-    public $id;
-    public $topic;
+    protected $text;
+    protected $author;
+    protected $date;
+    protected $id;
+    protected $topic;
 
     /**
      * Создание сущности комментария

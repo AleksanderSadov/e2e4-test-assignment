@@ -1,11 +1,11 @@
 <?php
 class Message extends Entity
 {
-    public $id;
-    public $header;
-    public $text;
-    public $brief;
-    public $comments;
+    protected $id;
+    protected $header;
+    protected $text;
+    protected $brief;
+    protected $comments;
     
     /**
      * Создание сущности сообщения
