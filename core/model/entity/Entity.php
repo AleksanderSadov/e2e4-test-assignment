@@ -17,11 +17,11 @@ abstract class Entity implements ArrayAccess
         {
             if (isset($data) && array_key_exists($property, $data))
             {
-                $this->Set($property, $data[$property]);
+                $this->set($property, $data[$property]);
             }
             else
             {
-                $this->Set($property, null);
+                $this->set($property, null);
             }
         }
     }
@@ -32,7 +32,7 @@ abstract class Entity implements ArrayAccess
      * @param string $property название поля объекта
      * @param mixed $value значение поля
      */
-    public function Set($property, $value)
+    public function set($property, $value)
     {
         if ($property != "container")
         {

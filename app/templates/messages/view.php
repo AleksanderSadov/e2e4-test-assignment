@@ -1,20 +1,20 @@
 <div class="row">
     <div id="main_section" class="col-10" >
-        <?php $this->LoadTemplate("message_header"); ?>
-        <?php $this->LoadTemplate("message_text"); ?>
+        <?php $this->loadTemplate("message_header"); ?>
+        <?php $this->loadTemplate("message_text"); ?>
         <hr />
-        <?php $this->LoadTemplate("comment_field"); ?>
+        <?php $this->loadTemplate("comment_field"); ?>
         <?php foreach($this->vars['message']['comments'] as $comment): ?>
             <?php $this->vars['comment'] = $comment; ?>
-            <?php $this->LoadTemplate("comment"); ?>
+            <?php $this->loadTemplate("comment"); ?>
         <?php endforeach; ?>
     </div>
 
     <div id="sidebar_right" class="col-2" >
-        <?php $this->LoadTemplate("user_window"); ?>
-        <?php $this->LoadTemplate("add_button"); ?>
-        <?php $this->LoadTemplate("edit_button"); ?>
-        <?php $this->LoadTemplate("delete_button"); ?>
+        <?php $this->loadTemplate("user_window"); ?>
+        <?php $this->loadTemplate("add_button"); ?>
+        <?php $this->loadTemplate("edit_button"); ?>
+        <?php $this->loadTemplate("delete_button"); ?>
     </div>
 </div>
 

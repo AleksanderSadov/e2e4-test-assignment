@@ -43,7 +43,7 @@ class FrontController extends Controller
     /**
      * Вызов соответствующего url запросу экшена и отображения. 
      */
-    public function Dispatch()
+    public function dispatch()
     {   
         $controller = new $this->controller_class();
         $controller->view = new $this->view_name();
@@ -52,6 +52,6 @@ class FrontController extends Controller
         $controller->$action();
         $main_template_path = strtolower($this->controller_name) . "/" . strtolower($this->controller_action);
         $controller->view->main_template = $main_template_path;
-        $controller->view->Render();
+        $controller->view->render();
     }
 }

@@ -4,8 +4,8 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
         <title><?php echo $this->title; ?></title>
-        <?php $this->LoadStylesheet(); ?>
-        <?php $this->LoadScript(); ?>
+        <?php $this->loadStylesheet(); ?>
+        <?php $this->loadScript(); ?>
     </head>
     
     <body>
@@ -14,15 +14,15 @@
             
             <div class="row">
                 <div id="header_section" class="col-12">
-                    <?php $this->LoadTemplate("header"); ?>
+                    <?php $this->loadTemplate("header"); ?>
                 </div>
             </div>
             
-            <?php $this->LoadContent(); ?>
+            <?php $this->loadContent(); ?>
             
             <div class="row">
                 <div id="footer_section" class="col-12">
-                    <?php $this->LoadTemplate("footer"); ?>
+                    <?php $this->loadTemplate("footer"); ?>
                 </div>
             </div>
             

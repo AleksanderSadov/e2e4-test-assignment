@@ -12,12 +12,12 @@ class MessagesTable extends InitialTable
      * @param integer $id ID сообщения в базе данных
      * @return app/entity/Message
      */
-    public function GetWithComments($id)
+    public function getWithComments($id)
     {   
         $message = parent::Get($id);
         
         $comments_data = new CommentsTable();
-        $comments = $comments_data->Select("*", "topic='$id'", "date", "DESC");
+        $comments = $comments_data->select("*", "topic='$id'", "date", "DESC");
         $message->set("comments", $comments);
         
         return $message;

@@ -15,7 +15,7 @@
          * 
          * @param string $template название шаблона
          */
-        public function LoadTemplate($template)
+        public function loadTemplate($template)
         {
             $path = ROOT_DIR . "templates/elements/" . $template . ".php";
             if (file_exists($path))
@@ -31,7 +31,7 @@
         /**
          * Загрузка файла layout.php
          */
-        public function Render()
+        public function render()
         {
             $layout_path = ROOT_DIR . "templates/layout.php";
             require_once($layout_path);
@@ -40,7 +40,7 @@
         /**
          * Загрузка отображения, соответствующего экшену контроллера
          */
-        public function LoadContent()
+        public function loadContent()
         {
             $content_view_path = ROOT_DIR . "templates/" . $this->main_template . ".php";
             require_once($content_view_path);
@@ -51,7 +51,7 @@
          * 
          * @param string $stylesheet название файла стилей [optional]
          */
-        public function LoadStylesheet($stylesheet = "main")
+        public function loadStylesheet($stylesheet = "main")
         {
             $html = "<link type='text/css' rel='stylesheet'
                 href='" . ROOT_URL . "styles/" . $stylesheet . ".css' />";
@@ -63,7 +63,7 @@
          * 
          * @param string $script название файла скриптов
          */
-        public function LoadScript($script = "main")
+        public function loadScript($script = "main")
         {
             $html = "<script src='" . ROOT_URL . "scripts/" . 
                     $script . ".js'></script>";

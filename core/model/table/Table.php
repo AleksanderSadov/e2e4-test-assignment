@@ -17,7 +17,7 @@
          * @param array $result массив ассоциативных массивов - результате выполнения sql запроса
          * @return array массив сущностей, соответствующих запросу
          */
-        private function ProcessResult($result) 
+        private function processResult($result) 
         {
             if (isset($result) && !empty($result))
             {
@@ -37,7 +37,7 @@
          * 
          * @return integer количество записей в базе данных
          */
-        public function Count()
+        public function count()
         {
             $result = parent::CountRows($this->table_name);
             return $result[0][0];
@@ -50,7 +50,7 @@
          * @param string $type_of_order вид сортировки (ASC или DESC) [optional]
          * @return array массив сущностей, соответствующих выборке
          */
-        public function Select(
+        public function select(
                 $selection,
                 $where_clause = NULL,
                 $order_by = NULL,
@@ -62,7 +62,7 @@
                     $where_clause,
                     $order_by,
                     $type_of_order);
-            return $this->ProcessResult($result);
+            return $this->processResult($result);
         }
         
         /**
@@ -71,11 +71,11 @@
          * @param integer $id ID сущности в базе данных
          * @return Entity запрашиваемая сущность
          */
-        public function Get($id)
+        public function get($id)
         {
             if (isset($id))
             {
-                return $this->Select("*", "id='$id'", 'id', 'DESC')[0];
+                return $this->select("*", "id='$id'", 'id', 'DESC')[0];
             }
         }
         
@@ -84,9 +84,9 @@
          * 
          * @return array массив запрашиваемых сущностей
          */
-        public function GetAll()
+        public function getAll()
         {
-            return $this->Select("*", null, 'id', 'DESC');
+            return $this->select("*", null, 'id', 'DESC');
         }
         
         /**
@@ -95,7 +95,7 @@
          * @param Entity $object сущность для сохранения
          * @return bool true в случае успешного сохранения сущности, false иначе
          */
-        public function Insert($object)
+        public function insert($object)
         {
             $columns = [];
             $values = [];
@@ -121,7 +121,7 @@
          * @param integer $id ID сущности в базе данных
          * @return bool true в случае успешного сохранения сущности, false иначе
          */
-        public function Delete($id)
+        public function delete($id)
         {
             return parent::DeleteRows($this->table_name, "id='{$id}'");
         }
@@ -133,7 +133,7 @@
          * @param array $data ассоциативный массив данных
          * @return bool true в случае успешного изменения сущности в базе данных, false иначе
          */
-        public function Update($id, $data)
+        public function update($id, $data)
         {
             $set = [];
             foreach ($data as $property => $value)

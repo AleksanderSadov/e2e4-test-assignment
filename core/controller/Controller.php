@@ -17,7 +17,7 @@ abstract class Controller
         }
     }
     
-    public function Redirect($location)
+    public function redirect($location)
     {
         header("Location: $location");
     }

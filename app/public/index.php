@@ -11,5 +11,5 @@
     
     // Определение url запроса
     $controller_front = new FrontController("MessagesController", "Index");
-    $controller_front->Dispatch();
+    $controller_front->dispatch();
 

@@ -34,7 +34,7 @@
          * @param mysql_result $result 
          * @return array
          */
-        protected function BuidOutputArray($result)
+        protected function buildOutputArray($result)
         {
             $output_result = array();
             if (is_bool($result))
@@ -64,7 +64,7 @@
          * @param string $sql сформированный sql запроса
          * @return array массив ассоциативных массивов, содержащих результат запроса
          */
-        protected function SqlQuery($sql)
+        protected function sqlQuery($sql)
         {
             $result = $this->sqli->query($sql);
             if ($this->sqli->error || $result === FALSE)
@@ -72,7 +72,7 @@
                 die("Error: " . $this->sqli->error
                         . "<br />" . "Sql: " . $sql);
             }
-            return $this->BuidOutputArray($result);
+            return $this->buildOutputArray($result);
         }
         
         /**
@@ -81,10 +81,10 @@
          * @param string $table_name название таблицы
          * @return array массив ассоциативных массивов, содержащих результат запроса
          */
-        protected function CountRows($table_name)
+        protected function countRows($table_name)
         {
             $sql = "SELECT COUNT(*) FROM $table_name;";
-            return $this->SqlQuery($sql);
+            return $this->sqlQuery($sql);
         }
         
         /**
@@ -97,7 +97,7 @@
          * @param string $type_of_order тип сортировки (ASC или DESC)
          * @return array массив ассоциативных массивов, содержащих результат запроса
          */
-        protected function SelectRows(
+        protected function selectRows(
                 $table_name,
                 $select,
                 $where = NULL,
@@ -113,7 +113,7 @@
             $sql .= !empty($type_of_order) ?
                     "$type_of_order" : "";
             $sql .= ";";
-            return $this->SqlQuery($sql);
+            return $this->sqlQuery($sql);
         }
         
         /**
@@ -124,7 +124,7 @@
          * @param string $values значения полей
          * @return bool true в случае успешного выполнения запроса, false иначе
          */
-        protected function InsertRows(
+        protected function insertRows(
                 $table_name,
                 $columns,
                 $values)
@@ -132,7 +132,7 @@
             $sql = "INSERT INTO $table_name " . 
                    "({$columns})" .
                    "VALUES ({$values});";
-            return $this->SqlQuery($sql);
+            return $this->sqlQuery($sql);
         }
         
         /**
@@ -142,13 +142,13 @@
          * @param string $where условие выборки
          * @return bool true в случае успешного выполнения запроса, false иначе
          */
-        protected function DeleteRows(
+        protected function deleteRows(
                 $table_name,
                 $where)
         {
             $sql = "DELETE FROM $table_name " .
                    "WHERE $where;";
-            return $this->SqlQuery($sql);
+            return $this->sqlQuery($sql);
         }
         
         /**
@@ -159,7 +159,7 @@
          * @param string $where условие выборки
          * @return bool true в случае успешного выполнения запроса, false иначе
          */
-        protected function UpdateRows(
+        protected function updateRows(
                 $table_name,
                 $set,
                 $where)
@@ -167,7 +167,7 @@
             $sql = "UPDATE $table_name " . 
                    "SET $set " . 
                    "WHERE $where;";
-            return $this->SqlQuery($sql);
+            return $this->sqlQuery($sql);
         }
         
         /**
@@ -176,9 +176,9 @@
          * @param string $sql строка содержащая sql запрос
          * @return mixed 
          */
-        public function PerformQuery($sql)
+        public function performQuery($sql)
         {
-            return $this->SqlQuery($sql);
+            return $this->sqlQuery($sql);
         }
     }
 
