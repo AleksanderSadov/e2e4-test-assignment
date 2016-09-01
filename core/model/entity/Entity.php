@@ -11,9 +11,9 @@ abstract class Entity implements ArrayAccess
      * @param Entity $object конкретная сущность
      * @param array $data ассоциативный массив данных для заполнения полей сущности
      */
-    protected function __construct($object, $data)
+    protected function __construct($data)
     {
-        foreach ($object as $property => $value)
+        foreach ($this as $property => $value)
         {
             if (isset($data) && array_key_exists($property, $data))
             {

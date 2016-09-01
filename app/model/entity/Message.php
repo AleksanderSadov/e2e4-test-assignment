@@ -14,7 +14,7 @@ class Message extends Entity
      */
     function __construct(array $data = null)
     {
-        parent::__construct($this, $data);
+        parent::__construct($data);
     }
 }
 
