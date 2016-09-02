@@ -1,12 +1,16 @@
 <?php
     // Загрузка конфига
-    if (file_exists("app/config/config.php"))
-    {
-        include_once ("app/config/config.php");
-    }
-    else
-    {
-        die ("Не удалось загрузисть конфиг файл");
+    try {
+        $config_path = "app/config/config.php";
+        if (file_exists($config_path)) {
+            include_once($config_path);
+        } else {
+            $message = "Не удалось загрузить config.php" . PHP_EOL .
+                        "Путь к файлу: {$config_path}" . PHP_EOL;
+            throw new Exception($message);
+        }
+    } catch (Exception $ex) {
+        echo "<pre>$ex</pre>";
     }
     
     // Определение url запроса
