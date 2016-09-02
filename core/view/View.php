@@ -17,14 +17,18 @@
          */
         final public function loadTemplate($template)
         {
-            $path = ROOT_DIR . "templates/elements/" . $template . ".php";
-            if (file_exists($path))
-            {
-                require ($path);
-            }
-            else
-            {
-                die("Не удалось загрузить элемент: " . $path);
+            try {
+                $path = ROOT_DIR . "templates/elements/" . $template . ".php";
+                if (file_exists($path)) {
+                    include($path);
+                } else {
+                    $message = "Не удалось загрузить шаблон элемента: {$template}" . PHP_EOL .
+                            "Путь к файлу: {$path}" . PHP_EOL;
+                    throw new Exception($message);
+                }
+            } catch (Exception $ex) {
+                echo "<pre>{$ex}</pre>";
+                exit;
             }
         }
         
@@ -33,8 +37,19 @@
          */
         final public function render()
         {
-            $layout_path = ROOT_DIR . "templates/layout.php";
-            require_once($layout_path);
+            try {
+                $path = ROOT_DIR . "templates/layout.php";
+                if (file_exists($path)) {
+                    include_once($path);
+                } else {
+                    $message = "Не удалось загрузить шаблон страницы" . PHP_EOL .
+                            "Путь к файлу: {$path}" . PHP_EOL;
+                    throw new Exception($message);
+                }
+            } catch (Exception $ex) {
+                echo "<pre>{$ex}</pre>";
+                exit;
+            }
         }
         
         /**
@@ -42,8 +57,19 @@
          */
         final public function loadContent()
         {
-            $content_view_path = ROOT_DIR . "templates/" . $this->main_template . ".php";
-            require_once($content_view_path);
+            try {
+                $path = ROOT_DIR . "templates/" . $this->main_template . ".php";
+                if (file_exists($path)) {
+                    include_once($path);
+                } else {
+                    $message = "Не удалось загрузить контент страницы: {$this->main_template}" . PHP_EOL .
+                            "Путь к файлу: {$path}" . PHP_EOL;
+                    throw new Exception($message);
+                }
+            } catch (Exception $ex) {
+                echo "<pre>{$ex}</pre>";
+                exit;
+            }            
         }
         
         /**
@@ -53,9 +79,21 @@
          */
         final public function loadStylesheet($stylesheet = "main")
         {
-            $html = "<link type='text/css' rel='stylesheet'
-                href='" . ROOT_URL . "styles/" . $stylesheet . ".css' />";
-            echo $html;
+            try {
+                $path = ROOT_DIR . "public/styles/main.css";
+                if (file_exists($path)) {
+                    $html = "<link type='text/css' rel='stylesheet'
+                        href='" . ROOT_URL . "styles/" . $stylesheet . ".css' />";
+                    echo $html;
+                } else {
+                    $message = "Не удалось загрузить css стили" . PHP_EOL .
+                            "Путь к файлу: {$path}" . PHP_EOL;
+                    throw new Exception($message);
+                }
+            } catch (Exception $ex) {
+                echo "<pre>{$ex}</pre>";
+                exit;
+            }            
         }
         
         /**
@@ -65,9 +103,21 @@
          */
         final public function loadScript($script = "main")
         {
-            $html = "<script src='" . ROOT_URL . "scripts/" . 
-                    $script . ".js'></script>";
-            echo $html;
+            try {
+                $path = ROOT_DIR . "public/scripts/main.js";
+                if (file_exists($path)) {
+                    $html = "<script src='" . ROOT_URL . "scripts/" . 
+                        $script . ".js'></script>";
+                    echo $html;
+                } else {
+                    $message = "Не удалось загрузить js скрипты" . PHP_EOL .
+                            "Путь к файлу: {$path}" . PHP_EOL;
+                    throw new Exception($message);
+                }
+            } catch (Exception $ex) {
+                echo "<pre>{$ex}</pre>";
+                exit;
+            }    
         }
     }
 

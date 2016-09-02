@@ -11,6 +11,7 @@
         }
     } catch (Exception $ex) {
         echo "<pre>$ex</pre>";
+        exit;
     }
     
     // Определение url запроса
