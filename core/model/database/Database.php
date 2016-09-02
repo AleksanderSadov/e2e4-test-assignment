@@ -15,14 +15,19 @@
             "password" => DB_PASSWORD,
             "database" => DB_NAME);
             
-            $this->sqli = new mysqli(
-                    $this->credentials["host"],
-                    $this->credentials["user"],
-                    $this->credentials["password"],
-                    $this->credentials["database"]);
-            if ($this->sqli->connect_error)
-            {
-                die("Не удалось установить соединение с базой данных.");
+            try {
+                $this->sqli = new mysqli(
+                        $this->credentials["host"],
+                        $this->credentials["user"],
+                        $this->credentials["password"],
+                        $this->credentials["database"]);
+                if ($this->sqli->connect_error) {
+                    $message = "Не удалось установить соединение с базой данных" . PHP_EOL;
+                    throw new Exception($message);
+                }
+            } catch (Exception $ex) {
+                echo "<pre>{$ex}</pre>";
+                exit;
             }
             $this->sqli->set_charset('utf8');
         }
