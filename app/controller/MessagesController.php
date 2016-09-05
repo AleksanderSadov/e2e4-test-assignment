@@ -12,8 +12,7 @@ class MessagesController extends Controller
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
             $comment_data = new CommentsTable();
-            $comment = new Comment($this->data['post']);
-            $comment_data->insert($comment);       
+            $comment_data->insert($this->data['post']);       
         }
         $this->view->vars['message'] = $this->model->getWithComments($this->data['get']['id']);
     }
@@ -28,8 +27,7 @@ class MessagesController extends Controller
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
-            $message = new Message($this->data['post']);
-            $this->model->insert($message);
+            $this->model->insert($this->data['post']);
             $this->redirect("index.php?controller=Messages&action=Index");
         }
     }

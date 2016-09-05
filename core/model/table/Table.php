@@ -92,23 +92,13 @@
         /**
          * Сохранение сущности в базе данных
          * 
-         * @param Entity $object сущность для сохранения
+         * @param array $data ассоциативный массив данных сущности
          * @return bool true в случае успешного сохранения сущности, false иначе
          */
-        final public function insert($object)
+        final public function insert($data)
         {
-            $columns = [];
-            $values = [];
-            foreach ($object as $property => $value)
-            {
-                if (isset($value))
-                {
-                    array_push($columns, $property);
-                    array_push($values, $value);
-                }
-            }
-            $columns = join(", ", $columns);
-            $values = "'" . join("', '", $values) . "'";
+            $columns = join(", ", array_keys($data));
+            $values = "'" . join("', '", array_values($data)) . "'";
             return parent::InsertRows(
                     $this->table_name,
                     $columns,

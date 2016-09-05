@@ -14,7 +14,7 @@ class MessagesTable extends InitialTable
      */
     public function getWithComments($id)
     {   
-        $message = parent::Get($id);
+        $message = parent::get($id);
         
         $comments_data = new CommentsTable();
         $comments = $comments_data->select("*", "topic='$id'", "date", "DESC");
