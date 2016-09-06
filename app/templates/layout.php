@@ -3,6 +3,7 @@
     
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width" />
         <title><?php echo $this->title; ?></title>
         <?php $this->loadStylesheet(); ?>
         <?php $this->loadScript(); ?>
