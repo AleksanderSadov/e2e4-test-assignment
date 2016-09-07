@@ -54,6 +54,7 @@ class MessagesController extends AppController
         $message = $this->Messages->newEntity();
         if ($this->request->is('post')) {
             $message = $this->Messages->patchEntity($message, $this->request->data);
+            $message->user_id = $this->Auth->user('id');
             if ($this->Messages->save($message)) {
                 $this->Flash->success(__('The message has been saved.'));
 
