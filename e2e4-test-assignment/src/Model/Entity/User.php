@@ -7,9 +7,11 @@ use Cake\ORM\Entity;
  * User Entity
  *
  * @property int $id
- * @property string $nickname
+ * @property string $username
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
+ * @property string $password
+ * @property string $role
  *
  * @property \App\Model\Entity\Comment[] $comments
  * @property \App\Model\Entity\Message[] $messages
@@ -29,5 +31,14 @@ class User extends Entity
     protected $_accessible = [
         '*' => true,
         'id' => false
+    ];
+
+    /**
+     * Fields that are excluded from JSON versions of the entity.
+     *
+     * @var array
+     */
+    protected $_hidden = [
+        'password'
     ];
 }
