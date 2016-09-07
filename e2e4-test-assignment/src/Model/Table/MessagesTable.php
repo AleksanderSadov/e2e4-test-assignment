@@ -90,4 +90,9 @@ class MessagesTable extends Table
 
         return $rules;
     }
+    
+    public function isOwnedBy($messageId, $userId)
+    {
+        return $this->exists(['id' => $messageId, 'user_id' => $userId]);
+    }
 }

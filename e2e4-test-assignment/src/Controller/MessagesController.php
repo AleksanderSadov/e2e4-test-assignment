@@ -114,4 +114,22 @@ class MessagesController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+    
+    public function isAuthorized($user)
+    {
+        // All registered users can add articles
+        if ($this->request->action === 'add') {
+            return true;
+        }
+
+        // The owner of an article can edit and delete it
+        if (in_array($this->request->action, ['edit', 'delete'])) {
+            $messageId = (int)$this->request->params['pass'][0];
+            if ($this->Messages->isOwnedBy($messageId, $user['id'])) {
+                return true;
+            }
+        }
+
+        return parent::isAuthorized($user);
+    }
 }
