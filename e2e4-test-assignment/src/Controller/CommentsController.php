@@ -116,4 +116,22 @@ class CommentsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+    
+    public function isAuthorized($user)
+    {
+        // All registered users can add comments
+        if ($this->request->action === 'add') {
+            return true;
+        }
+
+        // The owner of an comment can edit and delete it
+        if (in_array($this->request->action, ['edit', 'delete'])) {
+            $commentId = (int)$this->request->params['pass'][0];
+            if ($this->Comments->isOwnedBy($commentId, $user['id'])) {
+                return true;
+            }
+        }
+
+        return parent::isAuthorized($user);
+    }
 }

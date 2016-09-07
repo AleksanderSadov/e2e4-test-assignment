@@ -117,12 +117,12 @@ class MessagesController extends AppController
     
     public function isAuthorized($user)
     {
-        // All registered users can add articles
+        // All registered users can add message
         if ($this->request->action === 'add') {
             return true;
         }
 
-        // The owner of an article can edit and delete it
+        // The owner of an message can edit and delete it
         if (in_array($this->request->action, ['edit', 'delete'])) {
             $messageId = (int)$this->request->params['pass'][0];
             if ($this->Messages->isOwnedBy($messageId, $user['id'])) {

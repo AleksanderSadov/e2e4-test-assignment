@@ -84,4 +84,9 @@ class CommentsTable extends Table
 
         return $rules;
     }
+    
+    public function isOwnedBy($commentId, $userId)
+    {
+        return $this->exists(['id' => $commentId, 'user_id' => $userId]);
+    }
 }
