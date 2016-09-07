@@ -54,6 +54,7 @@ class CommentsController extends AppController
         $comment = $this->Comments->newEntity();
         if ($this->request->is('post')) {
             $comment = $this->Comments->patchEntity($comment, $this->request->data);
+            $comment->user_id = $this->Auth->user('id');
             if ($this->Comments->save($comment)) {
                 $this->Flash->success(__('The comment has been saved.'));
 
