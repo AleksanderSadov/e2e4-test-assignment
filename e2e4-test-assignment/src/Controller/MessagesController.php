@@ -26,9 +26,15 @@ class MessagesController extends AppController
         $query = $this->Messages
                 ->find('search', ['search' => $this->request->query])
                 ->contain(['Users']);
-        $this->paginate = [
-            'contain' => ['Users']
-        ];
+        if (!empty($this->request->query['dateFrom']) && !empty($this->request->query['dateTo'])) {
+            $dateFrom = $this->request->query['dateFrom'];
+            $dateTo = $this->request->query['dateTo'];
+            if ($dateTo >= $dateFrom) {
+                $query->find('betweenDates', $this->request->query);
+            } else {
+                $this->Flash->error(__('Date to must be greater then date from.'));
+            }
+        }
         $messages = $this->paginate($query);
 
         $this->set(compact('messages'));

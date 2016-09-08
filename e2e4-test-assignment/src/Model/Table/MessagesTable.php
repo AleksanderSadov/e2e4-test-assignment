@@ -112,4 +112,15 @@ class MessagesTable extends Table
 
         return $search;
     }
+    
+    public function findBetweenDates(Query $query, array $options)
+    {
+        $dateFrom = (new \DateTime($options['dateFrom']))->format('Y-m-d 00:00:00');
+        $dateTo = (new \DateTime($options['dateTo']))->format('Y-m-d 23:59:59');
+        var_dump($dateFrom);
+        var_dump($dateTo);
+        return $query->where(['Messages.created BETWEEN :start AND :end'])
+            ->bind(':start', $dateFrom, 'datetime')
+            ->bind(':end', $dateTo, 'datetime');
+    }
 }

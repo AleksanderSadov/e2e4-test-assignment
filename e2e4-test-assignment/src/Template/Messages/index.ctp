@@ -12,16 +12,16 @@
     <h3><?= __('Messages') ?></h3>
     <?= $this->Form->create() ?>
     <div class="row">
-        <div class="small-8 columns">
+        <div class="small-8 columns end">
             <?= $this->Form->input('user', ['placeholder' => __('Type an user')]) ?>
         </div>
     </div>
     <div class="row">
         <div class="small-4 columns">
-            <?= $this->Form->input('dateFrom', ['type' => 'text', 'class' => 'datepicker']); ?>
+            <?= $this->Form->input('dateFrom', ['type' => 'text', 'label' => __('From Date'), 'class' => 'datepicker']); ?>
         </div>
         <div class="small-4 columns">
-            <?= $this->Form->input('dateTo', ['type' => 'text', 'class' => 'datepicker']); ?>
+            <?= $this->Form->input('dateTo', ['type' => 'text', 'label' => __('To Date'), 'class' => 'datepicker']); ?>
         </div>
         <div class="small-4 columns">
             <?= $this->Form->button(__('Filter'), ['type' => 'submit']) ?>
