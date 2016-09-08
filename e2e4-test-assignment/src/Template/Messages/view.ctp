@@ -12,7 +12,7 @@
     </ul>
 </nav>
 <div class="messages view large-9 medium-8 columns content">
-    <h3><?= h($message->id) ?></h3>
+    <h3><?= h($message->header) ?></h3>
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('User') ?></th>
