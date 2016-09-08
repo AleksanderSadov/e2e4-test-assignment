@@ -19,7 +19,6 @@
     <fieldset>
         <legend><?= __('Edit Message') ?></legend>
         <?php
-            echo $this->Form->input('user_id', ['options' => $users]);
             echo $this->Form->input('header');
             echo $this->Form->input('text');
             echo $this->Form->input('brief');

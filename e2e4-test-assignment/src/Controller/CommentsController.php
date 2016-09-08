@@ -63,9 +63,8 @@ class CommentsController extends AppController
                 $this->Flash->error(__('The comment could not be saved. Please, try again.'));
             }
         }
-        $users = $this->Comments->Users->find('list', ['limit' => 200]);
         $messages = $this->Comments->Messages->find('list', ['limit' => 200]);
-        $this->set(compact('comment', 'users', 'messages'));
+        $this->set(compact('comment', 'messages'));
         $this->set('_serialize', ['comment']);
     }
 
@@ -91,9 +90,7 @@ class CommentsController extends AppController
                 $this->Flash->error(__('The comment could not be saved. Please, try again.'));
             }
         }
-        $users = $this->Comments->Users->find('list', ['limit' => 200]);
-        $messages = $this->Comments->Messages->find('list', ['limit' => 200]);
-        $this->set(compact('comment', 'users', 'messages'));
+        $this->set(compact('comment'));
         $this->set('_serialize', ['comment']);
     }
 
