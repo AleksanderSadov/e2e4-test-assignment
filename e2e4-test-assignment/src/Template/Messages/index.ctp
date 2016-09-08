@@ -10,18 +10,24 @@
 </nav>
 <div class="messages index large-9 medium-8 columns content">
     <h3><?= __('Messages') ?></h3>
+    <?= $this->Form->create() ?>
     <div class="row">
-        <?= $this->Form->create() ?>
-            <fieldset>
-                <div class="small-6 columns">
-                    <?= $this->Form->input('user', ['placeholder' => __('Type an user')]) ?>
-                </div>
-                <div class="small-6 columns">
-                    <?= $this->Form->button(__('Filter'), ['type' => 'submit', 'class' => '']) ?>
-                    <?= $this->Html->link(__('Reset'), ['action' => 'index'], ['class' => 'button']) ?>
-                </div>
-            </fieldset>
-            <?= $this->Form->end() ?>
+        <div class="small-8 columns">
+            <?= $this->Form->input('user', ['placeholder' => __('Type an user')]) ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-4 columns">
+            <?= $this->Form->input('dateFrom', ['type' => 'text', 'class' => 'datepicker']); ?>
+        </div>
+        <div class="small-4 columns">
+            <?= $this->Form->input('dateTo', ['type' => 'text', 'class' => 'datepicker']); ?>
+        </div>
+        <div class="small-4 columns">
+            <?= $this->Form->button(__('Filter'), ['type' => 'submit']) ?>
+            <?= $this->Html->link(__('Reset'), ['action' => 'index'], ['class' => 'button']) ?>
+        </div>
+    <?= $this->Form->end() ?>
     </div>
     <table cellpadding="0" cellspacing="0">
         <thead>
