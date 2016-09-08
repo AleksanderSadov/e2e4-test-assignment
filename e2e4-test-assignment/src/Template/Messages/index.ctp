@@ -10,6 +10,19 @@
 </nav>
 <div class="messages index large-9 medium-8 columns content">
     <h3><?= __('Messages') ?></h3>
+    <div class="row">
+        <?= $this->Form->create() ?>
+            <fieldset>
+                <div class="small-6 columns">
+                    <?= $this->Form->input('user', ['placeholder' => __('Type an user')]) ?>
+                </div>
+                <div class="small-6 columns">
+                    <?= $this->Form->button(__('Filter'), ['type' => 'submit', 'class' => '']) ?>
+                    <?= $this->Html->link(__('Reset'), ['action' => 'index'], ['class' => 'button']) ?>
+                </div>
+            </fieldset>
+            <?= $this->Form->end() ?>
+    </div>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>

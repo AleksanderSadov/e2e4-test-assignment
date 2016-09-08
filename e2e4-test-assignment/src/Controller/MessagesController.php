@@ -10,7 +10,12 @@ use App\Controller\AppController;
  */
 class MessagesController extends AppController
 {
-
+    public function initialize() {
+        parent::initialize();
+        
+        $this->loadComponent('Search.Prg', ['actions' => ['index']]);
+    }
+    
     /**
      * Index method
      *
@@ -18,10 +23,13 @@ class MessagesController extends AppController
      */
     public function index()
     {
+        $query = $this->Messages
+                ->find('search', ['search' => $this->request->query])
+                ->contain(['Users']);
         $this->paginate = [
             'contain' => ['Users']
         ];
-        $messages = $this->paginate($this->Messages);
+        $messages = $this->paginate($query);
 
         $this->set(compact('messages'));
         $this->set('_serialize', ['messages']);

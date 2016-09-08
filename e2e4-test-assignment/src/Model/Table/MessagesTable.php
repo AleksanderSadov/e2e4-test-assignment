@@ -5,6 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Search\Manager;
 
 /**
  * Messages Model
@@ -48,6 +49,8 @@ class MessagesTable extends Table
         $this->hasMany('Comments', [
             'foreignKey' => 'message_id'
         ]);
+        
+        $this->addBehavior('Search.Search');
     }
 
     /**
@@ -94,5 +97,19 @@ class MessagesTable extends Table
     public function isOwnedBy($messageId, $userId)
     {
         return $this->exists(['id' => $messageId, 'user_id' => $userId]);
+    }
+    
+    public function searchConfiguration()
+    {
+        $search = new Manager($this);
+
+        $search->like('user', [
+            'before' => true,
+            'after' => true,
+            'field' => 'Users.username',
+            'filterEmpty' => true
+        ]);
+
+        return $search;
     }
 }
