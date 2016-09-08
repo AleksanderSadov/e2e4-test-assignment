@@ -20,7 +20,7 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Message') ?></th>
-            <td><?= $comment->has('message') ? $this->Html->link($comment->message->id, ['controller' => 'Messages', 'action' => 'view', $comment->message->id]) : '' ?></td>
+            <td><?= $comment->has('message') ? $this->Html->link($comment->message->header, ['controller' => 'Messages', 'action' => 'view', $comment->message->id]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Text') ?></th>

@@ -14,7 +14,7 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('username', 'User', ['model' => 'Users']) ?></th>
+                <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('header') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('brief') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
