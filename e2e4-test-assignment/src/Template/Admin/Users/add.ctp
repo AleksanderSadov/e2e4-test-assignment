@@ -15,8 +15,12 @@
         <?php
             echo $this->Form->input('username');
             echo $this->Form->input('password');
-            echo $this->Form->input('role');
         ?>
+        <?php if(!empty($userRole) && $userRole == 'admin'): ?>
+            <?= $this->Form->input('role', [
+                'options' => ['admin' => 'Admin', 'author' => 'Author']
+            ]) ?>
+        <?php endif; ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
