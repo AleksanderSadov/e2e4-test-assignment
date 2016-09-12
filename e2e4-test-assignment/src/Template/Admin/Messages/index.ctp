@@ -26,7 +26,7 @@
             <?php foreach ($messages as $message): ?>
             <tr>
                 <td><?= $this->Number->format($message->id) ?></td>
-                <td><?= $message->has('user') ? $this->Html->link($message->user->id, ['controller' => 'Users', 'action' => 'view', $message->user->id]) : '' ?></td>
+                <td><?= $message->has('user') ? $this->Html->link($message->user->username, ['controller' => 'Users', 'action' => 'view', $message->user->id]) : '' ?></td>
                 <td><?= h($message->header) ?></td>
                 <td><?= h($message->brief) ?></td>
                 <td><?= h($message->created) ?></td>
