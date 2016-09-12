@@ -12,15 +12,15 @@
     </ul>
 </nav>
 <div class="comments view large-9 medium-8 columns content">
-    <h3><?= h($comment->id) ?></h3>
+    <h3><?= __('Comment #') . h($comment->id) ?></h3>
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('User') ?></th>
-            <td><?= $comment->has('user') ? $this->Html->link($comment->user->id, ['controller' => 'Users', 'action' => 'view', $comment->user->id]) : '' ?></td>
+            <td><?= $comment->has('user') ? $this->Html->link($comment->user->username, ['controller' => 'Users', 'action' => 'view', $comment->user->id]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Message') ?></th>
-            <td><?= $comment->has('message') ? $this->Html->link($comment->message->id, ['controller' => 'Messages', 'action' => 'view', $comment->message->id]) : '' ?></td>
+            <td><?= $comment->has('message') ? $this->Html->link($comment->message->header, ['controller' => 'Messages', 'action' => 'view', $comment->message->id]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Text') ?></th>

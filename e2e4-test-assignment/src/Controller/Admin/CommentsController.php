@@ -54,6 +54,7 @@ class CommentsController extends AppController
         $comment = $this->Comments->newEntity();
         if ($this->request->is('post')) {
             $comment = $this->Comments->patchEntity($comment, $this->request->data);
+            $comment->user_id = $this->Auth->user('id');
             if ($this->Comments->save($comment)) {
                 $this->Flash->success(__('The comment has been saved.'));
 
@@ -62,9 +63,12 @@ class CommentsController extends AppController
                 $this->Flash->error(__('The comment could not be saved. Please, try again.'));
             }
         }
-        $users = $this->Comments->Users->find('list', ['limit' => 200]);
-        $messages = $this->Comments->Messages->find('list', ['limit' => 200]);
-        $this->set(compact('comment', 'users', 'messages'));
+        $messages = $this->Comments->Messages->find('list', [
+            'keyField' => 'id',
+            'valueField' => 'header',
+            'limit' => 200
+            ]);
+        $this->set(compact('comment', 'messages'));
         $this->set('_serialize', ['comment']);
     }
 

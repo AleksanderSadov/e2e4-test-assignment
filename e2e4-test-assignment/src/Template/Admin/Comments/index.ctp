@@ -26,8 +26,8 @@
             <?php foreach ($comments as $comment): ?>
             <tr>
                 <td><?= $this->Number->format($comment->id) ?></td>
-                <td><?= $comment->has('user') ? $this->Html->link($comment->user->id, ['controller' => 'Users', 'action' => 'view', $comment->user->id]) : '' ?></td>
-                <td><?= $comment->has('message') ? $this->Html->link($comment->message->id, ['controller' => 'Messages', 'action' => 'view', $comment->message->id]) : '' ?></td>
+                <td><?= $comment->has('user') ? $this->Html->link($comment->user->username, ['controller' => 'Users', 'action' => 'view', $comment->user->id]) : '' ?></td>
+                <td><?= $comment->has('message') ? $this->Html->link($comment->message->header, ['controller' => 'Messages', 'action' => 'view', $comment->message->id]) : '' ?></td>
                 <td><?= h($comment->text) ?></td>
                 <td><?= h($comment->created) ?></td>
                 <td><?= h($comment->modified) ?></td>

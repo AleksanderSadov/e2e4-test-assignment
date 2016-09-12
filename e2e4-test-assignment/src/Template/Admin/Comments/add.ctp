@@ -13,7 +13,6 @@
     <fieldset>
         <legend><?= __('Add Comment') ?></legend>
         <?php
-            echo $this->Form->input('user_id', ['options' => $users]);
             echo $this->Form->input('message_id', ['options' => $messages]);
             echo $this->Form->input('text');
         ?>
