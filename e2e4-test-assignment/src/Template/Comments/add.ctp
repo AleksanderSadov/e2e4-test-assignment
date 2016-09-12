@@ -11,7 +11,6 @@
     <fieldset>
         <legend><?= __('Add Comment') ?></legend>
         <?php
-            echo $this->Form->input('message_id', ['options' => $messages]);
             echo $this->Form->input('text');
         ?>
     </fieldset>

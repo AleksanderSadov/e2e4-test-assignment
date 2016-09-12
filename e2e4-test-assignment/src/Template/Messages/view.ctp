@@ -8,7 +8,7 @@
         <li><?= $this->Html->link(__('List Messages'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Message'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Comments'), ['controller' => 'Comments', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Comment'), ['controller' => 'Comments', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('New Comment'), ['controller' => 'Comments', 'action' => 'add', $message->id]) ?> </li>
     </ul>
 </nav>
 <div class="messages view large-9 medium-8 columns content">
