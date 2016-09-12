@@ -74,13 +74,21 @@ class AppController extends Controller
     public function beforeFilter(Event $event)
     {
         $this->Auth->allow(['index', 'view', 'display']);
+        if (isset($this->request->params['prefix']) && $this->request->params['prefix'] === 'admin') {
+            $this->Auth->deny();
+            $this->Auth->config([
+                'loginAction' => 'users/login',
+                'loginRedirect' => 'admin/messages/index',
+                'unauthorizedRedirect' => 'users/login'
+            ]);
+        }
     }
     
     public function isAuthorized($user)
-    {
-        // Admin can access every action
-        if (isset($user['role']) && $user['role'] === 'admin') {
-            return true;
+    {     
+        // Only admins can access admin functions
+        if (isset($this->request->params['prefix']) && $this->request->params['prefix'] === 'admin') {
+            return (bool)($user['role'] === 'admin');
         }
 
         // Default deny
