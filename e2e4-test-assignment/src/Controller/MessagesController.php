@@ -39,6 +39,12 @@ class MessagesController extends AppController
         $message = $this->Messages->get($id, [
             'contain' => ['Users', 'Comments']
         ]);
+        $messageId = (int)$this->request->params['pass'][0];
+        if ($this->Messages->isOwnedBy($messageId, $this->Auth->user('id'))) {
+            $this->set('isAuthor', true);
+        } else {
+            $this->set('isAuthor', false);
+        }
 
         $this->set('message', $message);
         $this->set('_serialize', ['message']);
