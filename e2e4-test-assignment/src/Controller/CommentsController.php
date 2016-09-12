@@ -46,6 +46,12 @@ class CommentsController extends AppController
         $comment = $this->Comments->get($id, [
             'contain' => ['Users', 'Messages']
         ]);
+        $commentId = (int)$this->request->params['pass'][0];
+        if ($this->Comments->isOwnedBy($commentId, $this->Auth->user('id'))) {
+            $this->set('isAuthor', true);
+        } else {
+            $this->set('isAuthor', false);
+        }
 
         $this->set('comment', $comment);
         $this->set('_serialize', ['comment']);
@@ -70,7 +76,12 @@ class CommentsController extends AppController
                 $this->Flash->error(__('The comment could not be saved. Please, try again.'));
             }
         }
-        $messages = $this->Comments->Messages->find('list', ['limit' => 200]);
+        $messages = $this->Comments->Messages->find('list', [
+            'keyField' => 'id',
+            'valueField' => 'header',
+            'limit' => 200
+            ]);
+        
         $this->set(compact('comment', 'messages'));
         $this->set('_serialize', ['comment']);
     }

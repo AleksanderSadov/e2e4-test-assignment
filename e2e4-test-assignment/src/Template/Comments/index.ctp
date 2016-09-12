@@ -29,7 +29,7 @@
                 <td><?= h($comment->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $comment->id]) ?>
-                    <?php if($loggedUser === $comment->user->username): ?>
+                    <?php if(isset($loggedUser) AND $loggedUser === $comment->user->username): ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $comment->id]) ?>
                         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $comment->id], ['confirm' => __('Are you sure you want to delete # {0}?', $comment->id)]) ?>
                     <?php endif; ?>
