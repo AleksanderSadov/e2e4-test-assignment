@@ -22,6 +22,13 @@ class MessagesController extends AppController
             'contain' => ['Users']
         ];
         $messages = $this->paginate($this->Messages);
+        if ($this->Auth->user('username') != null) {
+            $loggedUser = $this->Auth->user('username');
+            $this->set('loggedUser', $loggedUser);
+        } else {
+            $loggedUser = null;
+            $this->set('loggedUser', $loggedUser);
+        }
 
         $this->set(compact('messages'));
         $this->set('_serialize', ['messages']);

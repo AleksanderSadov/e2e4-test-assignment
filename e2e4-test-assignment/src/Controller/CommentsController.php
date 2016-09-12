@@ -22,6 +22,13 @@ class CommentsController extends AppController
             'contain' => ['Users', 'Messages']
         ];
         $comments = $this->paginate($this->Comments);
+        if ($this->Auth->user('username') != null) {
+            $loggedUser = $this->Auth->user('username');
+            $this->set('loggedUser', $loggedUser);
+        } else {
+            $loggedUser = null;
+            $this->set('loggedUser', $loggedUser);
+        }
 
         $this->set(compact('comments'));
         $this->set('_serialize', ['comments']);

@@ -29,6 +29,10 @@
                 <td><?= h($message->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $message->id]) ?>
+                    <?php if($loggedUser === $message->user->username): ?>
+                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $message->id]) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $message->id], ['confirm' => __('Are you sure you want to delete # {0}?', $message->id)]) ?>
+                    <?php endif; ?>
                 </td>
             </tr>
             <?php endforeach; ?>

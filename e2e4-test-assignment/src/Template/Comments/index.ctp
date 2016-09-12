@@ -2,8 +2,6 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Comment'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Messages'), ['controller' => 'Messages', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Message'), ['controller' => 'Messages', 'action' => 'add']) ?></li>
     </ul>
@@ -13,7 +11,6 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('message_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('text') ?></th>
@@ -25,7 +22,6 @@
         <tbody>
             <?php foreach ($comments as $comment): ?>
             <tr>
-                <td><?= $this->Number->format($comment->id) ?></td>
                 <td><?= $comment->has('user') ? $this->Html->link($comment->user->username, ['controller' => 'Users', 'action' => 'view', $comment->user->id]) : '' ?></td>
                 <td><?= $comment->has('message') ? $this->Html->link($comment->message->header, ['controller' => 'Messages', 'action' => 'view', $comment->message->id]) : '' ?></td>
                 <td><?= h($comment->text) ?></td>
@@ -33,8 +29,10 @@
                 <td><?= h($comment->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $comment->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $comment->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $comment->id], ['confirm' => __('Are you sure you want to delete # {0}?', $comment->id)]) ?>
+                    <?php if($loggedUser === $comment->user->username): ?>
+                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $comment->id]) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $comment->id], ['confirm' => __('Are you sure you want to delete # {0}?', $comment->id)]) ?>
+                    <?php endif; ?>
                 </td>
             </tr>
             <?php endforeach; ?>
