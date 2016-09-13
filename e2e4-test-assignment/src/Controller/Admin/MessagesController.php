@@ -37,7 +37,7 @@ class MessagesController extends AppController
     public function view($id = null)
     {
         $message = $this->Messages->get($id, [
-            'contain' => ['Users', 'Comments']
+            'contain' => ['Users', 'Comments', 'Comments.Users']
         ]);
 
         $this->set('message', $message);

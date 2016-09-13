@@ -49,8 +49,7 @@
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th scope="col"><?= __('Id') ?></th>
-                <th scope="col"><?= __('User Id') ?></th>
-                <th scope="col"><?= __('Message Id') ?></th>
+                <th scope="col"><?= __('User') ?></th>
                 <th scope="col"><?= __('Text') ?></th>
                 <th scope="col"><?= __('Created') ?></th>
                 <th scope="col"><?= __('Modified') ?></th>
@@ -59,8 +58,7 @@
             <?php foreach ($message->comments as $comments): ?>
             <tr>
                 <td><?= h($comments->id) ?></td>
-                <td><?= h($comments->user_id) ?></td>
-                <td><?= h($comments->message_id) ?></td>
+                <td><?= h($comments->user->username) ?></td>
                 <td><?= h($comments->text) ?></td>
                 <td><?= h($comments->created) ?></td>
                 <td><?= h($comments->modified) ?></td>
