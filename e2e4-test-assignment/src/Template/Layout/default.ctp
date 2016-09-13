@@ -49,7 +49,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <?php if (!empty($this->request->session()->read('Auth.User'))): ?>
             <ul class="left">
                 <li>
-                    <a href="/users/login">Current user: <?= $this->request->session()->read('Auth.User')['username'] ?></a>
+                    <a href="/users/view/<?= $this->request->session()->read('Auth.User')['id'] ?>" >Current user: <?= $this->request->session()->read('Auth.User')['username'] ?></a>
                 </li>
                 <li>
                     <a href="/users/logout">Logout</a>
