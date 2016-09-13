@@ -21,8 +21,15 @@ class UsersController extends AppController
     public function view($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => ['Comments', 'Messages']
+            'contain' => ['Comments', 'Messages', 'Comments.Messages']
         ]);
+        if ($this->Auth->user('id') != null) {
+            $loggedUser = $this->Auth->user('id');
+            $this->set('loggedUser', $loggedUser);
+        } else {
+            $loggedUser = null;
+            $this->set('loggedUser', $loggedUser);
+        }
 
         $this->set('user', $user);
         $this->set('_serialize', ['user']);
