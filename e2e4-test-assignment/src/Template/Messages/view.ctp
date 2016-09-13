@@ -52,7 +52,7 @@
             </tr>
             <?php foreach ($message->comments as $comments): ?>
             <tr>
-                <td><?= h($comments->user->username) ?></td>
+                <td><?= $this->Html->link($comments->user->username, ['controller' => 'Users', 'action' => 'view', $comments->user->id]) ?></td>
                 <td><?= h($comments->text) ?></td>
                 <td><?= h($comments->created) ?></td>
                 <td><?= h($comments->modified) ?></td>

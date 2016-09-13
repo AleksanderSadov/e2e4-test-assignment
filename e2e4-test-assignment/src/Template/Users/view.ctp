@@ -39,7 +39,7 @@
             </tr>
             <?php foreach ($user->comments as $comments): ?>
             <tr>
-                <td><?= h($comments->message->header) ?></td>
+                <td><?= $this->Html->link($comments->message->header, ['controller' => 'Messages', 'action' => 'view', $comments->message->id]) ?></td>
                 <td><?= h($comments->text) ?></td>
                 <td><?= h($comments->created) ?></td>
                 <td><?= h($comments->modified) ?></td>
@@ -69,7 +69,7 @@
             </tr>
             <?php foreach ($user->messages as $messages): ?>
             <tr>
-                <td><?= h($messages->header) ?></td>
+                <td><?= $this->Html->link($messages->header, ['controller' => 'Messages', 'action' => 'view', $messages->id]) ?></td>
                 <td><?= h($messages->text) ?></td>
                 <td><?= h($messages->brief) ?></td>
                 <td><?= h($messages->created) ?></td>
