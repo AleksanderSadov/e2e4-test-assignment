@@ -22,8 +22,8 @@ class MessagesController extends AppController
             'contain' => ['Users']
         ];
         $messages = $this->paginate($this->Messages);
-        if ($this->Auth->user('username') != null) {
-            $loggedUser = $this->Auth->user('username');
+        if ($this->Auth->user('id') != null) {
+            $loggedUser = $this->Auth->user('id');
             $this->set('loggedUser', $loggedUser);
         } else {
             $loggedUser = null;
@@ -44,13 +44,14 @@ class MessagesController extends AppController
     public function view($id = null)
     {
         $message = $this->Messages->get($id, [
-            'contain' => ['Users', 'Comments']
+            'contain' => ['Users', 'Comments', 'Comments.Users']
         ]);
-        $messageId = (int)$this->request->params['pass'][0];
-        if ($this->Messages->isOwnedBy($messageId, $this->Auth->user('id'))) {
-            $this->set('isAuthor', true);
+        if ($this->Auth->user('id') != null) {
+            $loggedUser = $this->Auth->user('id');
+            $this->set('loggedUser', $loggedUser);
         } else {
-            $this->set('isAuthor', false);
+            $loggedUser = null;
+            $this->set('loggedUser', $loggedUser);
         }
 
         $this->set('message', $message);
