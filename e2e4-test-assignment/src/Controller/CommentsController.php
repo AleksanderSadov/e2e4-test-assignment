@@ -22,8 +22,8 @@ class CommentsController extends AppController
             'contain' => ['Users', 'Messages']
         ];
         $comments = $this->paginate($this->Comments);
-        if ($this->Auth->user('username') != null) {
-            $loggedUser = $this->Auth->user('username');
+        if ($this->Auth->user('id') != null) {
+            $loggedUser = $this->Auth->user('id');
             $this->set('loggedUser', $loggedUser);
         } else {
             $loggedUser = null;
@@ -46,11 +46,12 @@ class CommentsController extends AppController
         $comment = $this->Comments->get($id, [
             'contain' => ['Users', 'Messages']
         ]);
-        $commentId = (int)$this->request->params['pass'][0];
-        if ($this->Comments->isOwnedBy($commentId, $this->Auth->user('id'))) {
-            $this->set('isAuthor', true);
+        if ($this->Auth->user('id') != null) {
+            $loggedUser = $this->Auth->user('id');
+            $this->set('loggedUser', $loggedUser);
         } else {
-            $this->set('isAuthor', false);
+            $loggedUser = null;
+            $this->set('loggedUser', $loggedUser);
         }
 
         $this->set('comment', $comment);

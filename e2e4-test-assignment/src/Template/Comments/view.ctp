@@ -1,12 +1,11 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <?php if(isset($isAuthor) AND $isAuthor === true): ?>
+        <?php if(isset($loggedUser) AND $loggedUser === $comment->user->id): ?>
         <li><?= $this->Html->link(__('Edit Comment'), ['action' => 'edit', $comment->id]) ?> </li>
         <li><?= $this->Form->postLink(__('Delete Comment'), ['action' => 'delete', $comment->id], ['confirm' => __('Are you sure you want to delete # {0}?', $comment->id)]) ?> </li>
         <?php endif; ?>
         <li><?= $this->Html->link(__('List Comments'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Comment'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Messages'), ['controller' => 'Messages', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Message'), ['controller' => 'Messages', 'action' => 'add']) ?> </li>
     </ul>
