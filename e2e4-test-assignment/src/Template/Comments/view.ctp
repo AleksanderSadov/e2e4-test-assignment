@@ -26,10 +26,6 @@
             <td><?= h($comment->text) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($comment->id) ?></td>
-        </tr>
-        <tr>
             <th scope="row"><?= __('Created') ?></th>
             <td><?= h($comment->created) ?></td>
         </tr>
