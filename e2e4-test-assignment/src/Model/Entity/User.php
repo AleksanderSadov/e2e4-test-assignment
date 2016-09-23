@@ -13,6 +13,7 @@ use Cake\Auth\DefaultPasswordHasher;
  * @property \Cake\I18n\Time $modified
  * @property string $password
  * @property string $role
+ * @property string $email
  *
  * @property \App\Model\Entity\Comment[] $comments
  * @property \App\Model\Entity\Message[] $messages

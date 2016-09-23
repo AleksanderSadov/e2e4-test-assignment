@@ -70,6 +70,14 @@ class UsersTable extends Table
             ->notEmpty('password');
 
         $validator
+            ->requirePresence('email', 'create')
+            ->notEmpty('email')
+            ->add('email', 'validEmail', [
+                'rule' => 'email',
+                'message' => 'E-mail must be valid'
+            ]);
+
+        $validator
             ->requirePresence('role', 'create')
             ->notEmpty('role')
             ->add('role', 'inList', [
