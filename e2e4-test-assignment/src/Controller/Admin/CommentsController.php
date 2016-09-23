@@ -119,4 +119,15 @@ class CommentsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function isAuthorized($user)
+    {
+        // Content manager can edit comments
+        if ($user['role'] === 'content_manager') {
+            return true;
+        }
+
+        // Default deny
+        return parent::isAuthorized($user);
+    }
 }

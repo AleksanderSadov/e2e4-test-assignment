@@ -17,7 +17,7 @@
         ?>
         <?php if(!empty($userRole) && $userRole == 'admin'): ?>
             <?= $this->Form->input('role', [
-                'options' => ['admin' => 'Admin', 'author' => 'Author']
+                'options' => \App\Model\Entity\User::$roles
             ]) ?>
         <?php endif; ?>
     </fieldset>

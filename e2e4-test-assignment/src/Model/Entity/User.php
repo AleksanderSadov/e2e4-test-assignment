@@ -44,6 +44,12 @@ class User extends Entity
         'password'
     ];
     
+    public static $roles = [
+        'admin' => 'Admin',
+        'author' => 'Author',
+        'content_manager' => 'Content Manager'
+    ];
+
     protected function _setPassword($password)
     {
         return (new DefaultPasswordHasher)->hash($password);

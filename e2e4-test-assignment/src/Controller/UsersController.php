@@ -55,8 +55,9 @@ class UsersController extends AppController
             if (empty($user->role)) {
                 $user->role = 'author';
             }
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.') && $this->Postal->confirmRegistration($user));
+            if (empty($user->errors()) && $this->Postal->confirmRegistration($user)) {
+                $this->Users->save($user);
+                $this->Flash->success(__('The user has been saved.'));
 
                 return $this->redirect(['controller' => 'Messages', 'action' => 'index']);
             } else {

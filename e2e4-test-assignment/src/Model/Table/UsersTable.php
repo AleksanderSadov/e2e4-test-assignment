@@ -81,7 +81,7 @@ class UsersTable extends Table
             ->requirePresence('role', 'create')
             ->notEmpty('role')
             ->add('role', 'inList', [
-                'rule' => ['inList', ['admin', 'author']],
+                'rule' => ['inList', array_keys(\App\Model\Entity\User::$roles)],
                 'message' => 'Please enter a valid role'
             ]);
 

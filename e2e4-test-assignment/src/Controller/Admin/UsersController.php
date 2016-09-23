@@ -2,6 +2,7 @@
 namespace App\Controller\Admin;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Users Controller
@@ -54,7 +55,8 @@ class UsersController extends AppController
             if (empty($user->role)) {
                 $user->role = 'author';
             }
-            if ($this->Users->save($user)) {
+            if (empty($user->errors())) {
+                $this->Users->save($user);
                 $this->Flash->success(__('The user has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
@@ -114,5 +116,11 @@ class UsersController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        $this->Auth->allow(['view']);
     }
 }
