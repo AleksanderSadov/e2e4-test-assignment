@@ -11,6 +11,13 @@ use Cake\Event\Event;
  */
 class UsersController extends AppController
 {
+    public function initialize()
+    {
+        parent::initialize();
+
+        $this->loadComponent('Postal');
+    }
+
     /**
      * View method
      *
@@ -49,7 +56,7 @@ class UsersController extends AppController
                 $user->role = 'author';
             }
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('The user has been saved.') && $this->Postal->confirmRegistration($user));
 
                 return $this->redirect(['controller' => 'Messages', 'action' => 'index']);
             } else {
