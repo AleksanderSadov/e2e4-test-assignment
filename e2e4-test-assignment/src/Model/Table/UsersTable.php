@@ -112,14 +112,7 @@ class UsersTable extends Table
 
         return $rules;
     }
-    
-    public function beforeMarshal(Event $event, \ArrayObject $data)
-    {
-        if (empty($data['role'])) {
-            $data['role'] = 'unactivated';
-        }
-    }
-    
+
     public function beforeSave(Event $event, EntityInterface $entity)
     {
         $entity->hash = md5($entity->username . rand(0, 1000));

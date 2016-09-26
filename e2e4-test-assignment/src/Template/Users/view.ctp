@@ -1,6 +1,9 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
+        <?php if ($loggedUser['id'] === $user['id']): ?>
+            <li><?= $this->Html->link(__('Edit Account'), ['controller' => 'Users', 'action' => 'edit', $user->id]) ?> </li>
+        <?php endif; ?>
         <li><?= $this->Html->link(__('List Comments'), ['controller' => 'Comments', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('List Messages'), ['controller' => 'Messages', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Message'), ['controller' => 'Messages', 'action' => 'add']) ?> </li>

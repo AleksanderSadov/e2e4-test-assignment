@@ -51,13 +51,17 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
+            if (empty($this->request->data['role'])) {
+                $this->request->data['role'] = 'unactivated';
+            }
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user) && $this->Postal->confirmRegistration($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('The account has been created.'));
+                $this->Flash->success(__('Check your email for confirmation link.'));
 
-                return $this->redirect(['controller' => 'Messages', 'action' => 'index']);
+                return $this->redirect(['controller' => 'Users', 'action' => 'login']);
             } else {
-                $this->Flash->error(__('The user could not be saved. Please, try again.'));
+                $this->Flash->error(__('The account could not be created. Please, try again.'));
             }
         }
         
@@ -78,7 +82,7 @@ class UsersController extends AppController
             if (!empty($user)) {
                 $this->Users->patchEntity($user, ['role' => 'author']);
                 $this->Users->save($user);
-                $this->Flash->success(__('The user has been activated. Use your credentials to login.'));
+                $this->Flash->success(__('The account has been activated. Use your credentials to login.'));
                 
                 return $this->redirect(['controller' => 'Users', 'action' => 'login']);
             } else {
@@ -89,13 +93,52 @@ class UsersController extends AppController
         } 
     }
 
+    /**
+     * Edit method
+     *
+     * @param string|null $id User id.
+     * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     */
+    public function edit($id = null)
+    {
+        $user = $this->Users->get($id, [
+            'contain' => []
+        ]);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $user = $this->Users->patchEntity($user, $this->request->data);
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('Your account has been edited.'));
+
+                return $this->redirect(['action' => 'view', $id]);
+            } else {
+                $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            }
+        }
+        $this->set(compact('user'));
+        $this->set('_serialize', ['user']);
+    }
+
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
         // Allow users to register and logout.
         // You should not add the "login" action to allow list. Doing so would
         // cause problems with normal functioning of AuthComponent.
-        $this->Auth->allow(['registration', 'logout', 'verify']);
+        $this->Auth->deny();
+        $this->Auth->allow(['registration', 'logout', 'verify', 'view']);
+    }
+
+    public function isAuthorized($user)
+    {
+        if ($this->request->action === 'edit') {
+            $editedUser = $this->Users->get($this->request->params['pass'][0]);
+            if ($editedUser['id'] === $user['id']) {
+                return true;
+            }
+        }
+
+        return parent::isAuthorized($user);
     }
 
     public function login()
