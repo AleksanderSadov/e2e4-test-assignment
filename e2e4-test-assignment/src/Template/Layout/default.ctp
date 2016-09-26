@@ -43,7 +43,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <div class="top-bar-section">
             <ul class="right">
                 <li>
-                    <a href="/users/add">Registration</a>
+                    <a href="/users/registration">Registration</a>
                 </li>
             </ul>
             <?php if (!empty($this->request->session()->read('Auth.User'))): ?>

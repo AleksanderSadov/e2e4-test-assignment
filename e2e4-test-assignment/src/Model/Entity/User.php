@@ -47,7 +47,8 @@ class User extends Entity
     public static $roles = [
         'admin' => 'Admin',
         'author' => 'Author',
-        'content_manager' => 'Content Manager'
+        'content_manager' => 'Content Manager',
+        'unactivated' => 'Unactivated'
     ];
 
     protected function _setPassword($password)

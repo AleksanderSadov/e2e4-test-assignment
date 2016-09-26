@@ -72,6 +72,11 @@ Router::scope('/', function (RouteBuilder $routes) {
      * You can remove these routes once you've connected the
      * routes you want in your application.
      */
+    
+    $routes->connect('/users/verify/:email/:hash', 
+            ['controller' => 'Users', 'action' => 'verify'],
+            ['pass' => ['email', 'hash']]);
+    
     $routes->fallbacks('DashedRoute');
 });
 

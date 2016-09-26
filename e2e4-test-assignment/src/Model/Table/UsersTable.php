@@ -5,6 +5,8 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\Event\Event;
+use Cake\Datasource\EntityInterface;
 
 /**
  * Users Model
@@ -87,6 +89,15 @@ class UsersTable extends Table
 
         return $validator;
     }
+    
+    public function findUnactivated(Query $query, array $options)
+    {
+        return $query->where([
+                        'Users.email =' => $options['email'],
+                        'Users.hash =' => $options['hash'],
+                        'Users.role =' => 'unactivated'])
+                    ->first();
+    }
 
     /**
      * Returns a rules checker object that will be used for validating
@@ -100,5 +111,17 @@ class UsersTable extends Table
         $rules->add($rules->isUnique(['username']));
 
         return $rules;
+    }
+    
+    public function beforeMarshal(Event $event, \ArrayObject $data)
+    {
+        if (empty($data['role'])) {
+            $data['role'] = 'unactivated';
+        }
+    }
+    
+    public function beforeSave(Event $event, EntityInterface $entity)
+    {
+        $entity->hash = md5($entity->username . rand(0, 1000));
     }
 }
