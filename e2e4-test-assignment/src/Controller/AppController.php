@@ -54,6 +54,7 @@ class AppController extends Controller
                 'action' => 'index'
             ]
         ]);
+        $this->viewBuilder()->layout('standart');
     }
 
     /**

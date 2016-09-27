@@ -26,44 +26,15 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </title>
     <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->css('base.css') ?>
-    <?= $this->Html->css('cake.css') ?>
+    <?= $this->Html->css('bootstrap/bootstrap.css') ?>
+    <?= $this->Html->script(['jquery/jquery.js', 'bootstrap/bootstrap.js']) ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <nav class="top-bar expanded" data-topbar role="navigation">
-        <ul class="title-area large-3 medium-4 columns">
-            <li class="name">
-                <h1><a href=""><?= $this->fetch('title') ?></a></h1>
-            </li>
-        </ul>
-        <div class="top-bar-section">
-            <ul class="right">
-                <li>
-                    <a href="/users/registration">Registration</a>
-                </li>
-            </ul>
-            <?php if (!empty($this->request->session()->read('Auth.User'))): ?>
-            <ul class="left">
-                <li>
-                    <a href="/users/view/<?= $this->request->session()->read('Auth.User')['id'] ?>" >Current user: <?= $this->request->session()->read('Auth.User')['username'] ?></a>
-                </li>
-                <li>
-                    <a href="/users/logout">Logout</a>
-                </li>
-            </ul>
-            <?php else: ?>
-            <ul class="left">
-                <li>
-                    <a href="/users/login">Login</a>
-                </li>
-            </ul>
-            <?php endif; ?>
-        </div>
-    </nav>
+    <?= $this->element('navbar') ?>
     <?= $this->Flash->render() ?>
     <?= $this->Flash->render('auth') ?>
     <div class="container clearfix">

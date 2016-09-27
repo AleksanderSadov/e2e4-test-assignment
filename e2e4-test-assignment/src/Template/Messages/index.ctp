@@ -1,13 +1,6 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Message'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Comments'), ['controller' => 'Comments', 'action' => 'index']) ?></li>
-    </ul>
-</nav>
 <div class="messages index large-9 medium-8 columns content">
     <h3><?= __('Messages') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
