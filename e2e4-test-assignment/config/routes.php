@@ -77,6 +77,10 @@ Router::scope('/', function (RouteBuilder $routes) {
             ['controller' => 'Users', 'action' => 'verify'],
             ['pass' => ['email', 'hash']]);
     
+    $routes->connect('/users/change-password/:email/:hash',
+            ['controller' => 'Users', 'action' => 'changePassword'],
+            ['pass' => ['email', 'hash']]);
+
     $routes->fallbacks('DashedRoute');
 });
 

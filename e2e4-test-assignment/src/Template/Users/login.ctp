@@ -7,4 +7,8 @@
     </fieldset>
 <?= $this->Form->button(__('Login')); ?>
 <?= $this->Form->end() ?>
+    
+<?= $this->Html->link('Restore Password', ['controller' => 'users', 'action' => 'restorePassword'], [
+    'class' => 'button'
+]) ?>
 </div>

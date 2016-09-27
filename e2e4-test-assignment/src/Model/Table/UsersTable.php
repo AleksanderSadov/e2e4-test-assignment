@@ -89,14 +89,21 @@ class UsersTable extends Table
 
         return $validator;
     }
-    
+
     public function findUnactivated(Query $query, array $options)
     {
+        $query->find('hashed');
         return $query->where([
-                        'Users.email =' => $options['email'],
-                        'Users.hash =' => $options['hash'],
-                        'Users.role =' => 'unactivated'])
-                    ->first();
+                    'Users.role =' => 'unactivated'])
+                ->first();
+    }
+
+    public function findHashed(Query $query, array $options)
+    {
+        return $query->where([
+                    'Users.email =' => $options['email'],
+                    'Users.hash =' => $options['hash']])
+                ->first();
     }
 
     /**
@@ -108,13 +115,15 @@ class UsersTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['username']));
+        $rules->add($rules->isUnique(['username']))
+              ->add($rules->isUnique(['email']));
 
         return $rules;
     }
 
-    public function beforeSave(Event $event, EntityInterface $entity)
+    public function generateHash(EntityInterface $entity)
     {
-        $entity->hash = md5($entity->username . rand(0, 1000));
+        $hash = md5($entity->username . rand(0, 1000));
+        return $this->patchEntity($entity, ['hash' => $hash]);
     }
 }

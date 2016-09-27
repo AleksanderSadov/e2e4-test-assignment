@@ -32,4 +32,19 @@ class PostalComponent extends Component
 
         return $result;
     }
+    
+    public function restorePassword($user)
+    {
+        $email = new Email('dev_smtp');
+        
+        $result = $email->emailFormat('text')
+            ->template('restore_password')
+            ->helpers(['Html', 'Text'])
+            ->viewVars(compact('user'))
+            ->to($user->email)
+            ->subject(__('Restore password For E2E4-TEST'))
+            ->send();
+
+        return $result;
+    }
 }

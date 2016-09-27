@@ -51,15 +51,14 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
-            if (empty($this->request->data['role'])) {
-                $this->request->data['role'] = 'unactivated';
-            }
+            $this->request->data['role'] = 'unactivated';
+            $user = $this->Users->generateHash($user);
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user) && $this->Postal->confirmRegistration($user)) {
                 $this->Flash->success(__('The account has been created.'));
                 $this->Flash->success(__('Check your email for confirmation link.'));
 
-                return $this->redirect(['controller' => 'Users', 'action' => 'login']);
+                return $this->redirect(['controller' => 'Messages', 'action' => 'index']);
             } else {
                 $this->Flash->error(__('The account could not be created. Please, try again.'));
             }
@@ -74,14 +73,16 @@ class UsersController extends AppController
     
     public function verify()
     {
+        $this->autoRender = false;
         if (!empty($this->request->param('hash')) && !empty($this->request->param('email'))) {
             $hash = $this->request->param('hash');
             $email = $this->request->param('email');
             
             $user = $this->Users->find('unactivated', ['hash' => $hash, 'email' => $email]);
-            if (!empty($user)) {
-                $this->Users->patchEntity($user, ['role' => 'author']);
-                $this->Users->save($user);
+            if (!empty($user)
+                    && ($user = $this->Users->generateHash($user))
+                    && ($user = $this->Users->patchEntity($user, ['role' => 'author']))
+                    && $this->Users->save($user)) {
                 $this->Flash->success(__('The account has been activated. Use your credentials to login.'));
                 
                 return $this->redirect(['controller' => 'Users', 'action' => 'login']);
@@ -126,7 +127,9 @@ class UsersController extends AppController
         // You should not add the "login" action to allow list. Doing so would
         // cause problems with normal functioning of AuthComponent.
         $this->Auth->deny();
-        $this->Auth->allow(['registration', 'logout', 'verify', 'view']);
+        $this->Auth->allow([
+            'registration', 'logout', 'verify',
+            'view', 'restorePassword', 'changePassword']);
     }
 
     public function isAuthorized($user)
@@ -139,6 +142,50 @@ class UsersController extends AppController
         }
 
         return parent::isAuthorized($user);
+    }
+    
+    public function restorePassword()
+    {
+        if ($this->request->is('post') && !empty($this->request->data['email'])) {
+            $user = $this->Users->find()
+                    ->where(['Users.email =' => $this->request->data['email']])
+                    ->first();
+            if (!empty($user)
+                    && ($user = $this->Users->generateHash($user))
+                    && $this->Users->save($user)
+                    && $this->Postal->restorePassword($user)) {
+                $this->Flash->success(__('Email with link to restore password has been sent.'));
+            } else {
+                $this->Flash->error(__('User with this email cannot be found.'));
+            }
+        }
+    }
+    
+    public function changePassword()
+    {
+        if (!empty($this->request->param('hash'))
+                && !empty($this->request->param('email'))
+                && !empty($this->Users->find('hashed', [
+                    'hash' => $this->request->param('hash'),
+                    'email' => $this->request->param('email')]))) {
+            $user = $this->Users->find('hashed', [
+                'hash' => $this->request->param('hash'),
+                'email' => $this->request->param('email')]);
+            
+            if ($this->request->is('post')
+                    && !empty($this->request->data['password'])
+                    && ($user = $this->Users->generateHash($user))
+                    && ($user = $this->Users->patchEntity($user, $this->request->data))
+                    && $this->Users->save($user)) {
+                $this->Flash->success(__('Password has been successfully changed.'));
+
+                return $this->redirect(['controller' => 'Users', 'action' => 'login']);
+            }
+        } else {
+           $this->Flash->error(__('The url is invalid.'));
+                    
+           return $this->redirect(['controller' => 'Messages', 'action' => 'index']);
+        }
     }
 
     public function login()

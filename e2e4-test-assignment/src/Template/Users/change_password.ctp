@@ -3,22 +3,16 @@
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('List Comments'), ['controller' => 'Comments', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('List Messages'), ['controller' => 'Messages', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Message'), ['controller' => 'Messages', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="users form large-9 medium-8 columns content">
-    <?= $this->Form->create($user) ?>
+    <?= $this->Form->create() ?>
     <fieldset>
-        <legend><?= __('Add User') ?></legend>
+        <legend><?= __('Change Password') ?></legend>
         <?php
-            echo $this->Form->input('username');
-            echo $this->Form->input('email');
             echo $this->Form->input('password');
-            echo $this->Form->hidden('role', [
-                'value' => 'unactivated'
-            ]);
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Change Password')) ?>
     <?= $this->Form->end() ?>
 </div>
