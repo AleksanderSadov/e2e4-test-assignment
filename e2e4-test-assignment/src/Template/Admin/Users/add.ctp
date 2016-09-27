@@ -15,11 +15,10 @@
         <?php
             echo $this->Form->input('username');
             echo $this->Form->input('email');
-            echo $this->Form->input('password');
         ?>
         <?php if(!empty($userRole) && $userRole == 'admin'): ?>
             <?= $this->Form->input('role', [
-                'options' => ['admin' => 'Admin', 'author' => 'Author']
+                'options' => \App\Model\Entity\User::$roles
             ]) ?>
         <?php endif; ?>
     </fieldset>

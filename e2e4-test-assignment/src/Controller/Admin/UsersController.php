@@ -11,6 +11,12 @@ use Cake\Event\Event;
  */
 class UsersController extends AppController
 {
+    public function initialize()
+    {
+        parent::initialize();
+
+        $this->loadComponent('Postal');
+    }
 
     /**
      * Index method
@@ -51,11 +57,11 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
+            $password = substr(uniqid(), 0, 12);
+            $this->request->data['password'] = $password;
+            $user = $this->Users->generateHash($user);
             $user = $this->Users->patchEntity($user, $this->request->data);
-            if (empty($user->role)) {
-                $user->role = 'author';
-            }
-            if (empty($user->errors())) {
+            if (empty($user->errors()) && $this->Postal->addUser($user, $password)) {
                 $this->Users->save($user);
                 $this->Flash->success(__('The user has been saved.'));
 
