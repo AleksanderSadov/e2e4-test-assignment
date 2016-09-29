@@ -1,18 +1,24 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
+<nav class="col-sm-3">
+    <ul class="nav nav-pills nav-stacked">
+        <li>
+            <?= $this->Html->link(__('View Comment'), [
+                'controller' => 'Comments',
+                'action' => 'view',
+                $comment->id
+            ])
+            ?>
+        </li>
         <li><?= $this->Form->postLink(
-                __('Delete'),
+                __('Delete Comment'),
                 ['action' => 'delete', $comment->id],
                 ['confirm' => __('Are you sure you want to delete # {0}?', $comment->id)]
             )
         ?></li>
         <li><?= $this->Html->link(__('List Comments'), ['action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('List Messages'), ['controller' => 'Messages', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Message'), ['controller' => 'Messages', 'action' => 'add']) ?></li>
     </ul>
 </nav>
-<div class="comments form large-9 medium-8 columns content">
+<div class="col-sm-9">
     <?= $this->Form->create($comment) ?>
     <fieldset>
         <legend><?= __('Edit Comment') ?></legend>
@@ -20,6 +26,6 @@
             echo $this->Form->input('text');
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Edit Comment')) ?>
     <?= $this->Form->end() ?>
 </div>

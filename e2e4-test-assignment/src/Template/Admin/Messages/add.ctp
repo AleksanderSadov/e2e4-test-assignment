@@ -1,6 +1,5 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
+<nav class="col-sm-3">
+    <ul class="nav nav-pills nav-stacked">
         <li><?= $this->Html->link(__('List Messages'), ['action' => 'index']) ?></li>
         <?php if($loggedUser['role'] === 'admin'): ?>
             <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
@@ -10,7 +9,7 @@
         <li><?= $this->Html->link(__('New Comment'), ['controller' => 'Comments', 'action' => 'add']) ?></li>
     </ul>
 </nav>
-<div class="messages form large-9 medium-8 columns content">
+<div class="col-sm-9">
     <?= $this->Form->create($message) ?>
     <fieldset>
         <legend><?= __('Add Message') ?></legend>

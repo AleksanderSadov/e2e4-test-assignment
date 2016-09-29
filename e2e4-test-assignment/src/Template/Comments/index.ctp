@@ -1,13 +1,11 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
+<nav class="col-sm-3">
+    <ul class="nav nav-pills nav-stacked">
         <li><?= $this->Html->link(__('List Messages'), ['controller' => 'Messages', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Message'), ['controller' => 'Messages', 'action' => 'add']) ?></li>
     </ul>
 </nav>
-<div class="comments index large-9 medium-8 columns content">
+<div class="col-sm-9">
     <h3><?= __('Comments') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+    <table class="table table-striped table-hover">
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
@@ -28,7 +26,7 @@
                 <td><?= h($comment->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $comment->id]) ?>
-                    <?php if(isset($loggedUser) AND $loggedUser === $comment->user->id): ?>
+                    <?php if(isset($loggedUser) AND $loggedUser['id'] === $comment->user->id): ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $comment->id]) ?>
                         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $comment->id], ['confirm' => __('Are you sure you want to delete # {0}?', $comment->id)]) ?>
                     <?php endif; ?>

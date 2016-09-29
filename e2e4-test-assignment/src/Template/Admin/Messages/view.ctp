@@ -1,6 +1,5 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
+<nav class="col-sm-3">
+    <ul class="nav nav-pills nav-stacked">
         <li><?= $this->Html->link(__('Edit Message'), ['action' => 'edit', $message->id]) ?> </li>
         <li><?= $this->Form->postLink(__('Delete Message'), ['action' => 'delete', $message->id], ['confirm' => __('Are you sure you want to delete # {0}?', $message->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Messages'), ['action' => 'index']) ?> </li>
@@ -13,9 +12,9 @@
         <li><?= $this->Html->link(__('New Comment'), ['controller' => 'Comments', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
-<div class="messages view large-9 medium-8 columns content">
+<div class="col-sm-9">
     <h3><?= h($message->header) ?></h3>
-    <table class="vertical-table">
+    <table class="table table-stripped text-right table-hover">
         <tr>
             <th scope="row"><?= __('User') ?></th>
             <td><?= $message->has('user') ? $this->Html->link($message->user->username, ['controller' => 'Users', 'action' => 'view', $message->user->id]) : '' ?></td>
@@ -45,10 +44,10 @@
         <h4><?= __('Text') ?></h4>
         <?= $this->Text->autoParagraph(h($message->text)); ?>
     </div>
-    <div class="related">
+    <div>
         <h4><?= __('Related Comments') ?></h4>
         <?php if (!empty($message->comments)): ?>
-        <table cellpadding="0" cellspacing="0">
+        <table class="table table-striped table-hover">
             <tr>
                 <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('User') ?></th>

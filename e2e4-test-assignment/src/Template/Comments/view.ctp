@@ -1,18 +1,16 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <?php if(isset($loggedUser) AND $loggedUser === $comment->user->id): ?>
+<nav class="col-sm-3">
+    <ul class="nav nav-pills nav-stacked">
+        <?php if(isset($loggedUser) AND $loggedUser['id'] === $comment->user->id): ?>
         <li><?= $this->Html->link(__('Edit Comment'), ['action' => 'edit', $comment->id]) ?> </li>
         <li><?= $this->Form->postLink(__('Delete Comment'), ['action' => 'delete', $comment->id], ['confirm' => __('Are you sure you want to delete # {0}?', $comment->id)]) ?> </li>
         <?php endif; ?>
         <li><?= $this->Html->link(__('List Comments'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('List Messages'), ['controller' => 'Messages', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Message'), ['controller' => 'Messages', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
-<div class="comments view large-9 medium-8 columns content">
+<div class="col-sm-9">
     <h3><?= __('Comment #') . h($comment->id) ?></h3>
-    <table class="vertical-table">
+    <table class="table table-stripped text-right table-hover">
         <tr>
             <th scope="row"><?= __('User') ?></th>
             <td><?= $comment->has('user') ? $this->Html->link($comment->user->username, ['controller' => 'Users', 'action' => 'view', $comment->user->id]) : '' ?></td>

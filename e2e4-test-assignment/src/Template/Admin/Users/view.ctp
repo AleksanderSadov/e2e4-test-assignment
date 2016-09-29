@@ -1,6 +1,5 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
+<nav class="col-sm-3">
+    <ul class="nav nav-pills nav-stacked">
         <?php if($loggedUser['role'] === 'admin'): ?>
             <li><?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id]) ?> </li>
             <li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li>
@@ -13,9 +12,9 @@
         <li><?= $this->Html->link(__('New Message'), ['controller' => 'Messages', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
-<div class="users view large-9 medium-8 columns content">
+<div class="col-sm-9">
     <h3><?= h($user->username) ?></h3>
-    <table class="vertical-table">
+    <table class="table table-stripped text-right table-hover">
         <tr>
             <th scope="row"><?= __('Username') ?></th>
             <td><?= h($user->username) ?></td>
@@ -41,10 +40,10 @@
             <td><?= h($user->modified) ?></td>
         </tr>
     </table>
-    <div class="related">
+    <div>
         <h4><?= __('Related Comments') ?></h4>
         <?php if (!empty($user->comments)): ?>
-        <table cellpadding="0" cellspacing="0">
+        <table class="table table-striped table-hover">
             <tr>
                 <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Message') ?></th>
@@ -70,10 +69,10 @@
         </table>
         <?php endif; ?>
     </div>
-    <div class="related">
+    <div>
         <h4><?= __('Related Messages') ?></h4>
         <?php if (!empty($user->messages)): ?>
-        <table cellpadding="0" cellspacing="0">
+        <table class="table table-striped table-hover">
             <tr>
                 <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Header') ?></th>

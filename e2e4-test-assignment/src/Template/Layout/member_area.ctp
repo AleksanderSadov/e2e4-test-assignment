@@ -38,7 +38,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Flash->render() ?>
     <?= $this->Flash->render('auth') ?>
     <div class="container-fluid">
-        <?= $this->fetch('content') ?>
+        <div class="row">
+            <?= $this->fetch('content') ?>
+        </div>
     </div>
     <footer>
     </footer>

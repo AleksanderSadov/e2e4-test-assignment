@@ -1,12 +1,11 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
+<nav class="col-sm-3">
+    <ul class="nav nav-pills nav-stacked">
         <li><?= $this->Html->link(__('List Comments'), ['action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('List Messages'), ['controller' => 'Messages', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Message'), ['controller' => 'Messages', 'action' => 'add']) ?></li>
     </ul>
 </nav>
-<div class="comments form large-9 medium-8 columns content">
+<div class="col-sm-9">
     <?= $this->Form->create($comment) ?>
     <fieldset>
         <legend><?= __('Add Comment') ?></legend>

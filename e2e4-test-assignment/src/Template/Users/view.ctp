@@ -1,17 +1,14 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
+<nav class="col-sm-3">
+    <ul class="nav nav-pills nav-stacked">
         <?php if ($loggedUser['id'] === $user['id']): ?>
             <li><?= $this->Html->link(__('Edit Account'), ['controller' => 'Users', 'action' => 'edit', $user->id]) ?> </li>
         <?php endif; ?>
-        <li><?= $this->Html->link(__('List Comments'), ['controller' => 'Comments', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('List Messages'), ['controller' => 'Messages', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Message'), ['controller' => 'Messages', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
-<div class="users view large-9 medium-8 columns content">
+<div class="col-sm-9">
     <h3><?= h($user->username) ?></h3>
-    <table class="vertical-table">
+    <table class="table table-stripped text-right table-hover">
         <tr>
             <th scope="row"><?= __('Username') ?></th>
             <td><?= h($user->username) ?></td>
@@ -33,10 +30,10 @@
             <td><?= h($user->modified) ?></td>
         </tr>
     </table>
-    <div class="related">
+    <div>
         <h4><?= __('Related Comments') ?></h4>
         <?php if (!empty($user->comments)): ?>
-        <table cellpadding="0" cellspacing="0">
+        <table class="table table-striped table-hover">
             <tr>
                 <th scope="col"><?= __('Message') ?></th>
                 <th scope="col"><?= __('Text') ?></th>
@@ -62,10 +59,10 @@
         </table>
         <?php endif; ?>
     </div>
-    <div class="related">
+    <div>
         <h4><?= __('Related Messages') ?></h4>
         <?php if (!empty($user->messages)): ?>
-        <table cellpadding="0" cellspacing="0">
+        <table class="table table-striped table-hover">
             <tr>
                 <th scope="col"><?= __('Header') ?></th>
                 <th scope="col"><?= __('Text') ?></th>

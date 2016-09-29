@@ -1,6 +1,5 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
+<nav class="col-sm-3">
+    <ul class="nav nav-pills nav-stacked">
         <li><?= $this->Form->postLink(
                 __('Delete'),
                 ['action' => 'delete', $user->id],
@@ -14,7 +13,7 @@
         <li><?= $this->Html->link(__('New Message'), ['controller' => 'Messages', 'action' => 'add']) ?></li>
     </ul>
 </nav>
-<div class="users form large-9 medium-8 columns content">
+<div class="col-sm-9">
     <?= $this->Form->create($user) ?>
     <fieldset>
         <legend><?= __('Edit User') ?></legend>
