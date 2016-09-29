@@ -30,6 +30,15 @@
             <li><?= $this->Html->link('Registration', [
                 'controller' => 'Users',
                 'action' => 'registration']) ?></li>
+            <?php if(!empty($loggedUser)
+                    AND ($loggedUser['role'] === 'admin' OR $loggedUser['role'] === 'content-manager')):
+            ?>
+                <li role="separator" class="divider"></li>
+                <li><?= $this->Html->link('Administration', [
+                'controller' => 'Messages',
+                'action' => 'index',
+                'prefix' => 'admin']) ?></li>
+            <?php endif; ?>
           </ul>
         </li>
         <?php if(!empty($loggedUser)): ?>
