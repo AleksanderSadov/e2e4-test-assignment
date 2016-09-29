@@ -54,7 +54,7 @@ class AppController extends Controller
                 'action' => 'index'
             ]
         ]);
-        $this->viewBuilder()->layout('standart');
+        $this->viewBuilder()->layout('member_area');
     }
 
     /**

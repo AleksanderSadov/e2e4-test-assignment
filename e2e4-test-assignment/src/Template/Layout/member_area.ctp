@@ -37,7 +37,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->element('navbar') ?>
     <?= $this->Flash->render() ?>
     <?= $this->Flash->render('auth') ?>
-    <div class="container clearfix">
+    <div class="container-fluid">
         <?= $this->fetch('content') ?>
     </div>
     <footer>

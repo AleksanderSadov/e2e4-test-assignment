@@ -50,8 +50,8 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><?= $this->Html->link('Home', [
-                'controller' => 'Pages',
-                'action' => 'home']) ?></li>
+                'controller' => 'Messages',
+                'action' => 'index']) ?></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
