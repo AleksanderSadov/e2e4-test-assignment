@@ -26,10 +26,12 @@
             <li role="separator" class="divider"></li>
             <li><?= $this->Html->link('Login', [
                 'controller' => 'Users',
-                'action' => 'login']) ?></li>
+                'action' => 'login',
+                'prefix' => false]) ?></li>
             <li><?= $this->Html->link('Registration', [
                 'controller' => 'Users',
-                'action' => 'registration']) ?></li>
+                'action' => 'registration',
+                'prefix' => false]) ?></li>
             <?php if(!empty($loggedUser)
                     AND ($loggedUser['role'] === 'admin' OR $loggedUser['role'] === 'content-manager')):
             ?>
@@ -48,19 +50,22 @@
         </li>
         <li><?= $this->Html->link(__('Logout'), [
                 'controller' => 'Users',
-                'action' => 'logout']) ?>
+                'action' => 'logout',
+                'prefix' => false]) ?>
         </li>
         <?php else: ?>
         <li><?= $this->Html->link(__('Login'), [
                 'controller' => 'Users',
-                'action' => 'login']) ?>
+                'action' => 'login',
+                'prefix' => false]) ?>
         </li>
         <?php endif; ?>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><?= $this->Html->link('Home', [
                 'controller' => 'Messages',
-                'action' => 'index']) ?></li>
+                'action' => 'index',
+                'prefix' => false]) ?></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
