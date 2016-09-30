@@ -23,6 +23,15 @@
             <li><?= $this->Html->link('Comments', [
                 'controller' => 'Comments',
                 'action' => 'index']) ?></li>
+            <?php if(!empty($loggedUser)
+                    AND ($loggedUser['role'] === 'admin')
+                    AND (isset($this->request->params['prefix']))
+                    AND ($this->request->params['prefix'] === 'admin')):
+            ?>
+                <li><?= $this->Html->link('Users', [
+                'controller' => 'Users',
+                'action' => 'index']) ?></li>
+            <?php endif; ?>
             <li role="separator" class="divider"></li>
             <li><?= $this->Html->link('Login', [
                 'controller' => 'Users',
@@ -33,7 +42,7 @@
                 'action' => 'registration',
                 'prefix' => false]) ?></li>
             <?php if(!empty($loggedUser)
-                    AND ($loggedUser['role'] === 'admin' OR $loggedUser['role'] === 'content-manager')):
+                    AND ($loggedUser['role'] === 'admin' OR $loggedUser['role'] === 'content_manager')):
             ?>
                 <li role="separator" class="divider"></li>
                 <li><?= $this->Html->link('Administration', [

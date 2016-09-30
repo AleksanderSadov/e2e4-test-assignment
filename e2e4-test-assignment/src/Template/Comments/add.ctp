@@ -2,7 +2,6 @@
     <ul class="nav nav-pills nav-stacked">
         <li><?= $this->Html->link(__('List Comments'), ['action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('List Messages'), ['controller' => 'Messages', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Message'), ['controller' => 'Messages', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="col-sm-9">
@@ -13,6 +12,6 @@
             echo $this->Form->input('text');
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Add Comment')) ?>
     <?= $this->Form->end() ?>
 </div>
