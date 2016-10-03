@@ -22,13 +22,6 @@ class MessagesController extends AppController
             'contain' => ['Users']
         ];
         $messages = $this->paginate($this->Messages);
-        if ($this->Auth->user('id') != null) {
-            $loggedUser = $this->Auth->user('id');
-            $this->set('loggedUser', $loggedUser);
-        } else {
-            $loggedUser = null;
-            $this->set('loggedUser', $loggedUser);
-        }
 
         $this->set(compact('messages'));
         $this->set('_serialize', ['messages']);
@@ -46,13 +39,6 @@ class MessagesController extends AppController
         $message = $this->Messages->get($id, [
             'contain' => ['Users', 'Comments', 'Comments.Users']
         ]);
-        if ($this->Auth->user('id') != null) {
-            $loggedUser = $this->Auth->user('id');
-            $this->set('loggedUser', $loggedUser);
-        } else {
-            $loggedUser = null;
-            $this->set('loggedUser', $loggedUser);
-        }
 
         $this->set('message', $message);
         $this->set('_serialize', ['message']);

@@ -22,13 +22,6 @@ class CommentsController extends AppController
             'contain' => ['Users', 'Messages']
         ];
         $comments = $this->paginate($this->Comments);
-        if ($this->Auth->user('id') != null) {
-            $loggedUser = $this->Auth->user('id');
-            $this->set('loggedUser', $loggedUser);
-        } else {
-            $loggedUser = null;
-            $this->set('loggedUser', $loggedUser);
-        }
 
         $this->set(compact('comments'));
         $this->set('_serialize', ['comments']);
@@ -46,13 +39,6 @@ class CommentsController extends AppController
         $comment = $this->Comments->get($id, [
             'contain' => ['Users', 'Messages']
         ]);
-        if ($this->Auth->user('id') != null) {
-            $loggedUser = $this->Auth->user('id');
-            $this->set('loggedUser', $loggedUser);
-        } else {
-            $loggedUser = null;
-            $this->set('loggedUser', $loggedUser);
-        }
 
         $this->set('comment', $comment);
         $this->set('_serialize', ['comment']);
