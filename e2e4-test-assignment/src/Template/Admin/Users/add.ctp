@@ -13,7 +13,7 @@
             echo $this->Form->input('username');
             echo $this->Form->input('email');
         ?>
-        <?php if(!empty($userRole) && $userRole == 'admin'): ?>
+        <?php if($loggedUser['role'] === 'admin'): ?>
             <?= $this->Form->input('role', [
                 'options' => \App\Model\Entity\User::$roles
             ]) ?>

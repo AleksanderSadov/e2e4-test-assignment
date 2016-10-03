@@ -1,6 +1,6 @@
 <nav class="col-sm-3">
     <ul class="nav nav-pills nav-stacked">
-        <?php if ($loggedUser['id'] === $user['id']): ?>
+        <?php if (isset($loggedUser['id']) AND $loggedUser['id'] === $user['id']): ?>
             <li><?= $this->Html->link(__('Edit Account'), ['controller' => 'Users', 'action' => 'edit', $user->id]) ?> </li>
         <?php endif; ?>
         <li><?= $this->Html->link(__('List Messages'), ['controller' => 'Messages', 'action' => 'index']) ?> </li>

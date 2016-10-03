@@ -61,8 +61,7 @@ class UsersController extends AppController
             $this->request->data['password'] = $password;
             $user = $this->Users->generateHash($user);
             $user = $this->Users->patchEntity($user, $this->request->data);
-            if (empty($user->errors()) && $this->Postal->addUser($user, $password)) {
-                $this->Users->save($user);
+            if ($this->Users->save($user) && $this->Postal->addUser($user, $password)) {
                 $this->Flash->success(__('The user has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
@@ -71,9 +70,6 @@ class UsersController extends AppController
             }
         }
         
-        if (!empty($this->Auth->user('role'))) {
-            $this->set('userRole', $this->Auth->user('role'));
-        }
         $this->set(compact('user'));
         $this->set('_serialize', ['user']);
     }
@@ -123,10 +119,16 @@ class UsersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
-
-    public function beforeFilter(Event $event)
+    
+    public function isAuthorized($user)
     {
-        parent::beforeFilter($event);
-        $this->Auth->allow(['view']);
+        // Content manager can view users
+        if ($user['role'] === 'content_manager'
+                && $this->request->action === 'view') {
+            return true;
+        }
+
+        // Default deny
+        return parent::isAuthorized($user);
     }
 }

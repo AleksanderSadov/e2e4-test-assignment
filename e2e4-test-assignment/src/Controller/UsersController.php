@@ -44,7 +44,6 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
-            $this->request->data['role'] = 'unactivated';
             $user = $this->Users->generateHash($user);
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user) && $this->Postal->confirmRegistration($user)) {
@@ -57,9 +56,6 @@ class UsersController extends AppController
             }
         }
         
-        if (!empty($this->Auth->user('role'))) {
-            $this->set('userRole', $this->Auth->user('role'));
-        }
         $this->set(compact('user'));
         $this->set('_serialize', ['user']);
     }
