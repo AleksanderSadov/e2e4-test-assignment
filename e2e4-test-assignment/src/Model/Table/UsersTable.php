@@ -94,16 +94,19 @@ class UsersTable extends Table
     {
         $query->find('hashed');
         return $query->where([
-                    'Users.role =' => 'unactivated'])
-                ->first();
+                    'Users.role =' => 'unactivated']);
     }
 
     public function findHashed(Query $query, array $options)
     {
+        $dateTo = new \DateTime('now');
+        $dateFrom = new \DateTime(\Cake\Core\Configure::read('Hash.lifetime'));
         return $query->where([
-                    'Users.email =' => $options['email'],
-                    'Users.hash =' => $options['hash']])
-                ->first();
+                        'Users.email =' => $options['email'],
+                        'Users.hash =' => $options['hash'],
+                        'Users.hash_created BETWEEN :start AND :end'])
+                    ->bind(':start', $dateFrom, 'datetime')
+                    ->bind(':end', $dateTo, 'datetime');
     }
 
     /**
@@ -124,6 +127,9 @@ class UsersTable extends Table
     public function generateHash(EntityInterface $entity)
     {
         $hash = md5($entity->username . rand(0, 1000));
-        return $this->patchEntity($entity, ['hash' => $hash]);
+        $hash_created = new \DateTime('now');
+        return $this->patchEntity($entity, [
+            'hash' => $hash,
+            'hash_created' => $hash_created]);
     }
 }

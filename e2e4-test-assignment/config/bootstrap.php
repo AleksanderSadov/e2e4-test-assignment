@@ -225,3 +225,7 @@ if (Configure::read('debug')) {
 Plugin::load('Migrations');
 
 Plugin::load('BootstrapUI');
+
+// List of all configuration variables for application
+// Specify hash life time by time interval from current time
+Configure::write('Hash.lifetime', '1 day ago');

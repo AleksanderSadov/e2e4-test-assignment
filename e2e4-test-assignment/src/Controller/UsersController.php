@@ -67,7 +67,8 @@ class UsersController extends AppController
             $hash = $this->request->param('hash');
             $email = $this->request->param('email');
             
-            $user = $this->Users->find('unactivated', ['hash' => $hash, 'email' => $email]);
+            $user = $this->Users->find('unactivated', ['hash' => $hash, 'email' => $email])
+                    ->first();
             if (!empty($user)
                     && ($user = $this->Users->generateHash($user))
                     && ($user = $this->Users->patchEntity($user, ['role' => 'author']))
@@ -156,10 +157,11 @@ class UsersController extends AppController
                 && !empty($this->request->param('email'))
                 && !empty($this->Users->find('hashed', [
                     'hash' => $this->request->param('hash'),
-                    'email' => $this->request->param('email')]))) {
-            $user = $this->Users->find('hashed', [
-                'hash' => $this->request->param('hash'),
-                'email' => $this->request->param('email')]);
+                    'email' => $this->request->param('email')]))
+                && !empty($user = $this->Users->find('hashed', [
+                        'hash' => $this->request->param('hash'),
+                        'email' => $this->request->param('email')])
+                    ->first())) {
             
             if ($this->request->is('post')
                     && !empty($this->request->data['password'])
